@@ -1,0 +1,148 @@
+QLineEdit{  
+    text-align: center;  
+    color:black;
+    background-color: transparent;  
+    border: 0px; 
+    font-size: 21px;
+    selection-color:yellow;  
+    selection-background-color:green;  
+}	
+QRadioButton {
+  spacing: 5px;
+  font-size: 14px;
+  color: rgb(24, 220, 88);  
+}
+
+QRadioButton::indicator {  
+  width: 20px;
+  height: 20px;
+}
+
+QComboBox {
+	font-family: \"Microsoft YaHei UI\"; 
+        font-size: 22px;
+	outline: 0px;
+ 	padding: 3px 0x 3px 5px;
+	border: 0px; 
+	background-color: transparent;
+}
+ QComboBox::drop-down 
+{	subcontrol-origin: padding; 
+	subcontrol-position: top right; 
+        width: 30 px;
+	border: 0px;
+
+} 
+QComboBox:on{  
+    color:red;  
+}  
+QComboBox:off{  
+    color:black;  
+}  
+QComboBox QAbstractItemView{
+    border: 1px solid black; 
+    color:black;  
+    selection-color: white;  
+    selection-background-color: rgb(74, 144, 226);
+    outline: 0px;
+    height: 500px;
+}
+QRadioButton::indicator::unchecked {
+     
+   image: url(:/image/picture/qietu/check.png);
+}
+QRadioButton::indicator::checked { 
+
+        image: url(:/image/picture/qietu/checked.png);
+}
+
+ QScrollBar:vertical {
+     border: 2px solid grey;
+     width: 50px;
+     margin: 45px 0 45px 0;
+
+ }
+ QScrollBar::handle:vertical {
+
+     min-height: 20px;
+     background-color:#333333;
+ }
+
+ QScrollBar::add-line:vertical {
+     border: 2px solid grey;
+     height: 43px;
+     image:url(:/image/picture/qietu/xiala.png);
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+     background-color:#ebebeb;
+ }
+ QScrollBar::sub-line:vertical {
+     border: 2px solid grey;
+     height: 43px;
+     image:url(:/image/picture/qietu/shangla.png);
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+     background-color:#ebebeb;
+ }
+ QScrollBar::up-arrow:vertical{
+
+     width: 30px;
+     height: 30px;
+ }
+ QScrollBar::down-arrow:vertical {
+
+     width: 3px;
+     height: 3px;
+
+ }
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+
+QGroupBox {
+    border: 0px solid #333333;
+    margin-top: 2ex;
+    color: #474040;
+}
+QGroupBox::title {
+    color: #474040;
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    margin-left: 5px;
+}
+/*QTableView::item
+{
+    border-left: 0px solid darkgray;
+    border-right:0px;
+    border-top:0px;
+    border-bottom:1px solid darkgray;
+}
+QTableView::item:selected{
+        color:green;
+        background:white;
+        border-top:1px solid green;
+        border-bottom:1.5px solid green;
+}*/
+QPushButton{
+    color: white;
+}
+QPushButton:disabled {
+    color: #333333;
+}
+QDateEdit {
+    padding-left: 3px;
+    padding-right: 40px; /* space for the arrow */
+}
+QDateEdit::drop-down
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 35px;
+    border-left-style: solid;
+    border-left-color: darkgray;
+    border-left-width: 1px;
+}
+QDateEdit::down-arrow{
+  image:url(:/image/picture/qietu/xiala.png);
+}
+

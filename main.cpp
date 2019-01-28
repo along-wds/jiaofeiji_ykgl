@@ -136,11 +136,12 @@ int main(int argc, char *argv[])
     }
     else
     {
-      w.showKeyBoard();
+      w.startWithoutPwd();
+      /*w.showKeyBoard();
       QPalette palette1;
       w.showFullScreen();
       palette1.setBrush(w.backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/底纹.jpg").scaled(w.size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
-      w.setPalette(palette1);
+      w.setPalette(palette1);*/
     }
 
     return a.exec();

@@ -2,7 +2,7 @@
 #define MANAGER_H
 #include<QObject>
 #include<QTimer>
-#include<commondialog.h>
+#include"common/commondialog.h"
 class Manager:public QObject
 {
     Q_OBJECT

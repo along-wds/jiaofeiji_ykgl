@@ -2,15 +2,15 @@
 #define HOMEPAGE_H
 #include"operatefile.h"
 #include"clientsocket.h"
-#include"commondialog.h"
+#include"common/commondialog.h"
 #include"chiocedialog.h"
 #include <QWidget>
 #include"purchase.h"
 #include "src/timertask.h"
 #include"manager.h"
 #define DEBUG
-extern ClientSocket *socket;
 extern commonDialog *messagebox;
+extern ClientSocket *socket;
 extern Timertask *timertask;
 extern Manager *ui_manager;
 namespace Ui {

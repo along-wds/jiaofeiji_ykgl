@@ -2,7 +2,7 @@
 #define PURCHASE_H
 #include"clientsocket.h"
 #include <QWidget>
-extern ClientSocket *socket;
+//extern ClientSocket *socket;
 namespace Ui {
 class PurChase;
 }

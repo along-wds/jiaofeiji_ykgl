@@ -1,9 +1,6 @@
 #include "login.h"
 #include "ui_login.h"
-#include<readcard.h>
 #include<QTimer>
-#include<homepage.h>
-#include<operatefile.h>
 #include<QMessageBox>
 #include<QGridLayout>
 #include"homepage.h"
@@ -17,7 +14,7 @@
 #include<QCryptographicHash>
 #include"webpage.h"
 Manager *ui_manager;
-extern ClientSocket *socket;
+ClientSocket *socket;
 commonDialog *messagebox;
 ChioceDialog *choicebox;
 Timertask *timertask;
@@ -42,6 +39,11 @@ WebPage *OperateFile::ui_webpage=0;
  Heaterlookup *OperateFile::ui_heaterlookup=0;
  Heaterkhmx *OperateFile::ui_heaterkhmx=0;
  Readnum *OperateFile::ui_readnum=0;
+/*业扩管理*/
+Jmsh1 *OperateFile::ui_jmsh1=0;
+Jmsh2 *OperateFile::ui_jmsh2=0;
+Jmsh3 *OperateFile::ui_jmsh3=0;
+Jmsh4 *OperateFile::ui_jmsh4=0;
 
  extern REGIST regist;
  extern INITDEV initdev;
@@ -75,14 +77,14 @@ login::login(QWidget *parent) :
     ui->lineEdit->setPlaceholderText("请输入用户名");
     ui->lineEdit_2->setPlaceholderText("请输入密码");
     ui->lineEdit_2->setEchoMode(QLineEdit::PasswordEchoOnEdit);
-    ui->lineEdit->setFocus();
-    ui->lineEdit->installEventFilter(this);  //在窗体上为lineEdit1安装过滤器
-    ui->lineEdit_2->installEventFilter(this);  //在窗体上为lineEdit2安装过滤
+    //ui->lineEdit->setFocus();
+    //ui->lineEdit->installEventFilter(this);  //在窗体上为lineEdit1安装过滤器
+    //ui->lineEdit_2->installEventFilter(this);  //在窗体上为lineEdit2安装过滤
     ui->pushButton->setShortcut(Qt::Key_Return);
     /**********************
      * new
      * ********************/
-    //socket=new ClientSocket();
+    socket=new ClientSocket();
     thread = new QThread;
     timed_thread=new QThread;
     heartbeat_thread=new QThread;
@@ -96,7 +98,7 @@ login::login(QWidget *parent) :
     connect(socket,SIGNAL(readyRead()),this,SLOT(login_GetData()));
     connect(this,SIGNAL(login_HasData(KIND)),this,SLOT(login_DealData(KIND)));
     connect(timed_thread,SIGNAL(started()),timertask,SLOT(init()));
-    connect(heartbeat_thread,SIGNAL(started()),m_heartbeat_task,SLOT(init()));
+    //connect(heartbeat_thread,SIGNAL(started()),m_heartbeat_task,SLOT(init()));
     /*************************
      *move to thread
     **************************/
@@ -144,8 +146,8 @@ void login::startWithoutPwd()
     disconnect(socket,SIGNAL(readyRead()),this,SLOT(login_GetData()));
     disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
     disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished_getlist(QNetworkReply*)));
-    m_heartbeat_task->LoginMessage=socket->LoginMessage;
-    heartbeat_thread->start();
+    //m_heartbeat_task->LoginMessage=socket->LoginMessage;
+    //heartbeat_thread->start();
     messagebox->closeDisplay();
     OperateFile::ui_homepage=new HomePage;
     OperateFile::ui_homepage->init();
@@ -174,6 +176,7 @@ login::~login()
 }
 void login::on_pushButton_clicked()
 {
+   OperateFile::hidePanle();
    if(ui->lineEdit->text().isEmpty()||ui->lineEdit_2->text().isEmpty())
     {
        QTimer::singleShot(INFOTIME, messagebox, SLOT(closeDialog()));
@@ -275,8 +278,8 @@ void login::replyFinished(QNetworkReply* reply)
                    disconnect(socket,SIGNAL(readyRead()),this,SLOT(login_GetData()));
                    disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
                    disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished_getlist(QNetworkReply*)));
-                   m_heartbeat_task->LoginMessage=socket->LoginMessage;
-                   heartbeat_thread->start();
+                   //m_heartbeat_task->LoginMessage=socket->LoginMessage;
+                   //heartbeat_thread->start();
                    messagebox->closeDisplay();
                    OperateFile::ui_homepage=new HomePage;
                    OperateFile::ui_homepage->init();

@@ -4,7 +4,7 @@
 #include<QProxyStyle>
 #include"QtNetwork"
 #include"usermsg.h"
-#include"commondialog.h"
+#include"common/commondialog.h"
 #include"src/effect.h"
 #include"src/unionthread.h"
 #include"QMediaPlayer"

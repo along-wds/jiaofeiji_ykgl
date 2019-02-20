@@ -1,15 +1,10 @@
 #include "dealfinish.h"
 #include "ui_dealfinish.h"
-#include<QMessageBox>
-#include<QThread>
-#include"msgconfirm.h"
 #include"readcard.h"
 #include"inputpassword.h"
 #include"inputamount.h"
-#include"first.h"
 #include"unionpay.h"
 #include"dealfinish.h"
-#include"manager.h"
 #include"cashpay.h"
 dealfinish::dealfinish(QWidget *parent) :
     QWidget(parent),

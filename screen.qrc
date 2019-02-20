@@ -148,5 +148,28 @@
         <file>picture/qietu/finished.png</file>
         <file>picture/qietu/left.png</file>
         <file>picture/qietu/right.png</file>
+        <file>picture/qietu/数字键/dian.png</file>
+        <file>picture/qietu/数字键/切图用_03.png</file>
+        <file>picture/qietu/数字键/切图用_05.png</file>
+        <file>picture/qietu/数字键/切图用_07.png</file>
+        <file>picture/qietu/数字键/切图用_09.png</file>
+        <file>picture/qietu/数字键/切图用_15.png</file>
+        <file>picture/qietu/数字键/切图用_16.png</file>
+        <file>picture/qietu/数字键/切图用_17.png</file>
+        <file>picture/qietu/数字键/切图用_18.png</file>
+        <file>picture/qietu/数字键/切图用_23.png</file>
+        <file>picture/qietu/数字键/切图用_24.png</file>
+        <file>picture/qietu/数字键/切图用_25.png</file>
+        <file>picture/qietu/数字键/切图用_27.png</file>
+        <file>picture/qietu/数字键/切图用_27确定.png</file>
+        <file>picture/qietu/数字键/切图用_32.png</file>
+        <file>picture/qietu/数字键/切图用_34-.png</file>
+        <file>picture/qietu/数字键/切图用_34.png</file>
+        <file>picture/ykgl/1-1.png</file>
+        <file>picture/ykgl/1-2.png</file>
+        <file>picture/ykgl/1-3.png</file>
+        <file>picture/ykgl/1-4.png</file>
+        <file>picture/ykgl/1-5.png</file>
+        <file>picture/ykgl/1-6.png</file>
     </qresource>
 </RCC>

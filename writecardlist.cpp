@@ -1,15 +1,11 @@
 #include "writecardlist.h"
 #include "ui_writecardlist.h"
 #include<QHeaderView>
-#include<QMessageBox>
-#include"first.h"
-#include"manager.h"
 #include"writecard.h"
 #include<QScrollBar>
 #include "qradiobutton.h"
 #include "readcard.h"
 #include"lookup.h"
-extern First ui_first;
 Writecardlist::Writecardlist(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Writecardlist)

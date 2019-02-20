@@ -5,6 +5,7 @@
 #include"first.h"
 #include"msgconfirm.h"
 #include"webpage.h"
+#include "ykgl/jmsh1.h"
 extern REGIST regist;
 extern INITDEV initdev;
 extern GETSTATE getstate;
@@ -337,7 +338,15 @@ void HomePage::ejectCard()
 
 void HomePage::on_pushButton_writecard_clicked()
 {
-    emit setTaskstate(false);
+    /*emit setTaskstate(false);
     socket->effect->begin(this, OperateFile::ui_webpage,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_webpage->init();
+    OperateFile::ui_webpage->init();*/
+    //if(!OperateFile::ui_jmsh1)
+    //{
+        OperateFile::ui_jmsh1=new Jmsh1();
+        OperateFile::ui_jmsh1->setAttribute(Qt::WA_DeleteOnClose);
+    //}
+    socket->effect->begin(this,OperateFile::ui_jmsh1,LEFTTORIGHT,NONE,HIDE);
+    OperateFile::ui_jmsh1->init();
+
 }

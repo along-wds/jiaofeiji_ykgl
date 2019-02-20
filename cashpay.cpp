@@ -3,6 +3,7 @@
 #include"inputpassword.h"
 #include"first.h"
 #include"readcard.h"
+extern commonDialog *messagebox;
 CashPay::CashPay(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CashPay)

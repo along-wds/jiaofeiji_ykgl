@@ -30,7 +30,7 @@ SOURCES += main.cpp\
     dealfinish.cpp \
     inputpassword.cpp \
     inputamount.cpp \
-    commondialog.cpp \
+    common/commondialog.cpp \
     manager.cpp \
     lookup.cpp \
     khmx.cpp \
@@ -59,7 +59,13 @@ SOURCES += main.cpp\
     writecardfinished.cpp \
     choiceuser.cpp \
     webpage.cpp \
-    advertisement/adwidget.cpp
+    advertisement/adwidget.cpp \
+    common/commonwidget.cpp \
+    ykgl/jmsh1.cpp \
+    ykgl/jmsh2.cpp \
+    ykgl/jmsh3.cpp \
+    ykgl/jmsh4.cpp \
+    ykgl/zdbdhomepage.cpp
 
 HEADERS  += login.h \
     clientsocket.h \
@@ -76,7 +82,7 @@ HEADERS  += login.h \
     inputpassword.h \
     inputamount.h \
     usermsg.h \
-    commondialog.h \
+    common/commondialog.h \
     manager.h \
     lookup.h \
     khmx.h \
@@ -105,7 +111,13 @@ HEADERS  += login.h \
     writecardfinished.h \
     choiceuser.h \
     webpage.h \
-    advertisement/adwidget.h
+    advertisement/adwidget.h \
+    common/commonwidget.h \
+    ykgl/jmsh1.h \
+    ykgl/jmsh2.h \
+    ykgl/jmsh3.h \
+    ykgl/jmsh4.h \
+    ykgl/zdbdhomepage.h
 
 FORMS    += login.ui \
     readcard.ui \
@@ -119,7 +131,7 @@ FORMS    += login.ui \
     dealfinish.ui \
     inputpassword.ui \
     inputamount.ui \
-    commondialog.ui \
+    common/commondialog.ui \
     lookup.ui \
     khmx.ui \
     writecard.ui \
@@ -138,10 +150,15 @@ FORMS    += login.ui \
     chiocedialog.ui \
     writecardfinished.ui \
     choiceuser.ui \
-    webpage.ui
+    webpage.ui \
+    ykgl/jmsh1.ui \
+    ykgl/jmsh2.ui \
+    ykgl/jmsh3.ui \
+    ykgl/jmsh4.ui \
+    ykgl/zdbdhomepage.ui
 
 RESOURCES += \
     screen.qrc
 RC_FILE = sppserver.rc
 
-DISTFILES +=
+include     ($$PWD/input2018/input2018.pri)

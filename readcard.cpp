@@ -3,16 +3,11 @@
 #include"cashpay.h"
 #include"unionpay.h"
 #include"msgconfirm.h"
-#include<QMessageBox>
 #include"homepage.h"
 #include"lookup.h"
 #include"manager.h"
-#include"first.h"
 #include "choiceuser.h"
 #include"webpage.h"
-extern First ui_first;
-extern Manager *ui_manager;
-extern HomePage *homepage;
 readcard::readcard(QWidget *parent) :
      QWidget(parent),
     ui(new Ui::readcard),m_currentImageindex(0),opacityinterval(0.05)
@@ -85,7 +80,7 @@ void readcard::init()
     ui->pushButton_purchase->setEnabled(true);
     ui->pushButton_home->setEnabled(true);
     readcard_button=false;
-    ui->lineEdit->setReadOnly(true);
+    //ui->lineEdit->setReadOnly(true);
     ui->lineEdit->setText("");
     ui->lineEdit->setPlaceholderText("户号/手机号/身份证号");
     Replytimes=0;

@@ -1,5 +1,7 @@
 #include "operatefile.h"
 #include"qmutex.h"
+#include"qdebug.h"
+#include "input2018/frminput2018.h"
 OperateFile::OperateFile()
 {
 
@@ -134,7 +136,6 @@ void OperateFile::getUpdateFileList(const QString &filename, QList<UpdateFile> &
 
         }
         else if(xmlReader.isEndElement() && xmlReader.name() =="UpdateInfo")
-
         {
 
 
@@ -221,4 +222,43 @@ QString OperateFile::mkMutiDir(const QString path)
         parentPath.mkpath(dirname);
     return parentDir + "/" + dirname;
 
+}
+void OperateFile::getJson(QByteArray &value,QString &retcode,QVector<QStringList>& context,QStringList &titlelist)
+{
+    QJsonParseError parseJsonErr;
+    QJsonDocument document = QJsonDocument::fromJson(value,&parseJsonErr);
+    if(!(parseJsonErr.error == QJsonParseError::NoError))
+    {
+        return;
+    }
+    QJsonObject jsonObject = document.object();
+    retcode=jsonObject["retCode"].toString();
+    if(jsonObject.contains("resp"))
+    {
+
+        QJsonValue arrayValue = jsonObject.value(QStringLiteral("resp"));
+        if(arrayValue.isArray())
+        {
+            QStringList list;
+            QJsonArray array = arrayValue.toArray();
+            for(int i=0;i<array.size();i++)
+            {
+                list.clear();
+                QJsonValue resultArray = array.at(i);
+                QJsonObject result = resultArray.toObject();
+                foreach(QString title,titlelist)
+                {
+                    //list<<result[title].toString();
+                    list.append(result[title].toString());
+
+                }
+                context.append(list);
+            }
+        }
+    }
+
+}
+void OperateFile::hidePanle()
+{
+    frmInput2018::Instance()->hide();
 }

@@ -4,6 +4,7 @@
 #include<QTextCodec>
 #include"src/update.h"
 #include"qsplashscreen.h"
+#include "input2018/frminput2018.h"
 REGIST regist;
 INITDEV initdev;
 GETSTATE getstate;
@@ -15,7 +16,7 @@ CLEARPWD clearpwd;
 CLOSEKEYBOARD closekeyboard;
 DEAL deal;
 CANCEL cancelpay;
-ClientSocket *socket;
+//ClientSocket *socket;
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     static QMutex mutex;
@@ -80,6 +81,11 @@ int main(int argc, char *argv[])
     /**********/
 
     /***********/
+    frmInput2018::Instance()->hide();
+    frmInput2018::Instance()->setFontInfo("Microsoft YaHei", 20, 18);
+    frmInput2018::Instance()->setFrmSize(700, 300);
+    frmInput2018::Instance()->setIconSize(30, 30);
+    frmInput2018::Instance()->setTopHeight(50);
     QTextCodec *codec = QTextCodec::codecForName("GBK");
     QTextCodec::setCodecForLocale(codec);
     QString qss;
@@ -95,7 +101,7 @@ int main(int argc, char *argv[])
             qssFile.close();
 
         }
-    qInstallMessageHandler(outputMessage);
+    //qInstallMessageHandler(outputMessage);
     QLibrary lib("C:/gmc/posinf.dll");
     if(lib.load())
     {
@@ -113,7 +119,7 @@ int main(int argc, char *argv[])
     closekeyboard=(CLOSEKEYBOARD)lib.resolve("PIN_Destroy");
     deal=(DEAL)lib.resolve("UMS_Pay_Dll");
     cancelpay=(CANCEL)lib.resolve("UMS_Void_Dll");
-    socket=new ClientSocket();
+    //socket=new ClientSocket();
     qDebug()<<"argc"<<argc;
     login w;
     int delayTime = 7;
@@ -136,12 +142,12 @@ int main(int argc, char *argv[])
     }
     else
     {
-      w.startWithoutPwd();
-      /*w.showKeyBoard();
+      //w.startWithoutPwd();
+      //w.showKeyBoard();
       QPalette palette1;
       w.showFullScreen();
       palette1.setBrush(w.backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/底纹.jpg").scaled(w.size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
-      w.setPalette(palette1);*/
+      w.setPalette(palette1);
     }
 
     return a.exec();

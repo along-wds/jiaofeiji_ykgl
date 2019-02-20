@@ -8,6 +8,11 @@
 #include <QDateTime>
 #include <QDataStream>
 #include <QTextStream>
+#include <QJsonDocument>
+#include <QJsonParseError>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonValue>
 #include"QXmlStreamReader"
 #include"usermsg.h"
 class First;
@@ -33,6 +38,10 @@ class Heatermsgconfirm;
 class CashPay;
 class ChoiceUser;
 class WebPage;
+class Jmsh1;
+class Jmsh2;
+class Jmsh3;
+class Jmsh4;
 #define COUNTERID "00000000"
 #define OPERID    "00000000"
 #define XIAOFEI "06"
@@ -108,6 +117,9 @@ public:
     static void getUpdateFileList(const QString &filename, QList<UpdateFile> &filelist);
     static void getXmlVersion(const QString &filename,QString & version);
     static QString mkMutiDir(const QString path);
+    static void getJson(QByteArray &value, QString &retcode, QVector<QStringList>&context, QStringList &titlelist);
+    static void hidePanle();
+   // static void
 public:
    static HomePage *ui_homepage;
    static MsgConfirm *ui_msgconfirm;
@@ -130,6 +142,10 @@ public:
    static CashPay *ui_cashpay;
    static ChoiceUser *ui_choiceuser;
    static WebPage *ui_webpage;
+   static Jmsh1 *ui_jmsh1;
+   static Jmsh2 *ui_jmsh2;
+   static Jmsh3 *ui_jmsh3;
+   static Jmsh4 *ui_jmsh4;
 };
 
 #endif // OPERATEFILE_H

@@ -1,6 +1,7 @@
 #include "effect.h"
 #include<qdebug.h>
 #include<QElapsedTimer>
+#include<QComboBox>
 Effect::Effect()
 
 {
@@ -194,4 +195,20 @@ void Effect::begin(QWidget *widget1, QWidget *widget2, MOVEWAY movein, MOVEWAY m
     tm_switch->start(5);
 
 }
+QTComboBoxButton::QTComboBoxButton(QWidget *parent /* = 0 */) :
+    QLineEdit(parent)
+{
+}
 
+QTComboBoxButton::~QTComboBoxButton()
+{
+
+}
+
+void QTComboBoxButton::mousePressEvent(QMouseEvent * e)
+{
+    Q_UNUSED(e);
+    QComboBox* combo=dynamic_cast<QComboBox*>(parent());
+    if(combo)
+        combo->showPopup();
+}

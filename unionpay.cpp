@@ -21,6 +21,7 @@ extern CLEARPWD clearpwd;
 extern CLOSEKEYBOARD closekeyboard;
 extern DEAL deal;
 extern CANCEL cancelpay;
+extern commonDialog *messagebox;
 /*打开读卡器→检测读卡器是否有卡→读卡→关闭读卡器*/
 UnionPay::UnionPay(QWidget *parent) :
     QWidget(parent),

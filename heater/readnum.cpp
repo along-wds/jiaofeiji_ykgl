@@ -498,24 +498,7 @@ void Readnum::on_pushButton_3_clicked()
     on_pushButton_Ok_3_clicked();
 
 }
-QTComboBoxButton::QTComboBoxButton(QWidget *parent /* = 0 */) :
-    QLineEdit(parent)
-{
-}
 
-QTComboBoxButton::~QTComboBoxButton()
-{
-
-}
-
-void QTComboBoxButton::mousePressEvent(QMouseEvent * e)
-{
-    Q_UNUSED(e);
-    //ui->radioButton->setChecked(true);
-    QComboBox* combo=dynamic_cast<QComboBox*>(parent());
-    if(combo)
-        combo->showPopup();
-}
 void Readnum::on_comboBox_currentTextChanged(const QString &arg1)
 {
     //qDebug()<<"ww:"<<ui->comboBox->currentText();

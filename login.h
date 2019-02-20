@@ -1,11 +1,10 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 #include <QWidget>
-#include"clientsocket.h"
 #include<QtNetwork>
 #include"operatefile.h"
 #include"manager.h"
-#include"commondialog.h"
+#include"common/commondialog.h"
 #include<QThread>
 #include"src/qlightboxwidget.h"
 #include"keyboard/widgetKeyBoard.h"

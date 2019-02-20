@@ -1,5 +1,5 @@
 #include "heartbeattask.h"
-
+#include "operatefile.h"
 HeartbeatTask::HeartbeatTask()
 {
     OperateFile::readiniFile("config.ini","monitor/IP",ip);
@@ -22,21 +22,21 @@ void HeartbeatTask::sendMessage()
     out<<LoginMessage;
     out.device()->seek(0);
     out<<(quint32)(block.size()-sizeof(quint32));
-    this->write(block,block.size());
+    HeartSocet.write(block,block.size());
 }
 void HeartbeatTask::recvMessage()
 {
-    QDataStream in(this);
+    QDataStream in(&HeartSocet);
     quint32 nextBlockSize=0;
     in.setVersion(QDataStream::Qt_5_7);
     if(nextBlockSize==0)
     {
-        if(this->bytesAvailable()<sizeof(quint64))
+        if(HeartSocet.bytesAvailable()<sizeof(quint64))
             return;
 
     }
     in >> nextBlockSize;
-    if ((quint64)(this->bytesAvailable())<nextBlockSize)
+    if ((quint64)(HeartSocet.bytesAvailable())<nextBlockSize)
     {
         return;
     }
@@ -59,11 +59,10 @@ void HeartbeatTask::init()
 }
 void HeartbeatTask::connectToServer()
 {
-    this->connectToHost(QHostAddress(ip),quint16(port.toInt()));
+    HeartSocet.connectToHost(QHostAddress(ip),quint16(port.toInt()));
 }
 void HeartbeatTask::sendHeartbeatPack()
 {
-    qDebug()<<"send message";
     QByteArray block;
     QString clien_name="SPPserver";
     QDataStream out(&block,QIODevice::WriteOnly);
@@ -73,8 +72,8 @@ void HeartbeatTask::sendHeartbeatPack()
     out<<LoginMessage;
     out.device()->seek(0);
     out<<(quint32)(block.size()-sizeof(quint32));
-    this->write(block,block.size());
-    this->flush();
+    HeartSocet.write(block,block.size());
+    HeartSocet.flush();
 }
 void HeartbeatTask::openTimer()
 {
@@ -92,8 +91,8 @@ void HeartbeatTask::connectError(QAbstractSocket::SocketError socketError)
     if(socketError==QAbstractSocket::ConnectionRefusedError||socketError==QAbstractSocket::RemoteHostClosedError||socketError==QAbstractSocket::HostNotFoundError)
     {
         OperateFile::tracelog("connect to monitor fail");
-        /*QProcess::startDetached("Launch.exe");
-        timer_check_server->start(10000);*/
+        //QProcess::startDetached("Launch.exe");
+        //timer_check_server->start(10000);
     }
 }
 void HeartbeatTask::HttpSend(const QUrl &url)

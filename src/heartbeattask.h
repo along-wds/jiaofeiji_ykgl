@@ -2,11 +2,14 @@
 #define HEARTBEATTASK_H
 
 #include <QObject>
-#include"homepage.h"
-class HeartbeatTask : public QTcpSocket
+#include"usermsg.h"
+#include<QtNetwork>
+//#include"QTimer"
+class HeartbeatTask:public QObject
 {
     Q_OBJECT
 public:
+
     explicit HeartbeatTask();
     void sendMessage();
     void HttpSend(const QUrl &url);
@@ -31,6 +34,7 @@ private:
     QNetworkAccessManager *accessManager;
     QNetworkRequest request;
     QNetworkReply *reply;
+    QTcpSocket HeartSocet;
 };
 
 #endif // HEARTBEATTASK_H

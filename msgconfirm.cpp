@@ -3,15 +3,13 @@
 #include "ui_msgconfirm.h"
 #include"cashpay.h"
 #include"unionpay.h"
-#include<QMessageBox>
 #include"readcard.h"
-#include"first.h"
 #include"inputamount.h"
 #include"writecardlist.h"
 #include"homepage.h"
 #include"writecardfinished.h"
 #include "lookup.h"
-extern First ui_first;
+extern commonDialog *messagebox;
 MsgConfirm::MsgConfirm(QWidget *parent) :
     QWidget(parent),
    ui(new Ui::MsgConfirm)

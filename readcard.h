@@ -4,11 +4,8 @@
 #include <QWidget>
 #include"operatefile.h"
 #include "src/timertask.h"
-#include"usermsg.h"
 #include<QtNetwork>
 #include<QTimer>
-extern ClientSocket *socket;
-extern Timertask *timertask;
 namespace Ui {
 class readcard;
 }

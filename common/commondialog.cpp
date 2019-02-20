@@ -17,6 +17,8 @@ commonDialog::commonDialog(QWidget *parent2, QWidget *parent) :
     ui->label->setGeometry(QRect(0,0,this->width(),this->height()));
     //取消对话框标题
    this->setWindowFlags(Qt::Dialog|Qt::FramelessWindowHint);
+
+   this->setWindowModality(Qt::WindowModal);
     //取消对话框标题和边框
    this->setAutoFillBackground(true);
    QPalette pal = palette();

@@ -1,13 +1,9 @@
 #include"inputamount.h"
 #include "ui_inputamount.h"
-#include<QMessageBox>
 #include"dealfinish.h"
 #include"unionpay.h"
-#include"msgconfirm.h"
 #include"readcard.h"
 #include"inputpassword.h"
-#include"first.h"
-#include"manager.h"
 #include"lookup.h"
 #include <QHostInfo>
 extern REGIST regist;

@@ -19,15 +19,15 @@ Lookup::Lookup(QWidget *parent) :
                                             "QPushButton:pressed{border-image: url(:/image/picture/qietu/17+.png);}");
     ui->frame_5->setObjectName("frame5");
     ui->frame_5->setStyleSheet("QFrame#frame5{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
-    ui->pushButton_backhomepage->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-    ui->pushButton_10->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_05.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-    ui->pushButton_11->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_09.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}"
-                                     "QPushButton:disabled{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
-    ui->pushButton_12->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+    ui->pushButton_backhomepage->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
+    ui->pushButton_10->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase.png);}");
+    ui->pushButton_11->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search+.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}"
+                                     "QPushButton:disabled{border-image: url(:/image/picture/qietu/search+.png);}");
+    ui->pushButton_12->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
     QPalette lcdpat =ui->lcdNumber->palette();
     /*设置颜色，整体背景颜色 颜色蓝色,此函数的第一个参数可以设置多种。如文本、按钮按钮文字、多种*/
     lcdpat.setColor(QPalette::Normal,QPalette::WindowText,Qt::white);

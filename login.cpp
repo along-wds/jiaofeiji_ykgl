@@ -31,6 +31,7 @@ PurChase *OperateFile::ui_purchase=0;
 CashPay *OperateFile::ui_cashpay=0;
 ChoiceUser *OperateFile::ui_choiceuser=0;
 WebPage *OperateFile::ui_webpage=0;
+IdentifyCode * OperateFile::ui_identifycode=0;
 /*热力界面*/
  Heaterinputmaount *OperateFile::ui_heaterinputamount=0;
  Heaterdealfinished *OperateFile::ui_heaterdealfinished=0;
@@ -44,7 +45,7 @@ Jmsh1 *OperateFile::ui_jmsh1=0;
 Jmsh2 *OperateFile::ui_jmsh2=0;
 Jmsh3 *OperateFile::ui_jmsh3=0;
 Jmsh4 *OperateFile::ui_jmsh4=0;
-
+Zdbdhomepage *OperateFile::ui_zdbdhomepage=0;
  extern REGIST regist;
  extern INITDEV initdev;
  extern GETSTATE getstate;
@@ -98,7 +99,7 @@ login::login(QWidget *parent) :
     connect(socket,SIGNAL(readyRead()),this,SLOT(login_GetData()));
     connect(this,SIGNAL(login_HasData(KIND)),this,SLOT(login_DealData(KIND)));
     connect(timed_thread,SIGNAL(started()),timertask,SLOT(init()));
-    //connect(heartbeat_thread,SIGNAL(started()),m_heartbeat_task,SLOT(init()));
+    connect(heartbeat_thread,SIGNAL(started()),m_heartbeat_task,SLOT(init()));
     /*************************
      *move to thread
     **************************/
@@ -139,6 +140,7 @@ login::login(QWidget *parent) :
     QString inistring;
     OperateFile::readiniFile("INTERFACE.DATA","interface/PUBLIC",inistring);
     OperateFile::ui_webpage=new WebPage(QUrl(inistring));
+
 }
 void login::startWithoutPwd()
 {
@@ -146,8 +148,8 @@ void login::startWithoutPwd()
     disconnect(socket,SIGNAL(readyRead()),this,SLOT(login_GetData()));
     disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
     disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished_getlist(QNetworkReply*)));
-    //m_heartbeat_task->LoginMessage=socket->LoginMessage;
-    //heartbeat_thread->start();
+    m_heartbeat_task->LoginMessage=socket->LoginMessage;
+    heartbeat_thread->start();
     messagebox->closeDisplay();
     OperateFile::ui_homepage=new HomePage;
     OperateFile::ui_homepage->init();
@@ -278,13 +280,13 @@ void login::replyFinished(QNetworkReply* reply)
                    disconnect(socket,SIGNAL(readyRead()),this,SLOT(login_GetData()));
                    disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
                    disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished_getlist(QNetworkReply*)));
-                   //m_heartbeat_task->LoginMessage=socket->LoginMessage;
-                   //heartbeat_thread->start();
-                   messagebox->closeDisplay();
-                   OperateFile::ui_homepage=new HomePage;
+                   m_heartbeat_task->LoginMessage=socket->LoginMessage;
+                   heartbeat_thread->start();
+                   OperateFile::ui_homepage=new HomePage();
+                   socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,HIDE);
                    OperateFile::ui_homepage->init();
-                   this->close();
-                   myKeyboard->hide(true);
+                   messagebox->closeDisplay();
+                   //myKeyboard->hide(true);
                    break;                
                case 1:
                    messagebox->closeDisplay();
@@ -311,7 +313,6 @@ void login::replyFinished(QNetworkReply* reply)
                }
 
            }
-
 
         }
         else if(base_arg.at(0)=="error")

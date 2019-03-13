@@ -11,14 +11,14 @@ commonDialog::commonDialog(QWidget *parent2, QWidget *parent) :
     ui(new Ui::commonDialog)
 {
     ui->setupUi(this);
+
     movie = new QMovie(this);
-    this->setWindowFlags(Qt::FramelessWindowHint);
     ui->label->setAlignment(Qt::AlignCenter);
     ui->label->setGeometry(QRect(0,0,this->width(),this->height()));
     //取消对话框标题
-   this->setWindowFlags(Qt::Dialog|Qt::FramelessWindowHint);
+   this->setWindowFlags(Qt::Dialog|Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
 
-   this->setWindowModality(Qt::WindowModal);
+
     //取消对话框标题和边框
    this->setAutoFillBackground(true);
    QPalette pal = palette();
@@ -26,7 +26,6 @@ commonDialog::commonDialog(QWidget *parent2, QWidget *parent) :
    //this->setPalette(pal);
    lightBoxwithmsg=NULL;
    lightBoxwithnone=NULL;
-   QDesktopWidget *deskdop = QApplication::desktop();
    /*处理多显示器分辨率问题*/
    QDesktopWidget *deskTop = QApplication::desktop();
    int curMonitor = deskTop->screenNumber(parent2); // 参数是一个QWidget*
@@ -52,6 +51,7 @@ commonDialog::~commonDialog()
 void commonDialog::display(QWidget *parent,const QString &m_string)
 {
     lightBoxwithnone = new QLightBoxWidget(parent);
+    this->setWindowModality(Qt::WindowModal);
     ui->label->setText(m_string);
     lightBoxwithnone->show();
     ui->pushButton->show();
@@ -83,6 +83,7 @@ void commonDialog::displayWithoutButton(QWidget *parent,const QString &DisplayMs
     ui->label->setText(DisplayMsg);
     lightBoxwithnone->show();
     ui->pushButton->hide();
+    this->setWindowModality(Qt::ApplicationModal);
     this->exec();
 }
 void commonDialog::displayWithoutBlock(QWidget *parent, const QString &DisplayMsg)
@@ -92,6 +93,7 @@ void commonDialog::displayWithoutBlock(QWidget *parent, const QString &DisplayMs
     ui->label->setText(DisplayMsg);
     ui->pushButton->hide();
     lightBoxwithnone->show();
+    this->setWindowModality(Qt::ApplicationModal);
     this->show();
 }
 void commonDialog::on_pushButton_clicked()
@@ -102,7 +104,7 @@ void commonDialog::on_pushButton_clicked()
         lightBoxwithnone->deleteLater();
         lightBoxwithnone=NULL;
     }
-    this->close();
+    this->hide();
 }
 void commonDialog::closeDisplay()
 {

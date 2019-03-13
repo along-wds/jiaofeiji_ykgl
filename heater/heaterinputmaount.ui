@@ -121,7 +121,7 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="styleSheet">
-           <string notr="true">border-image: url(:/keyboard/数字键/切图用_07.png);</string>
+           <string notr="true">border-image: url(:/keyboard/数字键/public.png);</string>
           </property>
           <property name="text">
            <string/>
@@ -152,7 +152,7 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="styleSheet">
-           <string notr="true">border-image: url(:/keyboard/数字键/切图用_09.png);</string>
+           <string notr="true">border-image: url(:/keyboard/数字键/search.png);</string>
           </property>
           <property name="text">
            <string/>
@@ -290,7 +290,7 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="styleSheet">
-           <string notr="true">border-image: url(:/keyboard/数字键/切图用_03.png);</string>
+           <string notr="true">border-image: url(:/keyboard/数字键/home.png);</string>
           </property>
           <property name="text">
            <string/>
@@ -531,7 +531,7 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="styleSheet">
-           <string notr="true">border-image: url(:/keyboard/数字键/切图用_05.png);</string>
+           <string notr="true">border-image: url(:/keyboard/数字键/purchase.png);</string>
           </property>
           <property name="text">
            <string/>

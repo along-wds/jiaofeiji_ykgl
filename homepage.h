@@ -8,6 +8,8 @@
 #include"purchase.h"
 #include "src/timertask.h"
 #include"manager.h"
+#include "readcard.h"
+#include "webpage.h"
 #define DEBUG
 extern commonDialog *messagebox;
 extern ClientSocket *socket;
@@ -43,6 +45,8 @@ private slots:
     void on_pushButton_search_clicked();
 
     void on_pushButton_writecard_clicked();
+
+    void on_pushButton_zdbd_clicked();
 
 protected:
    void mousePressEvent(QMouseEvent *event);

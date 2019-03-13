@@ -25,15 +25,15 @@ Writecardlist::Writecardlist(QWidget *parent) :
       "QScrollBar::sub-line:vertical {border: 2px solid grey;height: 18px;image:url(:/image/picture/qietu/shangla.png);subcontrol-position: top;subcontrol-origin: margin;background-color:#ebebeb;}"
        "QScrollBar::up-arrow:vertical{width: 3px;height: 3px;}"
       "QScrollBar::down-arrow:vertical {width: 3px;height: 3px;}" );
-    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_05.png);}"
-                                           "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                           "QPushButton:disabled{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_09.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
-    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
+    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                           "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                           "QPushButton:disabled{border-image: url(:/image/picture/qietu/purchase.png);}");
+    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
+    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
     ui->tableWidget->setStyleSheet("QTableView::item{border-left: 0px solid darkgray;border-right:0px;border-top:0px;border-bottom:1px solid darkgray;}"
                                     "QTableView::item:selected{color:#00a797;background:white;border-top:1px solid #00a797;border-bottom:1.5px solid #00a797;}");
 
@@ -112,14 +112,14 @@ void Writecardlist::writecardlist_GetData()
         if(socket->CardType==0)
         {
             QString string;
-            OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD",string);
+            OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD_ZX",string);
             socket->HttpSend(QUrl(QString(string).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("1").arg(ui->tableWidget->item(ui->tableWidget->currentRow(),1)->text()).arg("0").arg("").arg("")));
             OperateFile::tracelog(QString(string).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("1").arg(ui->tableWidget->item(ui->tableWidget->currentRow(),1)->text()).arg("0").arg("").arg(""));
         }
         else if(socket->CardType==1)
         {
             QString string;
-            OperateFile::readiniFile("INTERFACE.DATA","interface/LKWRITECARD",string);
+            OperateFile::readiniFile("INTERFACE.DATA","interface/LKWRITECARD_ZX",string);
             socket->HttpSend(QUrl(QString(string).arg(socket->LK_msg.yhdabh).arg(socket->LK_msg.jlbbh).arg(socket->LoginMessage.rybh).arg("").arg("1").arg(ui->tableWidget->item(ui->tableWidget->currentRow(),1)->text()).arg(socket->Card_Basemsg.FileDate1)));
             OperateFile::tracelog(QString(string).arg(socket->LK_msg.yhdabh).arg(socket->LK_msg.jlbbh).arg(socket->LoginMessage.rybh).arg("").arg("1").arg(ui->tableWidget->item(ui->tableWidget->currentRow(),1)->text()).arg(socket->Card_Basemsg.FileDate1));
         }
@@ -128,7 +128,7 @@ void Writecardlist::writecardlist_GetData()
             QString string;
             socket->Card_Basemsg.szCardNum=list.at(5);
             socket->Card_Basemsg.szRandFromCard=list.at(6);
-            OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD",string);
+            OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD_ZX",string);
             socket->HttpSend(QUrl(QString(string).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("1").arg(ui->tableWidget->item(ui->tableWidget->currentRow(),1)->text()).arg("1").arg(socket->Card_Basemsg.szCardNum).arg(socket->Card_Basemsg.szRandFromCard).arg(socket->message.gsbh)));
             OperateFile::tracelog(QString(string).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("1").arg(ui->tableWidget->item(ui->tableWidget->currentRow(),1)->text()).arg("1").arg(socket->Card_Basemsg.szCardNum).arg(socket->Card_Basemsg.szRandFromCard).arg(socket->message.gsbh));
         }

@@ -16,6 +16,7 @@ void CommonWidget::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
     Currenttime=60;
+    OperateFile::hidePanle();
     Timer_LcdNumber->display(Currenttime);
     Timer_LcdNumber->hide();
     Timer_Label->hide();

@@ -190,6 +190,10 @@ void Timertask::replyFinished_timer(QNetworkReply *reply)
             else
                 emit hascardmsg("error@"+QString(m_HttpData.at(1)));
         }
+         else
+         {
+             emit hascardmsg("error@"+QString(m_HttpData.at(1)));
+         }
     }
     else
     {
@@ -440,7 +444,7 @@ int Timertask::checkCard(QString &data1, QString &data2,QString &data3,QString &
 void Timertask::setTimerstate(bool state)
 {
     if(state==true)
-            Check_Card_timer->start();
+            Check_Card_timer->start(750);
     else{
            Check_Card_timer->stop();
            Check_Card_timer->isActive();

@@ -83,9 +83,9 @@ int main(int argc, char *argv[])
     /***********/
     frmInput2018::Instance()->hide();
     frmInput2018::Instance()->setFontInfo("Microsoft YaHei", 20, 18);
-    frmInput2018::Instance()->setFrmSize(700, 300);
+    frmInput2018::Instance()->setFrmSize(680, 280);
     frmInput2018::Instance()->setIconSize(30, 30);
-    frmInput2018::Instance()->setTopHeight(50);
+    frmInput2018::Instance()->setTopHeight(45);
     QTextCodec *codec = QTextCodec::codecForName("GBK");
     QTextCodec::setCodecForLocale(codec);
     QString qss;
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
     //socket=new ClientSocket();
     qDebug()<<"argc"<<argc;
     login w;
-    int delayTime = 7;
+    int delayTime = 3;
     QElapsedTimer timer;
     timer.start();
     while(timer.elapsed() < (delayTime * 1000))
@@ -149,7 +149,7 @@ int main(int argc, char *argv[])
       palette1.setBrush(w.backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/底纹.jpg").scaled(w.size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
       w.setPalette(palette1);
     }
-
+    splash.finish(&w);
     return a.exec();
     }
 }

@@ -26,8 +26,21 @@ private slots:
     void openScan();
     void on_pushButton_func3_clicked();
 
-    void on_pushButton_5_clicked();
     void replyFinished(QNetworkReply* reply);
+
+    void on_pushButton_next_clicked();
+
+    void on_pushButton_end_clicked();
+
+    void on_pushButton_home_clicked();
+
+    void on_pushButton_purchase_clicked();
+
+    void on_pushButton_zdbd_clicked();
+
+    void on_pushButton_public_clicked();
+
+    void on_pushButton_search_clicked();
 
 private:
     Ui::Jmsh1 *ui;

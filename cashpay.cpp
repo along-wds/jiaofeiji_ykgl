@@ -29,12 +29,12 @@ CashPay::CashPay(QWidget *parent) :
     ui->frame_6->setStyleSheet("QFrame#frame6{background-color:#dfdfdf;border:1px;border-radius:3px;}");
     ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
                                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_05.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_09.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
-    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
+    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
+    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
     QPalette lcdpat =ui->lcdNumber->palette();
     /*设置颜色，整体背景颜色 颜色蓝色,此函数的第一个参数可以设置多种。如文本、按钮按钮文字、多种*/
     lcdpat.setColor(QPalette::Normal,QPalette::WindowText,Qt::white);
@@ -44,7 +44,6 @@ CashPay::CashPay(QWidget *parent) :
 
 CashPay::~CashPay()
 {
-    qDebug()<<"cashpay_delete";
     delete timer;
     delete ui;
 }
@@ -80,7 +79,7 @@ void CashPay::cashPay_GetData_form_bill()
         else
         {
             bill_error_times++;
-            if(bill_error_times<=5)
+            if(bill_error_times<=1)
             {
                 socket->sendMsg("Pipe&PipeBill&1&reset");
             }
@@ -108,7 +107,7 @@ void CashPay::cashPay_GetData_form_bill()
         else
         {
             bill_error_times++;
-            if(bill_error_times<=5)
+            if(bill_error_times<=1)
             {
                 socket->sendMsg("Pipe&PipeBill&1&begin");
             }
@@ -128,6 +127,7 @@ void CashPay::cashPay_GetData_form_bill()
     else if(list.at(1)=="accept")
     {
         IsAccaptResponse=false;
+        startTimer();
         if(list.at(2)=="ok")
         {
             currentsum=QString(list.at(3)).toInt();
@@ -219,7 +219,7 @@ void CashPay::cashPay_GetData_from_EC()
             QTimer::singleShot(3000, messagebox, SLOT(closeDialog()));
             messagebox->displayWithoutButton(this,"您已将原电卡拔出，无法写卡，请到柜台处理");
             socket->effect->begin(this, form_dealfinish,LEFTTORIGHT,NONE,HIDE);
-            form_dealfinish->init(2);
+            form_dealfinish->init(3);
         }
         else
         {
@@ -234,7 +234,7 @@ void CashPay::cashPay_GetData_from_EC()
         if(socket->CardType==0)
         {
             QString fk_str;
-            OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD",fk_str);
+            OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD_ZX",fk_str);
             socket->HttpSend(QUrl(QString(fk_str).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("0").arg("").arg("0").arg("").arg("")));
             OperateFile::tracelog(QString(fk_str).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("0").arg("").arg("0").arg("").arg(""));
 
@@ -242,7 +242,7 @@ void CashPay::cashPay_GetData_from_EC()
         else if(socket->CardType==1)
         {
             QString lk_str;
-            OperateFile::readiniFile("INTERFACE.DATA","interface/LKWRITECARD",lk_str);
+            OperateFile::readiniFile("INTERFACE.DATA","interface/LKWRITECARD_ZX",lk_str);
             socket->HttpSend(QUrl(QString(lk_str).arg(socket->LK_msg.yhdabh).arg(socket->LK_msg.jlbbh).arg(socket->LoginMessage.rybh).arg(socket->amount_str).arg("0").arg("").arg(socket->Card_Basemsg.FileDate1)));
             OperateFile::tracelog("inputmount receive:"+ QString(lk_str).arg(socket->LK_msg.yhdabh).arg(socket->LK_msg.jlbbh).arg(socket->LoginMessage.rybh).arg(socket->amount_str).arg("0").arg("").arg(socket->Card_Basemsg.FileDate1));
         }
@@ -252,7 +252,7 @@ void CashPay::cashPay_GetData_from_EC()
             QString zx_str;
             socket->Card_Basemsg.szCardNum=list.at(5);
             socket->Card_Basemsg.szRandFromCard=list.at(6);
-            OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD",zx_str);
+            OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD_ZX",zx_str);
             socket->HttpSend(QUrl(QString(zx_str).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("0").arg("").arg("1").arg(socket->Card_Basemsg.szCardNum).arg(socket->Card_Basemsg.szRandFromCard).arg(socket->message.gsbh)));
             OperateFile::tracelog(QString(zx_str).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("0").arg("").arg("1").arg(socket->Card_Basemsg.szCardNum).arg(socket->Card_Basemsg.szRandFromCard).arg(socket->message.gsbh));
         }
@@ -268,7 +268,7 @@ void CashPay::cashPay_GetData_from_EC()
             QTimer::singleShot(3000, messagebox, SLOT(closeDialog()));
             messagebox->displayWithoutButton(this,"写卡失败，请到柜台处理");
             socket->effect->begin(this, form_dealfinish,LEFTTORIGHT,NONE,HIDE);
-            form_dealfinish->init(2);
+            form_dealfinish->init(3);
 
         }
         else

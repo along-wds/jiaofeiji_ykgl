@@ -1,10 +1,6 @@
 <RCC>
     <qresource prefix="/keyboard">
         <file>数字键/dian.png</file>
-        <file>数字键/切图用_03.png</file>
-        <file>数字键/切图用_05.png</file>
-        <file>数字键/切图用_07.png</file>
-        <file>数字键/切图用_09.png</file>
         <file>数字键/切图用_15.png</file>
         <file>数字键/切图用_16.png</file>
         <file>数字键/切图用_17.png</file>
@@ -35,36 +31,22 @@
         <file>数字键/00.png</file>
         <file>数字键/point.png</file>
         <file>数字键/queding.png</file>
+        <file>数字键/large_backspace.png</file>
+        <file>数字键/longok.png</file>
     </qresource>
     <qresource prefix="/image">
-        <file>picture/qietu/001.png</file>
-        <file>picture/qietu/001响应.png</file>
         <file>picture/qietu/01.png</file>
-        <file>picture/qietu/002.png</file>
-        <file>picture/qietu/002响应.png</file>
         <file>picture/qietu/02.png</file>
         <file>picture/qietu/003.png</file>
-        <file>picture/qietu/003响应.png</file>
         <file>picture/qietu/03.png</file>
         <file>picture/qietu/004.png</file>
-        <file>picture/qietu/004响应.png</file>
         <file>picture/qietu/04.png</file>
         <file>picture/qietu/005.png</file>
-        <file>picture/qietu/005响应.png</file>
         <file>picture/qietu/05.png</file>
         <file>picture/qietu/006.png</file>
-        <file>picture/qietu/006响应.png</file>
         <file>picture/qietu/06.png</file>
         <file>picture/qietu/06-.png</file>
         <file>picture/qietu/06+.png</file>
-        <file>picture/qietu/007.png</file>
-        <file>picture/qietu/007响应.png</file>
-        <file>picture/qietu/07.png</file>
-        <file>picture/qietu/008.png</file>
-        <file>picture/qietu/08.png</file>
-        <file>picture/qietu/08响应.png</file>
-        <file>picture/qietu/09.png</file>
-        <file>picture/qietu/09响应.png</file>
         <file>picture/qietu/10.png</file>
         <file>picture/qietu/11.png</file>
         <file>picture/qietu/11+.png</file>
@@ -84,9 +66,7 @@
         <file>picture/qietu/20.png</file>
         <file>picture/qietu/21.png</file>
         <file>picture/qietu/95598.png</file>
-        <file>picture/qietu/3295598.png</file>
         <file>picture/qietu/anniu.png</file>
-        <file>picture/qietu/kouhao.png</file>
         <file>picture/qietu/logo.png</file>
         <file>picture/qietu/logo2.png</file>
         <file>picture/qietu/表格.png</file>
@@ -97,23 +77,20 @@
         <file>picture/qietu/返回响应.png</file>
         <file>picture/qietu/内页底纹.jpg</file>
         <file>picture/qietu/切图用_02.png</file>
-        <file>picture/qietu/切图用_03.png</file>
-        <file>picture/qietu/切图用_05.png</file>
-        <file>picture/qietu/切图用_05-.png</file>
-        <file>picture/qietu/切图用_07.png</file>
-        <file>picture/qietu/切图用_07-.png</file>
-        <file>picture/qietu/切图用_09.png</file>
-        <file>picture/qietu/切图用_09-.png</file>
+        <file>picture/qietu/home.png</file>
+        <file>picture/qietu/purchase.png</file>
+        <file>picture/qietu/public.png</file>
+        <file>picture/qietu/search.png</file>
         <file>picture/qietu/切图用_11.png</file>
         <file>picture/qietu/切图用_13.png</file>
         <file>picture/qietu/切图用_15.png</file>
         <file>picture/qietu/切图用_17.png</file>
         <file>picture/qietu/切图用_19.png</file>
         <file>picture/qietu/切图用_21.png</file>
-        <file>picture/qietu/切图用+_03.png</file>
-        <file>picture/qietu/切图用+_05.png</file>
-        <file>picture/qietu/切图用+_07.png</file>
-        <file>picture/qietu/切图用+_09.png</file>
+        <file>picture/qietu/home+.png</file>
+        <file>picture/qietu/purchase.png</file>
+        <file>picture/qietu/public+.png</file>
+        <file>picture/qietu/search+.png</file>
         <file>picture/qietu/上一页下一页底.png</file>
         <file>picture/qietu/下拉.png</file>
         <file>picture/qietu/xiala.png</file>
@@ -127,7 +104,6 @@
         <file>picture/qietu/电能卡.jpg</file>
         <file>image/loader.gif</file>
         <file>image/返回.png</file>
-        <file>picture/qietu/kouhao.jpg</file>
         <file>picture/qietu/lunhuan.png</file>
         <file>picture/qietu/info_shang.png</file>
         <file>picture/qietu/xiadaohang.jpg</file>
@@ -148,28 +124,60 @@
         <file>picture/qietu/finished.png</file>
         <file>picture/qietu/left.png</file>
         <file>picture/qietu/right.png</file>
-        <file>picture/qietu/数字键/dian.png</file>
-        <file>picture/qietu/数字键/切图用_03.png</file>
-        <file>picture/qietu/数字键/切图用_05.png</file>
-        <file>picture/qietu/数字键/切图用_07.png</file>
-        <file>picture/qietu/数字键/切图用_09.png</file>
-        <file>picture/qietu/数字键/切图用_15.png</file>
-        <file>picture/qietu/数字键/切图用_16.png</file>
-        <file>picture/qietu/数字键/切图用_17.png</file>
-        <file>picture/qietu/数字键/切图用_18.png</file>
-        <file>picture/qietu/数字键/切图用_23.png</file>
-        <file>picture/qietu/数字键/切图用_24.png</file>
-        <file>picture/qietu/数字键/切图用_25.png</file>
-        <file>picture/qietu/数字键/切图用_27.png</file>
-        <file>picture/qietu/数字键/切图用_27确定.png</file>
-        <file>picture/qietu/数字键/切图用_32.png</file>
-        <file>picture/qietu/数字键/切图用_34-.png</file>
-        <file>picture/qietu/数字键/切图用_34.png</file>
         <file>picture/ykgl/1-1.png</file>
         <file>picture/ykgl/1-2.png</file>
         <file>picture/ykgl/1-3.png</file>
         <file>picture/ykgl/1-4.png</file>
         <file>picture/ykgl/1-5.png</file>
         <file>picture/ykgl/1-6.png</file>
+        <file>picture/qietu/kouhao.jpg</file>
+        <file>picture/ykgl/dyfjm.png</file>
+        <file>picture/ykgl/gm.png</file>
+        <file>picture/ykgl/jd.png</file>
+        <file>picture/ykgl/jmsh.png</file>
+        <file>picture/ykgl/jr.png</file>
+        <file>picture/ykgl/jtbz.png</file>
+        <file>picture/ykgl/ls.png</file>
+        <file>picture/ykgl/qygy.png</file>
+        <file>picture/ykgl/xh.png</file>
+        <file>picture/ykgl/zjr.png</file>
+        <file>picture/ykgl/zr.png</file>
+        <file>picture/ykgl/zt.png</file>
+        <file>picture/qietu/001.png</file>
+        <file>picture/qietu/002.png</file>
+        <file>picture/qietu/007.png</file>
+        <file>picture/qietu/008.png</file>
+        <file>picture/qietu/07.png</file>
+        <file>picture/qietu/08.png</file>
+        <file>picture/qietu/09.png</file>
+        <file>picture/qietu/3295598.png</file>
+        <file>picture/qietu/home+.png</file>
+        <file>picture/qietu/home.png</file>
+        <file>picture/qietu/kouhao.png</file>
+        <file>picture/qietu/neiye.jpg</file>
+        <file>picture/qietu/public+.png</file>
+        <file>picture/qietu/public.png</file>
+        <file>picture/qietu/purchase+.png</file>
+        <file>picture/qietu/purchase.png</file>
+        <file>picture/qietu/search+.png</file>
+        <file>picture/qietu/search.png</file>
+        <file>picture/qietu/zdbd+.png</file>
+        <file>picture/qietu/zdbd.png</file>
+        <file>picture/ykgl/2-终端办电.jpg</file>
+        <file>picture/ykgl/select1.png</file>
+        <file>picture/ykgl/select2.png</file>
+        <file>picture/ykgl/select4.png</file>
+        <file>picture/ykgl/select4+.png</file>
+        <file>picture/ykgl/select3.png</file>
+        <file>picture/ykgl/processbar1.png</file>
+        <file>picture/ykgl/processbar2.png</file>
+        <file>picture/ykgl/processbar3.png</file>
+        <file>picture/ykgl/processbar4.png</file>
+        <file>picture/ykgl/end.png</file>
+        <file>picture/ykgl/next.png</file>
+        <file>picture/ykgl/lineedit.png</file>
+        <file>picture/ykgl/pre.png</file>
+        <file>picture/ykgl/combobox.png</file>
+        <file>picture/qietu/10+.png</file>
     </qresource>
 </RCC>

@@ -65,7 +65,8 @@ SOURCES += main.cpp\
     ykgl/jmsh2.cpp \
     ykgl/jmsh3.cpp \
     ykgl/jmsh4.cpp \
-    ykgl/zdbdhomepage.cpp
+    ykgl/zdbdhomepage.cpp \
+    identifycode.cpp
 
 HEADERS  += login.h \
     clientsocket.h \
@@ -117,7 +118,8 @@ HEADERS  += login.h \
     ykgl/jmsh2.h \
     ykgl/jmsh3.h \
     ykgl/jmsh4.h \
-    ykgl/zdbdhomepage.h
+    ykgl/zdbdhomepage.h \
+    identifycode.h
 
 FORMS    += login.ui \
     readcard.ui \
@@ -155,7 +157,8 @@ FORMS    += login.ui \
     ykgl/jmsh2.ui \
     ykgl/jmsh3.ui \
     ykgl/jmsh4.ui \
-    ykgl/zdbdhomepage.ui
+    ykgl/zdbdhomepage.ui \
+    identifycode.ui
 
 RESOURCES += \
     screen.qrc

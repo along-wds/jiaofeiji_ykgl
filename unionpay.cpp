@@ -21,7 +21,6 @@ extern CLEARPWD clearpwd;
 extern CLOSEKEYBOARD closekeyboard;
 extern DEAL deal;
 extern CANCEL cancelpay;
-extern commonDialog *messagebox;
 /*打开读卡器→检测读卡器是否有卡→读卡→关闭读卡器*/
 UnionPay::UnionPay(QWidget *parent) :
     QWidget(parent),
@@ -32,15 +31,15 @@ UnionPay::UnionPay(QWidget *parent) :
     ui->frame_5->setObjectName("frame5");
     ui->frame_5->setStyleSheet("QFrame#frame5{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
 
-    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_05.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                  "QPushButton:disabled{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_09.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
-    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
+    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                  "QPushButton:disabled{border-image: url(:/image/picture/qietu/purchase.png);}");
+    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
+    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
     ui->lcdNumber->setSegmentStyle(QLCDNumber::Flat);
 
     QPalette lcdpat =ui->lcdNumber->palette();
@@ -58,7 +57,7 @@ UnionPay::~UnionPay()
 }
 void UnionPay::init()
 {
-    ui->pushButton_back_MsgConfirm->setEnabled(false);
+    ui->pushButton_back->setEnabled(false);
     ui->pushButton_home->setEnabled(true);
     ui->pushButton_public->setEnabled(true);
     ui->pushButton_purchase->setEnabled(false);
@@ -103,7 +102,7 @@ void UnionPay::getResp(int ret)
     else
     ReadCard();
 }
-void UnionPay::on_pushButton_back_MsgConfirm_clicked()
+void UnionPay::on_pushButton_back_clicked()
 {
     timer->stop();
     disconnectSlots();
@@ -118,7 +117,6 @@ void UnionPay::on_pushButton_back_MsgConfirm_clicked()
     {
        OperateFile::tracelog("关闭读卡器");
     }
-    qDebug()<<socket->Unionpaychannel;
     if(socket->Unionpaychannel==true)
     {
         socket->effect->begin(this, OperateFile::ui_msgconfirm,RIGHTTOLEFT,NONE,HIDE);
@@ -133,7 +131,7 @@ void UnionPay::on_pushButton_back_MsgConfirm_clicked()
 void UnionPay::ReadCard()
 {
     OperateFile::tracelog("*********************readcard timer start*********************");
-    ui->pushButton_back_MsgConfirm->setEnabled(true);
+    ui->pushButton_back->setEnabled(true);
     connect(timer,SIGNAL(timeout()),this,SLOT(onTimerout()),Qt::UniqueConnection);
     timer->setInterval(1000);
     timer->start();
@@ -159,12 +157,12 @@ void UnionPay::onTimerout()
 void UnionPay::getCardNum()
 {
     int ret;
-    ui->pushButton_back_MsgConfirm->setEnabled(false);
+    ui->pushButton_back->setEnabled(false);
     ret=read(socket->InData.number);
     qDebug()<<"cardnum:"<<socket->InData.number;
     if(ret<0)
     {
-       ui->pushButton_back_MsgConfirm->setEnabled(true);
+       ui->pushButton_back->setEnabled(true);
        QTimer::singleShot(INFOTIME, messagebox, SLOT(closeDialog()));
        messagebox->displayWithoutButton(this,"请按正确方向插入您的银行卡");
        if(initdev()!=0)
@@ -233,6 +231,7 @@ void UnionPay::setLcdnum()
         OperateFile::ui_homepage->ejectCard();
         disconnectSlots();
         socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
+        OperateFile::ui_homepage->init();
     }
     else
     {

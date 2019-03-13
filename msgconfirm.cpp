@@ -27,16 +27,16 @@ MsgConfirm::MsgConfirm(QWidget *parent) :
    //ui->frame_3->setStyleSheet("QFrame#frame3{border-image: url(:/image/picture/qietu/shangdaohang.png);}");
    ui->pushButton_backHomePage_2->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-   ui->pushButton->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                 "QPushButton:disabled{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-   ui->pushButton_3->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_09.png);}"
-                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
-   ui->pushButton_4->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+   ui->pushButton->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase+.png);}"
+                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}"
+                                 "QPushButton:disabled{border-image: url(:/image/picture/qietu/purchase+.png);}");
+   ui->pushButton_3->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
+                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
+   ui->pushButton_4->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
    //ui->frame->setStyleSheet("QFrame#frame{border:2px groove gray;border-radius:10px;background-color:white;}");
    //ui->frame_2->setStyleSheet("QFrame#frame2{border:2px groove gray;border-radius:10px;background-color:white;}");
-   ui->label_6->setStyleSheet("QLabel{color: white}");
+   //ui->label_6->setStyleSheet("QLabel{color: white}");
    ui->lcdNumber->setSegmentStyle(QLCDNumber::Flat);
    //调色板
    QPalette lcdpat=ui->lcdNumber->palette();
@@ -107,7 +107,7 @@ void MsgConfirm::replyFinished(QNetworkReply *reply)
                      {
                          messagebox->displayWithoutBlock(this,"正在获取写卡信息，请稍后……");
                          QString fk_writecardstr;
-                         OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD",fk_writecardstr);
+                         OperateFile::readiniFile("INTERFACE.DATA","interface/FKWRITECARD_ZX",fk_writecardstr);
                          if(socket->CardType==0)
                          {
                             socket->HttpSend(QUrl(QString(fk_writecardstr).arg(socket->FK_msg.yhdabh).arg(socket->FK_msg.dbbh).arg(socket->LoginMessage.rybh).arg("0").arg("").arg("0").arg("").arg("")));
@@ -134,7 +134,7 @@ void MsgConfirm::replyFinished(QNetworkReply *reply)
                     else
                     {
                             QString lk_writecardstr;
-                            OperateFile::readiniFile("INTERFACE.DATA","interface/LKWRITECARD",lk_writecardstr);
+                            OperateFile::readiniFile("INTERFACE.DATA","interface/LKWRITECARD_ZX",lk_writecardstr);
                             socket->HttpSend(QUrl(QString(lk_writecardstr).arg(socket->LK_msg.yhdabh).arg(socket->LK_msg.jlbbh).arg(socket->LoginMessage.rybh).arg(socket->lkbkzt_msg.je).arg("0").arg("").arg(socket->Card_Basemsg.FileDate1)));
                             OperateFile::tracelog(QString(lk_writecardstr).arg(socket->LK_msg.yhdabh).arg(socket->LK_msg.jlbbh).arg(socket->LoginMessage.rybh).arg(socket->lkbkzt_msg.je).arg("0").arg("").arg(socket->Card_Basemsg.FileDate1));
                     }

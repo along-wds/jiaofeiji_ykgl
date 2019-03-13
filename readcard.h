@@ -110,7 +110,8 @@ private:
     QGraphicsOpacityEffect *pictureeffect;//示意图透明度样式
     double    opacity;//透明度值
     double    opacityinterval;//淡入淡出透明度变化间隔
-    long      switchcase;//淡入淡出中间状态标志
+    int      switchcase;//淡入淡出中间状态标志
+    QString CurrentCode;
 public:
    QStringList m_HttpData;
    Usermessage displaymsg;

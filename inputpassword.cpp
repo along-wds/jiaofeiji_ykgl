@@ -31,14 +31,14 @@ inputpassword::inputpassword(QWidget *parent) :
 
     ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
                                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                  "QPushButton:disabled{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
+    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase+.png);}"
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}"
+                                  "QPushButton:disabled{border-image: url(:/image/picture/qietu/purchase+.png);}");
 
-    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_09.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
-    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
+    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
     ui->lcdNumber->setSegmentStyle(QLCDNumber::Flat);
      //调色板
     QPalette lcdpat =ui->lcdNumber->palette();
@@ -75,7 +75,7 @@ void inputpassword::init()
     connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::QueuedConnection);
     startTimer();
     ui->pushButton_purchase->setEnabled(false);
-    ui->pushButton_backhomepage->setEnabled(true);
+    ui->pushButton_back->setEnabled(true);
 }
 void inputpassword::beginInput()
 {
@@ -185,13 +185,13 @@ void inputpassword::CheckPwd()
             OperateFile::ui_homepage->dealDeviceBroken(PINERROR);
         }
 }
-void inputpassword::on_pushButton_backhomepage_clicked()
+void inputpassword::on_pushButton_back_clicked()
 {
      backFirstPage();
 }
 void inputpassword::backFirstPage()
 {
-    ui->pushButton_backhomepage->setEnabled(false);
+    ui->pushButton_back->setEnabled(false);
     timer2->stop();
     emit stop();
     disconnect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)));

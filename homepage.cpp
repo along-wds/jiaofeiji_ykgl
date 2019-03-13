@@ -5,7 +5,7 @@
 #include"first.h"
 #include"msgconfirm.h"
 #include"webpage.h"
-#include "ykgl/jmsh1.h"
+#include "ykgl/zdbdhomepage.h"
 extern REGIST regist;
 extern INITDEV initdev;
 extern GETSTATE getstate;
@@ -26,21 +26,22 @@ HomePage::HomePage(QWidget *parent) :
     //timer=new QTimer(this);
     ui->label->setStyleSheet("QLabel{color:white}");
     ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/005.png);}"
-                                           "QPushButton:pressed{border-image: url(:/image/picture/qietu/005响应.png);}");
+                                           "QPushButton:pressed{border-image: url(:/image/picture/qietu/005.png);}");
     ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/004.png);}"
-                                         "QPushButton:pressed{border-image: url(:/image/picture/qietu/004响应.png);}");
+                                         "QPushButton:pressed{border-image: url(:/image/picture/qietu/004.png);}");
     ui->pushButton_writecard->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/003.png);}"
-                                            "QPushButton:pressed{border-image: url(:/image/picture/qietu/003响应.png);}");
-
+                                            "QPushButton:pressed{border-image: url(:/image/picture/qietu/003.png);}");
+    ui->pushButton_zdbd->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/006.png);}"
+                                       "QPushButton:pressed{border-image: url(:/image/picture/qietu/006.png);}");
     connect(timertask,SIGNAL(hascard()),this,SLOT(readyReadCard()),Qt::QueuedConnection);
     connect(timertask,SIGNAL(hascardmsg(QString)),this,SLOT(getCardMsg(QString)),Qt::QueuedConnection);
     connect(this,SIGNAL(setTaskstate(bool)),timertask,SLOT(setTimerstate(bool)),Qt::QueuedConnection);
     connect(this,SIGNAL(startReadCardTimer()),timertask,SLOT(StartTimer()),Qt::QueuedConnection);
     connect(this,SIGNAL(reCheck()),timertask,SLOT(Timertask_reCheckCard()),Qt::QueuedConnection);
-    QPalette palette;
-    this->showFullScreen();
-    palette.setBrush(this->backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/内页底纹.jpg").scaled(this->size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
-    this->setPalette(palette);
+    //QPalette palette;
+    //this->showFullScreen();
+    //palette.setBrush(this->backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/内页底纹.jpg").scaled(this->size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
+    //this->setPalette(palette);
     timertask->LoginMessage=socket->LoginMessage;
     socket->Isjumpreadcard=false;
     QDir dir("advertisement");
@@ -338,15 +339,20 @@ void HomePage::ejectCard()
 
 void HomePage::on_pushButton_writecard_clicked()
 {
-    /*emit setTaskstate(false);
+    emit setTaskstate(false);
     socket->effect->begin(this, OperateFile::ui_webpage,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_webpage->init();*/
-    //if(!OperateFile::ui_jmsh1)
-    //{
-        OperateFile::ui_jmsh1=new Jmsh1();
-        OperateFile::ui_jmsh1->setAttribute(Qt::WA_DeleteOnClose);
-    //}
-    socket->effect->begin(this,OperateFile::ui_jmsh1,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_jmsh1->init();
+    OperateFile::ui_webpage->init();
 
+}
+
+void HomePage::on_pushButton_zdbd_clicked()
+{
+    if(!OperateFile::ui_zdbdhomepage)
+    {
+       OperateFile::ui_zdbdhomepage=new Zdbdhomepage();
+       qDebug()<<"1111111111111111";
+       //OperateFile::ui_jmsh1->setAttribute(Qt::WA_DeleteOnClose);
+    }
+    socket->effect->begin(this,OperateFile::ui_zdbdhomepage,LEFTTORIGHT,NONE,HIDE);
+    OperateFile::ui_zdbdhomepage->init();
 }

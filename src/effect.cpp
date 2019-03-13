@@ -122,7 +122,7 @@ void Effect::setPictureOpacity()
                    m_ui2->setAutoFillBackground(true);
                    QPalette palette;
                    m_ui2->showFullScreen();
-                   palette.setBrush(m_ui2->backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/内页底纹.jpg").scaled(m_ui2->size(),Qt::IgnoreAspectRatio,                                                                                                 Qt::SmoothTransformation)));
+                   palette.setBrush(m_ui2->backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/neiye.jpg").scaled(m_ui2->size(),Qt::IgnoreAspectRatio,                                                                                                 Qt::SmoothTransformation)));
                    m_ui2->setPalette(palette);
                    flag=1;
                }
@@ -132,7 +132,7 @@ void Effect::setPictureOpacity()
                    QPalette palette;
                    m_ui2->showFullScreen();
                    palette.setColor(QPalette::Background,QColor(235,235,235));
-                   //palette.setBrush(m_ui2->backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/内页底纹.jpg").scaled(m_ui2->size(),Qt::IgnoreAspectRatio,                                                                                                 Qt::SmoothTransformation)));
+                   //palette.setBrush(m_ui2->backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/neiye.jpg").scaled(m_ui2->size(),Qt::IgnoreAspectRatio,                                                                                                 Qt::SmoothTransformation)));
                    m_ui2->setPalette(palette);
                    flag=1;
                }

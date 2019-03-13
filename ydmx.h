@@ -26,7 +26,7 @@ private slots:
    void on_pushButton_clicked();
    void waitTimeout();
    void setLcdnum();
-   void on_pushButton_backHomePage_3_clicked();
+   void on_pushButton_back_clicked();
    void flushPage(int flag);
    void on_pushButton_2_clicked();
 

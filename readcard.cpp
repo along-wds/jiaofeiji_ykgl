@@ -8,6 +8,7 @@
 #include"manager.h"
 #include "choiceuser.h"
 #include"webpage.h"
+#include "identifycode.h"
 readcard::readcard(QWidget *parent) :
      QWidget(parent),
     ui(new Ui::readcard),m_currentImageindex(0),opacityinterval(0.05)
@@ -18,16 +19,15 @@ readcard::readcard(QWidget *parent) :
    ui->frame->setStyleSheet("QFrame#frame2{border-image: url(:/image/picture/qietu/10.png);}");
    ui->frame_5->setStyleSheet("QFrame#frame5{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
 
-   ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-   ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-   ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_09.png);}"
-                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
-   ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+   ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
+   ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
+   ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
+                                     "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
+   ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                     "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
    ui->lineEdit->setStyleSheet("font-size: 25px;");
-   ui->label_6->setStyleSheet("QLabel{color: white}");
    ui->lcdNumber->setSegmentStyle(QLCDNumber::Flat);
    //调色板
    QPalette lcdpat =ui->lcdNumber->palette();
@@ -59,17 +59,17 @@ void readcard::init()
 {
     if(socket->IsPurchase==true)
     {
-        ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                      "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-        ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_09.png);}"
-                                        "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
+        ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase+.png);}"
+                                        "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
+        ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
+                                          "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
     }
     else
     {
-        ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_05.png);}"
-                                      "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-        ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_09.png);}"
-                                        "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
+        ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                        "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
+        ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search+.png);}"
+                                          "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
     }
     lkid=false;
     fkid=false;
@@ -80,7 +80,7 @@ void readcard::init()
     ui->pushButton_purchase->setEnabled(true);
     ui->pushButton_home->setEnabled(true);
     readcard_button=false;
-    //ui->lineEdit->setReadOnly(true);
+    ui->lineEdit->setReadOnly(true);
     ui->lineEdit->setText("");
     ui->lineEdit->setPlaceholderText("户号/手机号/身份证号");
     Replytimes=0;
@@ -92,7 +92,7 @@ void readcard::init()
     connect(this, SIGNAL(stop()), ui_manager, SLOT(stoptimer()),Qt::QueuedConnection);
     connect(this,SIGNAL(updateDispaly()),ui_manager,SLOT(starttimer2()),Qt::QueuedConnection);
     connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::QueuedConnection);
-    connect(socket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(connectError(QAbstractSocket::SocketError)),Qt::QueuedConnection);
+    connect(socket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(connectError(QAbstractSocket::SocketError)),Qt::DirectConnection);
     connect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)),Qt::UniqueConnection);
     connect(Check_Readcard_timer,SIGNAL(timeout()),this,SLOT(dealReadCardTimeout()));
     socket->CardType=2;
@@ -212,6 +212,7 @@ void readcard::readCard_GetData()
     if(list.at(2)=="ReadCard")
     {
         QString string;
+        Timeoutflag=false;
         switch(QString(list.at(3)).toInt())
         {
         case 0://费控卡
@@ -398,7 +399,6 @@ int readcard::checkCard(QString &data1, QString &data2,QString &data3,QString &d
 void readcard::replyFinished(QNetworkReply *reply)
 {
     Replytimes++;
-    //messagebox->closeDialog();
     if(reply->error() == QNetworkReply::NoError)
     {
          char m_receivedata[4096];
@@ -580,6 +580,26 @@ void readcard::replyFinished(QNetworkReply *reply)
                             }
                      }
                 }
+                else if(QString(base_arg.at(1)).toInt()==INTERFACETYPE::GETDXYZM)
+                {
+                    if(m_HttpData.at(1)=="1")
+                    {
+                        messagebox->closeDialog();
+                        disconnectslots();
+                        OperateFile::ui_identifycode=new IdentifyCode(ui->lineEdit->text(),CurrentCode);
+                        OperateFile::ui_identifycode->setAttribute(Qt::WA_DeleteOnClose);
+                        socket->effect->begin(this,OperateFile::ui_identifycode,LEFTTORIGHT,NONE,HIDE);
+                        OperateFile::ui_identifycode->init();
+                    }
+                    else
+                    {
+                        QString GetInfoUrl;
+                        OperateFile::readiniFile("INTERFACE.DATA","interface/GETUSERMSG",GetInfoUrl);
+                        socket->HttpSend(QUrl(QString(GetInfoUrl).arg(ui->lineEdit->text()).arg("2").arg("").arg("").arg(socket->LoginMessage.rybh).arg(socket->LoginMessage.gsbh).arg(socket->LoginMessage.fgsbh)));
+                        OperateFile::tracelog(QString("Send jsp:\t")+QString(GetInfoUrl).arg(ui->lineEdit->text()).arg("2").arg(socket->FK_msg.dbbh).arg("").arg(socket->LoginMessage.rybh).arg(socket->LoginMessage.gsbh).arg(socket->LoginMessage.fgsbh));
+
+                    }
+                }
 
             }
 
@@ -725,9 +745,11 @@ void readcard::on_pushButton_Ok_clicked()
         /***********无卡*****************/
         if(CardType==2)
         {
-            socket->HttpSend(QUrl(QString(string).arg(ui->lineEdit->text()).arg("2").arg("").arg("").arg(socket->LoginMessage.rybh).arg(socket->LoginMessage.gsbh).arg(socket->LoginMessage.fgsbh)));
-            OperateFile::tracelog(QString("Send jsp:\t")+QString(string).arg(ui->lineEdit->text()).arg("2").arg(socket->FK_msg.dbbh).arg("").arg(socket->LoginMessage.rybh).arg(socket->LoginMessage.gsbh).arg(socket->LoginMessage.fgsbh));
-            //qDebug()<<QString(string).arg(ui->lineEdit->text()).arg("2").arg(socket->Card_msg.dbbh).arg("").arg(socket->LoginMessage.rybh).arg(socket->LoginMessage.gsbh).arg(socket->LoginMessage.fgsbh);
+            QString CheckConentUrl;
+            OperateFile::readiniFile("INTERFACE.DATA","interface/GETDXYZM",CheckConentUrl);
+            OperateFile::getIdentifyCode(CurrentCode,6);
+            socket->HttpSend(QUrl(QString(CheckConentUrl).arg(ui->lineEdit->text()).arg(CurrentCode)));
+            OperateFile::tracelog(QString("Send jsp:\t")+QString(CheckConentUrl).arg(ui->lineEdit->text()).arg(CurrentCode));
         }
         /**************费控有卡*********************/
         else if((CardType==0||CardType==3)&&fkid==true)
@@ -862,6 +884,7 @@ void readcard::on_pushButton_search_clicked()
 
 void readcard::on_pushButton_public_clicked()
 {
+    disconnectslots();
     socket->effect->begin(this, OperateFile::ui_webpage,LEFTTORIGHT,NONE,HIDE);
     OperateFile::ui_webpage->init();
 

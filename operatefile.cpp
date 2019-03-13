@@ -18,7 +18,7 @@ void OperateFile::readiniFile(const QString &filename, const QString &indexName,
 void OperateFile::writeiniFile(const QString &filename, const QString &indexName, const QString &asData)
 {
     QSettings *configIniWrite = new QSettings(filename, QSettings::IniFormat);
-    configIniWrite->beginGroup("Option");
+    //configIniWrite->beginGroup("Option");
     configIniWrite->setValue(indexName, asData);
     delete configIniWrite;
     configIniWrite=NULL;
@@ -136,6 +136,7 @@ void OperateFile::getUpdateFileList(const QString &filename, QList<UpdateFile> &
 
         }
         else if(xmlReader.isEndElement() && xmlReader.name() =="UpdateInfo")
+
         {
 
 
@@ -242,7 +243,7 @@ void OperateFile::getJson(QByteArray &value,QString &retcode,QVector<QStringList
             QStringList list;
             QJsonArray array = arrayValue.toArray();
             for(int i=0;i<array.size();i++)
-            {
+    {
                 list.clear();
                 QJsonValue resultArray = array.at(i);
                 QJsonObject result = resultArray.toObject();
@@ -261,4 +262,14 @@ void OperateFile::getJson(QByteArray &value,QString &retcode,QVector<QStringList
 void OperateFile::hidePanle()
 {
     frmInput2018::Instance()->hide();
+}
+void OperateFile::getIdentifyCode(QString& code,int len)
+{
+    code.clear();
+    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+    for(int i=0; i<len; i++)
+    {
+        code.append(QString::number(qrand()%10));
+    }
+
 }

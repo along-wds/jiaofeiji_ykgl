@@ -38,10 +38,12 @@ class Heatermsgconfirm;
 class CashPay;
 class ChoiceUser;
 class WebPage;
+class IdentifyCode;
 class Jmsh1;
 class Jmsh2;
 class Jmsh3;
 class Jmsh4;
+class Zdbdhomepage;
 #define COUNTERID "00000000"
 #define OPERID    "00000000"
 #define XIAOFEI "06"
@@ -119,7 +121,7 @@ public:
     static QString mkMutiDir(const QString path);
     static void getJson(QByteArray &value, QString &retcode, QVector<QStringList>&context, QStringList &titlelist);
     static void hidePanle();
-   // static void
+    static void getIdentifyCode(QString& code,int len);
 public:
    static HomePage *ui_homepage;
    static MsgConfirm *ui_msgconfirm;
@@ -142,10 +144,12 @@ public:
    static CashPay *ui_cashpay;
    static ChoiceUser *ui_choiceuser;
    static WebPage *ui_webpage;
+   static IdentifyCode *ui_identifycode;
    static Jmsh1 *ui_jmsh1;
    static Jmsh2 *ui_jmsh2;
    static Jmsh3 *ui_jmsh3;
    static Jmsh4 *ui_jmsh4;
+   static Zdbdhomepage *ui_zdbdhomepage;
 };
 
 #endif // OPERATEFILE_H

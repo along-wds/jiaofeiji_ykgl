@@ -34,17 +34,17 @@ KHmx::KHmx(QWidget *parent) :
                                     "QPushButton:disabled{border-image: url(:/image/picture/qietu/disable_button.png);}");
     ui->pushButton_3->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/anniu2.png);}"
                                     "QPushButton:disabled{border-image: url(:/image/picture/qietu/disable_button.png);}");
-    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_05.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
+    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
+    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase.png);}");
     ui->pushButton_search->setEnabled(false);
-    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_09.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}"
-                                    "QPushButton:disabled{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
+    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search+.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}"
+                                    "QPushButton:disabled{border-image: url(:/image/picture/qietu/search+.png);}");
 
-    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
 
     ui->lcdNumber->setSegmentStyle(QLCDNumber::Flat);
      //调色板
@@ -106,6 +106,7 @@ KHmx::~KHmx()
 
 void KHmx::on_pushButton_clicked()
 {
+    ui->pushButton->setEnabled(false);
     startTimer();
     QString string;
     OperateFile::readiniFile("INTERFACE.DATA","interface/GETKHMX",string);
@@ -200,12 +201,9 @@ void KHmx::replyFinished(QNetworkReply * reply)
     CurrentPageIndex=1;
     if(reply->error() == QNetworkReply::NoError)
      {
-         char m_receivedata[4096*100];
-         memset(m_receivedata,0,4096*100);
-         reply->read(m_receivedata,4096*100);
-         OperateFile::tracelog("Http received:\t"+QString::fromLocal8Bit(m_receivedata));
-
-        m_HttpData=QString::fromLocal8Bit(m_receivedata).split("!#!");
+        QString str_recvdata=QString::fromLocal8Bit(reply->readAll().data());
+        OperateFile::tracelog("Http received:\t"+str_recvdata);
+        m_HttpData=str_recvdata.split("!#!");
         QStringList temp_list=QString(m_HttpData.at(0)).split("@");
         QStringList base_arg=QString(temp_list.at(0)).split("!*!");
 
@@ -335,9 +333,9 @@ void KHmx::setRows()
    ui->tableWidget->setRowCount(9);
    ui->tableWidget->setCurrentCell(0,1);
 }
-void KHmx::on_pushButton_backHomePage_3_clicked()
+void KHmx::on_pushButton_back_clicked()
 {
-    ui->pushButton_backHomePage_3->setEnabled(false);
+    ui->pushButton_back->setEnabled(false);
     emit stop();
     disconnect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)));
     disconnect(ui_manager,SIGNAL(timeout()),this,SLOT(waitTimeout()));

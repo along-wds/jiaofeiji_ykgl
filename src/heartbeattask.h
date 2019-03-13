@@ -25,10 +25,13 @@ private slots:
     void openTimer();
     void connectToServer();
     void launchHeartBeatServer();
+    void send2Yyt();
+    void replyFinished(QNetworkReply *reply);
 private:
     QDateTime recvtime;
-    QTimer *timer_check_server;
-    QTimer *timer;
+    QTimer *check_server_timer; //检测守护程序
+    QTimer *conn_launch_timer; //连接到守护
+    QTimer *conn_yyt_timer;    //连接到营业综合服务平台
     QString ip;
     QString port;
     QNetworkAccessManager *accessManager;

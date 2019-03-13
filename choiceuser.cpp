@@ -17,14 +17,14 @@ ChoiceUser::ChoiceUser(QStringList &m_httpdata, QWidget *parent) :
     ui->frame_5->setStyleSheet("QFrame#frame5{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
     ui->frame->setStyleSheet("QFrame#frame1{background-color:#dfdfdf;border:1px;border-radius:3px;}");
 
-    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_05.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
-    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_09.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
-    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
+    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase+.png);}"
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
+    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}");
+    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
 
     ui->tableWidget->setStyleSheet("QTableView::item{border-left: 0px darkgray;border-right:0px;border-top:0px;border-bottom:1px solid lightgray;}"
                                     "QTableView::item:selected{color:#00a797;background:white;border-top:1px solid #00a797;border-bottom:1.5px solid #00a797;}");
@@ -58,7 +58,6 @@ void ChoiceUser::init()
 
 ChoiceUser::~ChoiceUser()
 {
-    qDebug()<<"delete choiceer";
     //ui->tableWidget->clear();
     delete ui;
 }
@@ -98,12 +97,12 @@ void ChoiceUser::setList()
     QString m_string=HttpData.at(0);
     m_string=m_string.remove(0,QString(temp_list.at(0)).size()+1);
     QStringList new_list=HttpData;
-    qDebug()<<"string:"<<m_string;
+    //qDebug()<<"string:"<<m_string;
     foreach (QString string, HttpData) {
        if(string.contains("您没有收取此户的权限!"))
             new_list.removeOne(string);
     }
-    qDebug()<<"httpdata:"<<new_list;
+    //qDebug()<<"httpdata:"<<new_list;
     ui->tableWidget->setRowCount(new_list.size());
     for(int i=0;i<new_list.size();i++)
     {
@@ -149,7 +148,7 @@ void ChoiceUser::changeCheckstate(int row, int column, int pre_row, int pre_colu
 {
    QList<QRadioButton*> rad = ui->tableWidget->findChildren<QRadioButton *>();
    rad.at(row)->setChecked(true);
-   qDebug()<<"current checked row:"<<row;
+   //qDebug()<<"current checked row:"<<row;
    /*for(int i=1;i<6;i++)
    {
 
@@ -160,7 +159,7 @@ void ChoiceUser::changeCheckstate(int row, int column, int pre_row, int pre_colu
 void ChoiceUser::MouseTrackItem(int row)
 {
    //ui->tableWidget->setStyleSheet("QTableWidget::item{selection-background-color:lightblue;}"); //选中项的颜色
-    qDebug()<<"2222:"<<row;
+    //qDebug()<<"2222:"<<row;
     ui->tableWidget->setCurrentCell(row, QItemSelectionModel::Select); //设置该行为选中项
     startTimer();
 }
@@ -221,27 +220,25 @@ void ChoiceUser::on_pushButton_back_clicked()
 
 void ChoiceUser::on_pushButton_clicked()
 {
-    qDebug()<<ui->tableWidget->currentRow();
+
     int CurrentRow=ui->tableWidget->currentRow();
     QStringList temp_list=QString(HttpData.at(0)).split("@");
     QString m_string=HttpData.at(0);
     m_string.remove(0,QString(temp_list.at(0)).size()+1);
     QString str=HttpData.at(CurrentRow);
-    qDebug()<<"1111111111";
     if(CurrentRow==0)
         str=m_string;
-
     QStringList list=str.split("@");
-    qDebug()<<"222222"<<list.size();
+    //qDebug()<<"222222"<<list.size();
     socket->message={list.at(0),list.at(1),list.at(2),list.at(3),list.at(4),list.at(5),list.at(6),list.at(7),list.at(8),list.at(9),list.at(10),list.at(11),list.at(12),list.at(13),list.at(14),list.at(15),
                      list.at(16),list.at(17),list.at(18),list.at(19),list.at(20),list.at(21),list.at(22),list.at(23),list.at(24),list.at(25),list.at(26),list.at(27),list.at(28),list.at(29),list.at(30),list.at(31),
                      list.at(32),list.at(33),list.at(34),list.at(35),list.at(36),list.at(37),list.at(38),list.at(39),list.at(40),list.at(41),list.at(42),list.at(43),list.at(44),list.at(45),list.at(46)};
-    qDebug()<<"333333333";
+    //qDebug()<<"333333333";
     if(OperateFile::ui_msgconfirm==0)
     {
        OperateFile::ui_msgconfirm =new MsgConfirm();
     }
-    qDebug()<<"444444444444444";
+    //qDebug()<<"444444444444444";
     disconnectSlots();
     if(socket->IsPurchase==true)
     {

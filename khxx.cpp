@@ -14,17 +14,17 @@ KHxx::KHxx(QWidget *parent):
     ui->frame_5->setObjectName("frame5");
     ui->frame_2->setStyleSheet("QFrame#frame1{background-color:#dfdfdf;border:1px;border-radius:3px;}");
     ui->frame_5->setStyleSheet("QFrame#frame5{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
-    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
-    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_05.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_05.png);}");
+    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
+    ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase.png);}");
     ui->pushButton_search->setEnabled(false);
-    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用+_09.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_09.png);}"
-                                    "QPushButton:disabled{border-image: url(:/image/picture/qietu/切图用+_09.png);}");
+    ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search+.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}"
+                                    "QPushButton:disabled{border-image: url(:/image/picture/qietu/search+.png);}");
 
-    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_07.png);}"
-                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_07.png);}");
+    ui->pushButton_public->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/public.png);}"
+                                    "QPushButton:pressed{border-image: url(:/image/picture/qietu/public+.png);}");
     ui->lcdNumber->setSegmentStyle(QLCDNumber::Flat);
      //调色板
     QPalette lcdpat =ui->lcdNumber->palette();
@@ -92,7 +92,7 @@ void KHxx::display()
             Displaysfzh.insert(3+i,"*");
          }
      }
-    ui->label_ClientName->setText(socket->client_msg.yhmc);
+    ui->label_ClientName->setText(Displayname);
     ui->label_ClientNum->setText(socket->client_msg.yhdabh);
     ui->label_IDNumber->setText(Displaysfzh);
     ui->label_ContactTelephone->setText(Displayphone);
@@ -151,9 +151,9 @@ void KHxx::replyFinished(QNetworkReply *reply)
      {
          char m_receivedata[4096];
          memset(m_receivedata,0,4096);
-         reply->read(m_receivedata,4096);
+         //reply->read(m_receivedata,4096);
          OperateFile::tracelog("Http received:\t"+QString::fromLocal8Bit(m_receivedata));
-         m_HttpData=QString::fromLocal8Bit(m_receivedata).split("@");
+         m_HttpData=QString::fromLocal8Bit(reply->readAll().data()).split("@");
          QStringList base_arg=QString(m_HttpData.at(0)).split("!*!");
 
          if(QString(base_arg.at(3)).toInt()+1!=m_HttpData.size())

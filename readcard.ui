@@ -30,82 +30,20 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_22">
-     <item>
-      <spacer name="horizontalSpacer_18">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <spacer name="verticalSpacer_9">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>55</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_10">
-       <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;首页返回倒计时&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="verticalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>55</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_17">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>15</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>15</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <widget class="QFrame" name="frame_4">
@@ -121,7 +59,7 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <layout class="QHBoxLayout" name="horizontalLayout_9">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -138,7 +76,7 @@
        <number>0</number>
       </property>
       <item>
-       <spacer name="horizontalSpacer_20">
+       <spacer name="horizontalSpacer_47">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -185,7 +123,7 @@
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer_5">
+       <spacer name="horizontalSpacer_8">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -201,7 +139,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label_6">
+       <widget class="QLabel" name="label_9">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -227,12 +165,12 @@
          </font>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;请输入户号&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;输入户号&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer_2">
+       <spacer name="horizontalSpacer_9">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -245,6 +183,19 @@
        </spacer>
       </item>
       <item>
+       <widget class="QLabel" name="label_10">
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;首页返回倒计时&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLCDNumber" name="lcdNumber">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -254,20 +205,20 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>120</width>
+          <width>50</width>
           <height>50</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>120</width>
+          <width>50</width>
           <height>50</height>
          </size>
         </property>
         <property name="font">
          <font>
           <family>微软雅黑</family>
-          <pointsize>5</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
@@ -286,7 +237,7 @@
          <enum>QFrame::Plain</enum>
         </property>
         <property name="lineWidth">
-         <number>1</number>
+         <number>0</number>
         </property>
         <property name="midLineWidth">
          <number>0</number>
@@ -303,7 +254,7 @@
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_2">
+       <spacer name="verticalSpacer_12">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -319,48 +270,7 @@
        </spacer>
       </item>
       <item>
-       <spacer name="horizontalSpacer_16">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>249</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_20">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>168</width>
-          <height>69</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>168</width>
-          <height>69</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-image: url(:/image/picture/qietu/95598.png);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_6">
+       <spacer name="horizontalSpacer_15">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -369,7 +279,7 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>60</width>
+          <width>15</width>
           <height>20</height>
          </size>
         </property>
@@ -402,11 +312,11 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
+        <enum>QSizePolicy::Expanding</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>121</width>
+         <width>60</width>
          <height>20</height>
         </size>
        </property>
@@ -554,13 +464,13 @@
          <number>6</number>
         </property>
         <property name="leftMargin">
-         <number>9</number>
+         <number>0</number>
         </property>
         <property name="topMargin">
          <number>9</number>
         </property>
         <property name="rightMargin">
-         <number>9</number>
+         <number>0</number>
         </property>
         <property name="bottomMargin">
          <number>9</number>
@@ -664,7 +574,7 @@
                 </size>
                </property>
                <property name="focusPolicy">
-                <enum>Qt::ClickFocus</enum>
+                <enum>Qt::NoFocus</enum>
                </property>
                <property name="text">
                 <string/>
@@ -1291,14 +1201,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -1338,8 +1248,8 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -1405,14 +1315,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -1449,14 +1359,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">

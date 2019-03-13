@@ -35,7 +35,7 @@ signals:
    void openKeyBoard();
 public slots:
    //void setLcdnum();
-   void on_pushButton_backhomepage_clicked();
+   void on_pushButton_back_clicked();
    void waitTimeout();
    void OpenkeyBoard();
    void setLcdnum();

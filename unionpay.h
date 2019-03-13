@@ -39,7 +39,7 @@ public slots:
     void startTimer();
     void getResp(int ret);
 private slots:
-    void on_pushButton_back_MsgConfirm_clicked();
+    void on_pushButton_back_clicked();
     void onTimerout();
     void waitTimeout();
 

@@ -347,12 +347,15 @@ void HomePage::on_pushButton_writecard_clicked()
 
 void HomePage::on_pushButton_zdbd_clicked()
 {
-    if(!OperateFile::ui_zdbdhomepage)
+    messagebox->closeDialog();
+    QTimer::singleShot(3000, messagebox, SLOT(closeDialog()));
+    messagebox->displayWithoutButton(this,"功能建设中……");
+    /*if(!OperateFile::ui_zdbdhomepage)
     {
        OperateFile::ui_zdbdhomepage=new Zdbdhomepage();
        qDebug()<<"1111111111111111";
        //OperateFile::ui_jmsh1->setAttribute(Qt::WA_DeleteOnClose);
     }
     socket->effect->begin(this,OperateFile::ui_zdbdhomepage,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_zdbdhomepage->init();
+    OperateFile::ui_zdbdhomepage->init();*/
 }

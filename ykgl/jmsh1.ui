@@ -1117,14 +1117,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -1145,14 +1145,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -1189,14 +1189,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -1217,14 +1217,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -1248,14 +1248,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>95</width>
-          <height>95</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">

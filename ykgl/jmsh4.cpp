@@ -5,6 +5,7 @@
 #include "jmsh1.h"
 #include "jmsh2.h"
 #include "jmsh3.h"
+#include "QScrollBar"
 Jmsh4::Jmsh4(QWidget *parent) :
     CommonWidget(0,0,parent),
     ui(new Ui::Jmsh4)
@@ -56,7 +57,34 @@ void Jmsh4::init()
     for(int i=0;i<10;i++)
     ui->comboBox->addItem("5555555");
     ui->comboBox->lineEdit()->setText("请选择");
-    ui->comboBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //ui->comboBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->comboBox->view()->verticalScrollBar()->setStyleSheet("QScrollBar:vertical"
+                                                             "{"
+                                                             "width:8px;"
+                                                             "background: #FFFFFF;"
+                                                             "}"
+                                                             "QScrollBar::handle:vertical"
+                                                             "{"
+
+                                                             "background: #888;"
+                                                             " border-radius:4px;"
+
+                                                             "}"
+                                                             "QScrollBar::add-line:vertical"
+                                                             "{"
+                                                             "height:0px;width:0px;"
+                                                             "}"
+                                                             "QScrollBar::sub-line:vertical"
+                                                             "{"
+                                                             "height:0px;width:0px;"
+                                                             "}"
+                                                             "QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical"
+                                                             "{"
+                                                             "background:rgba(0,0,0,10%);"
+                                                             "border-radius:4px;"
+                                                             "}"
+                );
+
 }
 
 void Jmsh4::on_pushButton_end_clicked()

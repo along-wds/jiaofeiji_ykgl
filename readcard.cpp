@@ -36,7 +36,7 @@ readcard::readcard(QWidget *parent) :
    //设置当前窗口的调色板
 
    ui->lcdNumber->setPalette(lcdpat);
-   ui->lineEdit->setMaxLength(15);
+   ui->lineEdit->setMaxLength(18);
 
    tm_switch = new QTimer(this);
    tm_start=new QTimer(this);

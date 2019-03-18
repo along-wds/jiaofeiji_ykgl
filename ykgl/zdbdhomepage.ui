@@ -308,12 +308,34 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout_2">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
        <property name="horizontalSpacing">
-        <number>20</number>
+        <number>22</number>
        </property>
        <property name="verticalSpacing">
         <number>12</number>
        </property>
+       <item row="1" column="2">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item row="0" column="0">
         <widget class="QPushButton" name="pushButton_jmsh">
          <property name="sizePolicy">
@@ -341,22 +363,6 @@
           <string/>
          </property>
         </widget>
-       </item>
-       <item row="1" column="2">
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
        </item>
        <item row="2" column="1">
         <widget class="QPushButton" name="pushButton_gm">
@@ -414,8 +420,8 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
-        <widget class="QPushButton" name="pushButton_jr">
+       <item row="2" column="0">
+        <widget class="QPushButton" name="pushButton_zr">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -442,8 +448,8 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="4">
-        <widget class="QPushButton" name="pushButton_ls">
+       <item row="2" column="2">
+        <widget class="QPushButton" name="pushButton_jr">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -453,13 +459,13 @@
          <property name="minimumSize">
           <size>
            <width>160</width>
-           <height>188</height>
+           <height>152</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>160</width>
-           <height>188</height>
+           <height>152</height>
           </size>
          </property>
          <property name="focusPolicy">
@@ -498,8 +504,8 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="pushButton_zr">
+       <item row="0" column="4">
+        <widget class="QPushButton" name="pushButton_ls">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -509,13 +515,13 @@
          <property name="minimumSize">
           <size>
            <width>160</width>
-           <height>152</height>
+           <height>188</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>160</width>
-           <height>152</height>
+           <height>188</height>
           </size>
          </property>
          <property name="focusPolicy">
@@ -778,13 +784,13 @@
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>145</height>
+       <height>149</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>145</height>
+       <height>149</height>
       </size>
      </property>
      <property name="frameShape">
@@ -804,8 +810,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>96</width>
-          <height>127</height>
+          <width>97</width>
+          <height>99</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -826,14 +838,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>96</width>
-          <height>127</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>96</width>
-          <height>127</height>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -902,8 +914,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>96</width>
-          <height>127</height>
+          <width>97</width>
+          <height>99</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -950,8 +968,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>96</width>
-          <height>127</height>
+          <width>97</width>
+          <height>99</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">
@@ -972,8 +996,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>96</width>
-          <height>127</height>
+          <width>97</width>
+          <height>99</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>97</width>
+          <height>99</height>
          </size>
         </property>
         <property name="focusPolicy">

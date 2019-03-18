@@ -62,8 +62,8 @@ void Jmsh1::on_pushButton_func1_clicked()
 {
     ui->frame_2->setStyleSheet("QFrame#frame2{border-image: url(:/image/picture/ykgl/select1.png);}");
     ui->pushButton_func1->setStyleSheet("QPushButton{border:0px;color:white;}");
-    ui->pushButton_func2->setStyleSheet("QPushButton{border:0px;color:#333333;}");
-    ui->pushButton_func3->setStyleSheet("QPushButton{border:0px;color:#333333;}");
+    ui->pushButton_func2->setStyleSheet("QPushButton{border:0px;color:gray;}");
+    ui->pushButton_func3->setStyleSheet("QPushButton{border:0px;color:gray;}");
     QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
     sizePolicy1.setHorizontalStretch(0);
     sizePolicy1.setVerticalStretch(0);
@@ -102,8 +102,8 @@ void Jmsh1::on_pushButton_func1_clicked()
 void Jmsh1::on_pushButton_func2_clicked()
 {
     ui->pushButton_func2->setStyleSheet("QPushButton{border:0px;color:white;}");
-    ui->pushButton_func1->setStyleSheet("QPushButton{border:0px;color:#333333;}");
-    ui->pushButton_func3->setStyleSheet("QPushButton{border:0px;color:#333333;}");
+    ui->pushButton_func1->setStyleSheet("QPushButton{border:0px;color:gray;}");
+    ui->pushButton_func3->setStyleSheet("QPushButton{border:0px;color:gray;}");
     ui->frame_2->setStyleSheet("QFrame#frame2{border-image: url(:/image/picture/ykgl/select2.png);}");
     QList<QPushButton*> btns=ui->frame->findChildren<QPushButton*>();
     foreach(QPushButton * btn,btns)
@@ -157,8 +157,8 @@ void Jmsh1::openScan()
 void Jmsh1::on_pushButton_func3_clicked()
 {
     ui->pushButton_func3->setStyleSheet("QPushButton{border:0px;color:white;}");
-    ui->pushButton_func1->setStyleSheet("QPushButton{border:0px;color:#333333;}");
-    ui->pushButton_func2->setStyleSheet("QPushButton{border:0px;color:#333333;}");
+    ui->pushButton_func1->setStyleSheet("QPushButton{border:0px;color:gray;}");
+    ui->pushButton_func2->setStyleSheet("QPushButton{border:0px;color:gray;}");
     ui->frame_2->setStyleSheet("QFrame#frame2{border-image: url(:/image/picture/ykgl/select3.png);}");
     QList<QPushButton*> btns=ui->frame->findChildren<QPushButton*>();
     foreach(QPushButton * btn,btns)

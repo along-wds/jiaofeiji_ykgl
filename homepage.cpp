@@ -38,12 +38,8 @@ HomePage::HomePage(QWidget *parent) :
     connect(this,SIGNAL(setTaskstate(bool)),timertask,SLOT(setTimerstate(bool)),Qt::QueuedConnection);
     connect(this,SIGNAL(startReadCardTimer()),timertask,SLOT(StartTimer()),Qt::QueuedConnection);
     connect(this,SIGNAL(reCheck()),timertask,SLOT(Timertask_reCheckCard()),Qt::QueuedConnection);
-    //QPalette palette;
-    //this->showFullScreen();
-    //palette.setBrush(this->backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/内页底纹.jpg").scaled(this->size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
-    //this->setPalette(palette);
-    timertask->LoginMessage=socket->LoginMessage;
     socket->Isjumpreadcard=false;
+    timertask->LoginMessage=socket->LoginMessage;
     QDir dir("advertisement");
     if(dir.exists())
     {
@@ -104,7 +100,6 @@ void HomePage::getCardMsg(QString s_msg)
      QStringList list=s_msg.split("@");
      if(QString(list.at(0))=="ok")
      {
-        //timer->start();
         socket->Isjumpreadcard=true;
         socket->CardType=timertask->CardType;
         socket->ReadCard_str=timertask->ReadCard_str;

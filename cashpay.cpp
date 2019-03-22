@@ -27,8 +27,8 @@ CashPay::CashPay(QWidget *parent) :
     ui->frame_2->setStyleSheet("QFrame#frame2{border-left: 0px solid darkgray;border-right:0px;border-top:0px;border-bottom:1px solid darkgray;}");
     ui->frame_5->setStyleSheet("QFrame#frame5{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
     ui->frame_6->setStyleSheet("QFrame#frame6{background-color:#dfdfdf;border:1px;border-radius:3px;}");
-    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
+    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
     ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
     ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search.png);}"
@@ -72,6 +72,7 @@ void CashPay::cashPay_GetData_form_bill()
     }
     if(list.at(1)=="billstate")
     {
+        BILLSTATE=BEGIN;
         if(list.at(2)=="ok")
         {
             socket->sendMsg("Pipe&PipeBill&1&begin");
@@ -99,7 +100,6 @@ void CashPay::cashPay_GetData_form_bill()
     {
         if(list.at(2)=="ok")
         {
-            BILLSTATE=BEGIN;
             messagebox->closeDialog();
             IsAccaptResponse=true;
             socket->sendMsg("Pipe&PipeBill&1&accept");
@@ -369,6 +369,7 @@ void CashPay::replyFinished(QNetworkReply* reply)
              }
             if(QString(base_arg.at(1)).toInt()==INTERFACETYPE::CASHPAY)
             {
+                socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),socket->YL_msg.kczje.toFloat(),0,1,"");
                 socket->YL_msg={m_HttpData.at(1),m_HttpData.at(2),m_HttpData.at(3),m_HttpData.at(4),m_HttpData.at(5),m_HttpData.at(6),m_HttpData.at(7),m_HttpData.at(8),m_HttpData.at(9),m_HttpData.at(10)};
                 readywriteCard();
 
@@ -606,7 +607,7 @@ void CashPay::on_pushButton_beginpay_clicked()
 void CashPay::backHomeBroken()
 {
     disconnectSlots();
-    socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"null",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),QString::number(totalsum),"电力",yl_result,"失败",m_errorstr);
+    socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"null",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),totalsum,0,0,m_errorstr);
     OperateFile::tracelog("交易失败："+QString(m_errorstr));
     form_dealfinish->deleteLater();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);

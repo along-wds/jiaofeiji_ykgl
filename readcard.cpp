@@ -167,10 +167,9 @@ void readcard::on_pushButton_readCard_clicked()
 }
 void readcard::readCard_GetData()
 {
-
     Check_Readcard_timer->stop();
     //if(!(this->ToString().contains("EC_GetState")||this->ToString().contains("EC_ReadCard")))
-    OperateFile::tracelog("TCP receive:"+socket->ToString());
+    OperateFile::tracelog("readcard TCP receive:"+socket->ToString());
     QStringList list=socket->ToString().split("_");
     if(list.size()<3)
     {
@@ -441,14 +440,14 @@ void readcard::replyFinished(QNetworkReply *reply)
                      socket->message={m_HttpData.at(1),m_HttpData.at(2),m_HttpData.at(3),m_HttpData.at(4),m_HttpData.at(5),m_HttpData.at(6),m_HttpData.at(7),m_HttpData.at(8),m_HttpData.at(9),m_HttpData.at(10),m_HttpData.at(11),m_HttpData.at(12),m_HttpData.at(13),m_HttpData.at(14),m_HttpData.at(15),
                                             m_HttpData.at(16),m_HttpData.at(17),m_HttpData.at(18),m_HttpData.at(19),m_HttpData.at(20),m_HttpData.at(21),m_HttpData.at(22),m_HttpData.at(23),m_HttpData.at(24),m_HttpData.at(25),m_HttpData.at(26),m_HttpData.at(27),m_HttpData.at(28),m_HttpData.at(29),m_HttpData.at(30),m_HttpData.at(31),
                                             m_HttpData.at(32),m_HttpData.at(33),m_HttpData.at(34),m_HttpData.at(35),m_HttpData.at(36),m_HttpData.at(37),m_HttpData.at(38),m_HttpData.at(39),m_HttpData.at(40),m_HttpData.at(41),m_HttpData.at(42),m_HttpData.at(43),m_HttpData.at(44),m_HttpData.at(45),m_HttpData.at(46),m_HttpData.at(47)};
-                     socket->Isjumpreadcard=true;
+                     /*socket->Isjumpreadcard=true;
                      timertask->CardType=socket->CardType;
                      timertask->ReadCard_str=socket->ReadCard_str;
                      timertask->Card_Basemsg=socket->Card_Basemsg;
                      timertask->LK_msg=socket->LK_msg;
                      timertask->FK_msg=socket->FK_msg;
                      timertask->message=socket->message;
-                     timertask->setCardState(true);
+                     timertask->setCardState(true);*/
                      if(socket->IsPurchase==true)
                      {
                            if(OperateFile::ui_msgconfirm==0)

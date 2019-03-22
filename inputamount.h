@@ -40,10 +40,8 @@ private:
     QStringList m_HttpData;
     int CardType;
     dealfinish *form_dealfinish;
-    uint writetimes;
     int  m_currenttime;
     QString dllsh;
-    int m_recvtimes;
     QString IP;
     QString m_je;
     QString yl_result;

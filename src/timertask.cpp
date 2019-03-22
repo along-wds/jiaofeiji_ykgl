@@ -11,6 +11,7 @@ void Timertask::init()
     Check_Card_timer=new QTimer;
     Check_Readcard_timer=new QTimer;
     connect(accessManager,SIGNAL(finished(QNetworkReply*)),this,SLOT(replyFinished_timer(QNetworkReply*)),Qt::UniqueConnection);
+    //connect(this,SIGNAL(readyRead()),this,SLOT(receiveMsg()));
     connect(this,SIGNAL(readyRead()),this,SLOT(Timertask_GetData()));
     connect(timer,SIGNAL(timeout()),this,SLOT(sendHeartbeatPack()));
     connect(Check_Card_timer,SIGNAL(timeout()),this,SLOT(checkElectricCard()));

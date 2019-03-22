@@ -66,7 +66,8 @@ SOURCES += main.cpp\
     ykgl/jmsh3.cpp \
     ykgl/jmsh4.cpp \
     ykgl/zdbdhomepage.cpp \
-    identifycode.cpp
+    identifycode.cpp \
+    common/commonsocket.cpp
 
 HEADERS  += login.h \
     clientsocket.h \
@@ -119,7 +120,8 @@ HEADERS  += login.h \
     ykgl/jmsh3.h \
     ykgl/jmsh4.h \
     ykgl/zdbdhomepage.h \
-    identifycode.h
+    identifycode.h \
+    common/commonsocket.h
 
 FORMS    += login.ui \
     readcard.ui \

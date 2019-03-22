@@ -29,8 +29,8 @@ inputamount::inputamount(QWidget *parent) :
     ui->frame->setStyleSheet("QFrame#frame1{border-image: url(:/image/picture/qietu/10.png);}");
     ui->frame_6->setStyleSheet("QFrame#frame5{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
 
-    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
+    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
     ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase+.png);}"
                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}"
                                   "QPushButton:disabled{border-image: url(:/image/picture/qietu/purchase+.png);}");
@@ -55,8 +55,6 @@ inputamount::~inputamount()
 }
 void inputamount::init()
 {
-    writetimes=0;
-    m_recvtimes=0;
     connect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)),Qt::QueuedConnection);
     connect(ui_manager,SIGNAL(timeout()),this,SLOT(waitTimeout()),Qt::QueuedConnection);
     connect(this, SIGNAL(stop()), ui_manager, SLOT(stoptimer()),Qt::QueuedConnection);
@@ -66,22 +64,6 @@ void inputamount::init()
     connect(socket,SIGNAL(readyRead()),this,SLOT(inputamount_GetData()),Qt::UniqueConnection);
     startTimer();
     ui->pushButton_purchase->setEnabled(false);
-    /*if(socket->message.fffs=="01")
-    {
-        if(socket->message.total.toDouble()+10<0)
-        {
-            ui->label_5->setText(QString("请输入您的购电金额\n")+"且您的交费金额至少为 "+QString("%1").arg(fabs(socket->message.total.toDouble()))+" 元");
-            ui->lineEdit->setText(QString("%1").arg(fabs(socket->message.total.toDouble())));
-
-        }
-        else
-            ui->label_5->setText(QString("请输入您的购电金额\n")+"且您的交费金额至少为 10 元");
-    }
-    else
-    {
-         ui->label_5->setText(QString("请输入您的购电金额\n")+"且您的交费金额至少为 10 元");
-
-    }*/
 }
 void inputamount::inputamount_GetData()
 {
@@ -493,6 +475,7 @@ void inputamount::replyFinished(QNetworkReply *reply)
              }
             if(QString(base_arg.at(1)).toInt()==INTERFACETYPE::UNIONPAY)
             {
+                socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),socket->YL_msg.kczje.toFloat(),1,1,"");
                 socket->YL_msg={m_HttpData.at(1),m_HttpData.at(2),m_HttpData.at(3),m_HttpData.at(4),m_HttpData.at(5),m_HttpData.at(6),m_HttpData.at(7),m_HttpData.at(8),m_HttpData.at(9),m_HttpData.at(10)};
                 readywriteCard();
             }
@@ -915,7 +898,7 @@ void inputamount::GetSerialNumber()
 void inputamount::backHomeBroken()
 {
     disconnectSlots();
-    socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"null",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),ui->lineEdit->text(),"电力",yl_result,"失败",m_errorstr);
+    socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"null",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),ui->lineEdit->text().toFloat(),1,0,m_errorstr);
     OperateFile::tracelog("交易失败："+QString(m_errorstr));
     OperateFile::ui_inputpassword->close();
     form_dealfinish->deleteLater();

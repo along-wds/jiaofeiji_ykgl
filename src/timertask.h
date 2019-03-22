@@ -5,7 +5,7 @@
 #include"QtNetwork"
 #include"qtimer.h"
 #include"clientsocket.h"
-class Timertask:public ClientSocket
+class Timertask:public CommonSocket
 {
     Q_OBJECT
 public:
@@ -26,6 +26,7 @@ public slots:
     void connectError(QAbstractSocket::SocketError socketError);
     void setCardState(const bool &state);
 private:
+
     QTimer *timer;
     QTimer *Check_Card_timer;
     QTimer *Check_Readcard_timer;
@@ -33,6 +34,17 @@ private:
     bool ishascard;
     bool isSendReadCard;
     QString CurrentCardString;
+public:
+    Fkcard FK_msg;          //读卡后详细字段数据
+    Lkcard LK_msg;
+    Cardbase Card_Basemsg;
+    //int PurchaseType;       //缴费类型
+    bool Unionpaychannel;
+    int CardType;           //卡类型
+    YLmsg YL_msg;
+    Login LoginMessage;
+    Usermessage message;
+    QString ReadCard_str;
 signals:
     void  hascard();
     void  hascardmsg(QString);

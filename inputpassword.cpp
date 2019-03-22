@@ -29,8 +29,8 @@ inputpassword::inputpassword(QWidget *parent) :
     ui->frame_5->setObjectName("frame5");
     ui->frame_5->setStyleSheet("QFrame#frame5{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
 
-    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
+    ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
     ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase+.png);}"
                                   "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}"
                                   "QPushButton:disabled{border-image: url(:/image/picture/qietu/purchase+.png);}");

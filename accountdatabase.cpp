@@ -13,18 +13,16 @@ AccountDatabase::AccountDatabase()
       db = QSqlDatabase::database("qt_sql_default_connection");
     else
       db = QSqlDatabase::addDatabase("QSQLITE");
-   /* bool create = !QFile::exists("qqDatabase.db");
-        db = QSqlDatabase::addDatabase("QSQLITE"); //添加数据库驱动*/
-        db.setDatabaseName("Accoutdatabase.db"); //数据库连接命名
-        if (!db.open())
-        {
-            QMessageBox::warning(NULL, tr("Error"),
-                tr("Can not open the sqlite database"));
-            exit(2);
-        }
-        qDebug()<<"create:"<<QThread::currentThreadId()<<create;
-        if(create)
-            createTable();
+    db.setDatabaseName("AccoutDatabase.db"); //数据库连接命名
+    if (!db.open())
+    {
+        QMessageBox::warning(NULL, tr("Error"),
+            tr("Can not open the sqlite database"));
+        exit(2);
+    }
+    qDebug()<<"create:"<<QThread::currentThreadId()<<create;
+    if(create)
+        createTable();
 }
 void AccountDatabase::createTable()
 {
@@ -32,17 +30,16 @@ void AccountDatabase::createTable()
     query.exec("create table t_DetailAccount(yhdabh varchar(20) not null, "
                     "yhmc varchar(20) not null,"
                     "yllsh varchar(20),"
-                    "日期 DATE(20) not null,"
-                    "date varchar(20) not null,"
-                    "jfje varchar(8) not null,"
-                    "jflx varchar(20),"
-                    "actualresult varchar(20),"
-                    "备注 varchar(50))"
+                    "date DATE(20) not null,"
+                    "jfje float,"
+                    "jflx tinyint,"
+                    "dealresult tinyint,"
+                    "remark varchar(50))"
                );
-    //qDebug()<<query.lastError().text();
-    //qDebug()<<db.lastError().text();
+    qDebug()<<query.lastError().text();
+    qDebug()<<db.lastError().text();
 }
-void AccountDatabase::insertData(const QString &yhdabh, const QString &yhmc, const QString &yllsh, const QString &date, const QString &jfje, const QString &jflx,const QString &dealresult, const QString &actualresult,const QString &remark)
+void AccountDatabase::insertData(const QString &yhdabh, const QString &yhmc, const QString &yllsh, const QString &date, const float &jfje, const uint &jflx,const uint &dealresult,const QString &remark)
 {
     QSqlQuery query;
     query.prepare("insert into t_DetailAccount values(:yhdabh,:yhmc,:yllsh,:date,:jfje,:jflx,:yldealresult,:actualresult,:remark)");
@@ -53,7 +50,6 @@ void AccountDatabase::insertData(const QString &yhdabh, const QString &yhmc, con
     query.bindValue(":jfje",jfje);
     query.bindValue(":jflx",jflx);
     query.bindValue(":dealresult",dealresult);
-    query.bindValue(":actualresult",actualresult);
     query.bindValue(":remark",remark);
     query.exec();
     //qDebug()<<query.lastError().text();

@@ -152,6 +152,7 @@ void login::startWithoutPwd()
     heartbeat_thread->start();
     messagebox->closeDisplay();
     OperateFile::ui_homepage=new HomePage;
+    socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,HIDE);
     OperateFile::ui_homepage->init();
 }
 void login::showKeyBoard()
@@ -270,7 +271,7 @@ void login::replyFinished(QNetworkReply* reply)
                switch (ret)
                {
                case 0:
-               case 4:
+               case 3:
                    socket->LoginMessage.rybh=m_HttpData.at(2);
                    socket->LoginMessage.rymc=m_HttpData.at(3);
                    socket->LoginMessage.gsbh=m_HttpData.at(4);
@@ -296,11 +297,11 @@ void login::replyFinished(QNetworkReply* reply)
                    messagebox->closeDisplay();
                    messagebox->display(this,("安全验证码未维护或者不匹配"));
                    break;
-               case 3:
+               case 31:
                    messagebox->closeDisplay();
                    messagebox->display(this,("登陆账号未维护到人员"));
                    break;
-               case 41:
+               case 4:
                    messagebox->closeDisplay();
                    messagebox->display(this,("银联终端号未匹配"));
                    break;

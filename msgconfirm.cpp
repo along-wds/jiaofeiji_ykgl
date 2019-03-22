@@ -25,8 +25,8 @@ MsgConfirm::MsgConfirm(QWidget *parent) :
    ui->frame_4->setStyleSheet("QFrame#frame4{border-image: url(:/image/picture/qietu/xiadaohang.jpg);}");
    ui->frame_5->setStyleSheet("QFrame#frame5{background-color:#dfdfdf;border:1px;border-radius:3px;}");
    //ui->frame_3->setStyleSheet("QFrame#frame3{border-image: url(:/image/picture/qietu/shangdaohang.png);}");
-   ui->pushButton_backHomePage_2->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/切图用_03.png);}"
-                                                "QPushButton:pressed{border-image: url(:/image/picture/qietu/切图用+_03.png);}");
+   ui->pushButton_backHomePage_2->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
+                                                "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
    ui->pushButton->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase+.png);}"
                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}"
                                  "QPushButton:disabled{border-image: url(:/image/picture/qietu/purchase+.png);}");

@@ -46,7 +46,6 @@ void dealfinish::init(int initType)
     connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::QueuedConnection);
     connect(socket,SIGNAL(readyRead()),this,SLOT(dealfinish_GetData()),Qt::UniqueConnection);
     startTimer();
-    socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),socket->YL_msg.kczje,"电力","成功","成功","");
     switch (initType) {
     case 0: //正常写卡
         display();
@@ -350,6 +349,7 @@ void dealfinish::dealfinish_GetData()
             QTimer::singleShot(INFOTIME, messagebox, SLOT(closeDialog()));
             messagebox->displayWithoutButton(this,"无法打印凭条");
         }
+        on_pushButton_back_2_clicked();
     }
  }
 void dealfinish::get_InvoicePrinter_Data()

@@ -244,7 +244,7 @@ void Writecardlist::replyFinished(QNetworkReply *reply)
                 QWidget *widget;
                 QHBoxLayout *hLayout;
                 QRadioButton *button=new QRadioButton(this);
-                hLayout = new QHBoxLayout();
+                hLayout = new QHBoxLayout(this);
                 widget = new QWidget(ui->tableWidget);
                 hLayout->addWidget(button);
                 hLayout->setMargin(0);                          // 必须添加, 否则CheckBox不能正常显示

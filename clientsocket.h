@@ -10,23 +10,24 @@
 #include"QMediaPlayer"
 #include<QLibrary>
 #include"accountdatabase.h"
-class ClientSocket : public QTcpSocket
+#include"common/commonsocket.h"
+class ClientSocket : public CommonSocket
 {
         Q_OBJECT
 private:
-        char *m_receiveData;
-        char *m_transmintData;
-        QString sendstr;
+        //char *m_receiveData;
+       // char *m_transmintData;
+        //QString sendstr;
 
 public:
         ClientSocket(QObject *parent = 0);
-        QString ToString();
-        void sendMsg(const QString &str);
-        void HttpSend(const QUrl &url);
+        //QString ToString();
+        //void sendMsg(const QString &str);
+        //void HttpSend(const QUrl &url);
         ~ClientSocket();
 public slots:
-        void receiveMsg();
-        void hasConnected();
+        //void receiveMsg();
+       // void hasConnected();
 
 public:
         Payout OutData;
@@ -77,9 +78,9 @@ public:
         QThread *thread ;
         Unionthread *unionThread;
 public:
-        QNetworkAccessManager *accessManager;
-        QNetworkRequest request;
-        QNetworkReply *reply;
+        //QNetworkAccessManager *accessManager;
+       //QNetworkRequest request;
+       // QNetworkReply *reply;
         #define MSEC 10000
         #define LSEC 20000
         #define SEC 60

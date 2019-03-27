@@ -3,6 +3,7 @@
 #include"lookup.h"
 #include"readcard.h"
 #include"first.h"
+#include "devlist.h"
 #include"msgconfirm.h"
 #include"webpage.h"
 #include "ykgl/zdbdhomepage.h"
@@ -278,9 +279,13 @@ void HomePage::mousePressEvent(QMouseEvent *event)
   else if((event->pos().rx()<100)&&(event->pos().ry()>672)&&step1==true&&step2==true&&step3==true)
         {
 
-            QTimer::singleShot(INFOTIME, messagebox, SLOT(closeDialog()));
+            /*QTimer::singleShot(INFOTIME, messagebox, SLOT(closeDialog()));
             messagebox->displayWithoutButton(this,"程序即将退出");
-            qApp->quit();
+            qApp->quit();*/
+            Devlist *console=new Devlist;
+            //socket->effect->begin(this,console,LEFTTORIGHT,NONE,HIDE);
+            console->show();
+            this->hide();
         }
    else
    {

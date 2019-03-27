@@ -27,22 +27,22 @@ AccountDatabase::AccountDatabase()
 void AccountDatabase::createTable()
 {
     QSqlQuery query;
-    query.exec("create table t_DetailAccount(yhdabh varchar(20) not null, "
-                    "yhmc varchar(20) not null,"
-                    "yllsh varchar(20),"
-                    "date DATE(20) not null,"
-                    "jfje float,"
-                    "jflx tinyint,"
-                    "dealresult tinyint,"
-                    "remark varchar(50))"
-               );
+    query.exec("create table t_DetailAccount(用户号 varchar(20) not null, "
+               "用户名称 varchar(20) not null,"
+               "流水号 varchar(20),"
+               "日期 DATE(20) not null,"
+               "缴费金额 varchar(10) not null,"
+               "缴费类型 varchar(2) not null,"
+               "扣款结果 varchar(2),"
+               "备注 varchar(50))"
+          );
     qDebug()<<query.lastError().text();
     qDebug()<<db.lastError().text();
 }
-void AccountDatabase::insertData(const QString &yhdabh, const QString &yhmc, const QString &yllsh, const QString &date, const float &jfje, const uint &jflx,const uint &dealresult,const QString &remark)
+void AccountDatabase::insertData(const QString &yhdabh, const QString &yhmc, const QString &yllsh, const QString &date, const QString &jfje, const QString &jflx,const QString &dealresult,const QString &remark)
 {
     QSqlQuery query;
-    query.prepare("insert into t_DetailAccount values(:yhdabh,:yhmc,:yllsh,:date,:jfje,:jflx,:yldealresult,:actualresult,:remark)");
+    query.prepare("insert into t_DetailAccount values(:yhdabh,:yhmc,:yllsh,:date,:jfje,:jflx,:dealresult,:remark)");
     query.bindValue(":yhdabh",yhdabh);
     query.bindValue(":yhmc",yhmc);
     query.bindValue(":yllsh",yllsh);
@@ -52,8 +52,7 @@ void AccountDatabase::insertData(const QString &yhdabh, const QString &yhmc, con
     query.bindValue(":dealresult",dealresult);
     query.bindValue(":remark",remark);
     query.exec();
-    //qDebug()<<query.lastError().text();
-    //qDebug()<<db.lastError().text();
-    //query.exec( QString("UPDATE t_System  SET starttime=:time").arg());
+    qDebug()<<query.lastError().text();
+    qDebug()<<db.lastError().text();
 }
 

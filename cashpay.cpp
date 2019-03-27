@@ -369,8 +369,9 @@ void CashPay::replyFinished(QNetworkReply* reply)
              }
             if(QString(base_arg.at(1)).toInt()==INTERFACETYPE::CASHPAY)
             {
-                socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),socket->YL_msg.kczje.toFloat(),0,1,"");
+
                 socket->YL_msg={m_HttpData.at(1),m_HttpData.at(2),m_HttpData.at(3),m_HttpData.at(4),m_HttpData.at(5),m_HttpData.at(6),m_HttpData.at(7),m_HttpData.at(8),m_HttpData.at(9),m_HttpData.at(10)};
+                socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),socket->YL_msg.sjje,"0","1","");
                 readywriteCard();
 
             }
@@ -607,7 +608,7 @@ void CashPay::on_pushButton_beginpay_clicked()
 void CashPay::backHomeBroken()
 {
     disconnectSlots();
-    socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"null",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),totalsum,0,0,m_errorstr);
+    socket->DataBase.insertData(socket->message.yhdabh,socket->message.yhmc,"null",QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),QString(totalsum),"0","0",m_errorstr);
     OperateFile::tracelog("交易失败："+QString(m_errorstr));
     form_dealfinish->deleteLater();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);

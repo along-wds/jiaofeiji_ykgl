@@ -10,7 +10,7 @@
 #include"manager.h"
 #include "readcard.h"
 #include "webpage.h"
-//#define DEBUG
+#define DEBUG
 extern commonDialog *messagebox;
 extern ClientSocket *socket;
 extern Timertask *timertask;

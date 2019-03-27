@@ -14,7 +14,7 @@ private:
 public:
     AccountDatabase();
     void initiDatabase();
-    void insertData(const QString &yhdabh, const QString &yhmc, const QString &yllsh, const QString &date, const float &jfje, const uint &jflx, const uint &dealresult, const QString &remark);
+    void insertData(const QString &yhdabh, const QString &yhmc, const QString &yllsh, const QString &date, const QString &jfje, const QString &jflx, const QString &dealresult, const QString &remark);
     void deleteData();
 };
 #endif // ACCOUNTDATABASE_H

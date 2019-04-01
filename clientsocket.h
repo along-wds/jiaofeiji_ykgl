@@ -84,7 +84,7 @@ public:
         #define MSEC 10000
         #define LSEC 20000
         #define SEC 60
-        #define PAYSEC 120
+        #define PAYSEC 90
         #define  TIMEOUT 60
         struct paystr_in InData;
         struct umsstr_out RetData;

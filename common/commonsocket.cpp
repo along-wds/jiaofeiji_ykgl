@@ -48,3 +48,10 @@ void CommonSocket::HttpSend(const QUrl &url)
     request.setUrl(url);
     reply = accessManager->get(request);
 }
+void CommonSocket::postRequest(const QUrl &url, const QByteArray &data)
+{
+    request.setUrl(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
+    request.setHeader(QNetworkRequest::ContentLengthHeader,data.size());
+    reply = accessManager->post(request,data);
+}

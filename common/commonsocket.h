@@ -12,6 +12,7 @@ public:
     QString ToString();
     void sendMsg(const QString &str);
     void HttpSend(const QUrl &url);
+    void postRequest(const QUrl &url,const QByteArray &data);
 public slots:
         void receiveMsg();
         void hasConnected();

@@ -2,12 +2,12 @@
 #define LOOKUP_H
 
 #include <QWidget>
-
+#include "common/commonwidget.h"
 namespace Ui {
 class Lookup;
 }
 
-class Lookup : public QWidget
+class Lookup : public CommonWidget
 {
     Q_OBJECT
 
@@ -39,8 +39,6 @@ private slots:
     void on_pushButton_10_clicked();
 
     void on_pushButton_11_clicked();
-
-    void on_pushButton_back_MsgConfirm_clicked();
 
     void on_pushButton_12_clicked();
 

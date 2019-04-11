@@ -2,12 +2,13 @@
 #define CASHCONFIRM_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 
 namespace Ui {
 class cashconfirm;
 }
 
-class cashconfirm : public QWidget
+class cashconfirm : public CommonWidget
 {
     Q_OBJECT
 

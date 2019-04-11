@@ -7,7 +7,7 @@
 extern ClientSocket *socket;
 extern Manager *ui_manager;
 Heatermsgconfirm::Heatermsgconfirm(QWidget *parent) :
-  QWidget(parent),
+  CommonWidget(0,0,parent),
     ui(new Ui::Heatermsgconfirm)
 {
     ui->setupUi(this);

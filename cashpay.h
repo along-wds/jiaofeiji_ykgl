@@ -2,13 +2,14 @@
 #define CASHPAY_H
 #include"operatefile.h"
 #include <QWidget>
+#include "common/commonwidget.h"
 #include"homepage.h"
 #include "dealfinish.h"
 namespace Ui {
 class CashPay;
 }
 
-class CashPay : public QWidget
+class CashPay : public CommonWidget
 {
     Q_OBJECT
 

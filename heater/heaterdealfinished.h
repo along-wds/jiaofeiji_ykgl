@@ -2,12 +2,13 @@
 #define HEATERDEALFINISHED_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 
 namespace Ui {
 class Heaterdealfinished;
 }
 
-class Heaterdealfinished : public QWidget
+class Heaterdealfinished : public CommonWidget
 {
     Q_OBJECT
 

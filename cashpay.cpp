@@ -5,7 +5,7 @@
 #include"readcard.h"
 extern commonDialog *messagebox;
 CashPay::CashPay(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::CashPay)
 {
     ui->setupUi(this);
@@ -120,7 +120,7 @@ void CashPay::cashPay_GetData_form_bill()
                 QTimer::singleShot(6000, messagebox, SLOT(closeDialog()));
                 messagebox->displayWithoutButton(this,"现金缴费服务暂不可用，请稍后办理");
                 socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-                OperateFile::ui_homepage->init();
+                //OperateFile::ui_homepage->init();
             }
         }
     }
@@ -195,7 +195,7 @@ void CashPay::cashPay_GetData_form_bill()
                 messagebox->closeDialog();
                 disconnectSlots();
                 socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE,WAIYE);
-                OperateFile::ui_homepage->init();
+                //OperateFile::ui_homepage->init();
             }
 
     }
@@ -688,7 +688,7 @@ void CashPay::connectError(QAbstractSocket::SocketError socketError)
         messagebox->displayWithoutButton(this,"UMP未启动！");
         disconnectSlots();
         socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,HIDE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
     }
 }
 

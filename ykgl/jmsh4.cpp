@@ -94,7 +94,7 @@ void Jmsh4::on_pushButton_end_clicked()
     OperateFile::ui_jmsh1->deleteLater();
     OperateFile::ui_jmsh2->deleteLater();
     OperateFile::ui_jmsh3->deleteLater();
-    OperateFile::ui_zdbdhomepage->init();
+
 }
 
 
@@ -105,5 +105,4 @@ void Jmsh4::on_pushButton_back_clicked()
     OperateFile::ui_jmsh1->deleteLater();
     OperateFile::ui_jmsh2->deleteLater();
     OperateFile::ui_jmsh3->deleteLater();
-    OperateFile::ui_homepage->init();
 }

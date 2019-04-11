@@ -8,7 +8,7 @@
 extern ClientSocket *socket;
 extern Manager *ui_manager;
 Heaterdealfinished::Heaterdealfinished(QStringList &m_httpData, QWidget *parent) :
-    httpData(m_httpData),QWidget(parent),
+    httpData(m_httpData),CommonWidget(0,0,parent),
     ui(new Ui::Heaterdealfinished)
 {
     ui->setupUi(this);
@@ -35,6 +35,10 @@ Heaterdealfinished::Heaterdealfinished(QStringList &m_httpData, QWidget *parent)
 Heaterdealfinished::~Heaterdealfinished()
 {
     delete ui;
+}
+void Heaterdealfinished::init()
+{
+
 }
 void Heaterdealfinished::HeaterDealfinished_GetData()
 {

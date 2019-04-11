@@ -10,9 +10,6 @@
     <height>830</height>
    </rect>
   </property>
-  <property name="focusPolicy">
-   <enum>Qt::NoFocus</enum>
-  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>

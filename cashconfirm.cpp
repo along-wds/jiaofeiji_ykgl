@@ -2,7 +2,7 @@
 #include "ui_cashconfirm.h"
 
 cashconfirm::cashconfirm(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::cashconfirm)
 {
     ui->setupUi(this);

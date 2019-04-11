@@ -2,12 +2,13 @@
 #define KHMX_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 namespace Ui {
 class KHmx;
 }
 
-class KHmx : public QWidget
+class KHmx : public CommonWidget
 {
     Q_OBJECT
 
@@ -15,6 +16,7 @@ public:
     explicit KHmx(QWidget *parent = 0);
     ~KHmx();
    void setList();
+   void init();
 private slots:
     void on_pushButton_clicked();
     void waitTimeout();

@@ -2,6 +2,7 @@
 #define READCARD_H
 #include"clientsocket.h"
 #include <QWidget>
+#include "common/commonwidget.h"
 #include"operatefile.h"
 #include "src/timertask.h"
 #include<QtNetwork>
@@ -10,7 +11,7 @@ namespace Ui {
 class readcard;
 }
 
-class readcard : public QWidget
+class readcard : public CommonWidget
 {
     Q_OBJECT
 
@@ -22,7 +23,7 @@ public:
   void waitInsertcard();
   void startTimer();
   void init();
-  void disconnectslots();
+  void disconnectSlots();
 signals:
     void purchase_back();
     void start(long msec);

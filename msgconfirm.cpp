@@ -11,7 +11,7 @@
 #include "lookup.h"
 extern commonDialog *messagebox;
 MsgConfirm::MsgConfirm(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
    ui(new Ui::MsgConfirm)
 {
    ui->setupUi(this);
@@ -222,7 +222,7 @@ MsgConfirm::~MsgConfirm()
 
 void MsgConfirm::msgconfirm_reshow()
 {
-   init();
+   //init();
 }
 void MsgConfirm::showTzje()
 {
@@ -287,7 +287,7 @@ void MsgConfirm::on_pushButton_ConfirmPurchase_clicked()
     OperateFile::ui_inputamount=new inputamount;
     OperateFile::ui_inputamount->setAttribute(Qt::WA_DeleteOnClose);
     socket->effect->begin(this, OperateFile::ui_inputamount,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_inputamount->init();
+    //OperateFile::ui_inputamount->init();
 #else
     if(OperateFile::ui_homepage->Couldpurchase==false)
     {
@@ -324,7 +324,7 @@ void MsgConfirm::on_pushButton_back_clicked()
    ui->pushButton_back->setEnabled(false);
    disconnectSlots();
    socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-   OperateFile::ui_homepage->init();
+   //OperateFile::ui_homepage->init();
 }
 
 void MsgConfirm::on_pushButton_2_clicked()
@@ -339,7 +339,7 @@ void MsgConfirm::on_pushButton_backHomePage_2_clicked()
    ui->pushButton_backHomePage_2->setEnabled(false);
    disconnectSlots();
    socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-   OperateFile::ui_homepage->init();
+   //OperateFile::ui_homepage->init();
 }
 //底部- 缴费购电按钮
 void MsgConfirm::on_pushButton_clicked()
@@ -365,7 +365,7 @@ void MsgConfirm::on_pushButton_3_clicked()
        OperateFile::ui_lookup=new Lookup();
    }
    socket->effect->begin(this, OperateFile::ui_lookup,LEFTTORIGHT,NONE,HIDE);
-   OperateFile::ui_lookup->init();
+   //OperateFile::ui_lookup->init();
 
 }
 //公共服务
@@ -397,7 +397,7 @@ void MsgConfirm::setLcdnum()
 
        disconnectSlots();
        socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-       OperateFile::ui_homepage->init();
+       //OperateFile::ui_homepage->init();
    }
    else
    {
@@ -452,7 +452,7 @@ void MsgConfirm::on_pushButton_ylPurchase_clicked()
        connect(OperateFile::ui_unionpay,SIGNAL(back_MsgConfirm()),this,SLOT(msgconfirm_reshow()),Qt::UniqueConnection);
     }
    socket->effect->begin(this, OperateFile::ui_unionpay,LEFTTORIGHT,NONE,HIDE);
-   OperateFile::ui_unionpay->init();
+   //OperateFile::ui_unionpay->init();
    OperateFile::ui_unionpay->registtoUnion();
 
 }
@@ -558,7 +558,7 @@ void MsgConfirm::msgconfirm_GetData()
         }
         WritecardFinished *form_writecardfinish=new WritecardFinished();
         form_writecardfinish->setAttribute(Qt::WA_DeleteOnClose);
-        form_writecardfinish->init();
+        //form_writecardfinish->init();
         socket->effect->begin(this, form_writecardfinish,LEFTTORIGHT,NONE,HIDE);
 
    }

@@ -7,7 +7,7 @@
 #include "lookup.h"
 #include"qstringlist.h"
 ChoiceUser::ChoiceUser(QStringList &m_httpdata, QWidget *parent) :
-     QWidget(parent),
+     CommonWidget(0,0,parent),
     ui(new Ui::ChoiceUser),HttpData(m_httpdata)
 {
     ui->setupUi(this);
@@ -187,7 +187,7 @@ void ChoiceUser::setLcdnum()
 
        disconnectSlots();
        socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-       OperateFile::ui_homepage->init();
+       //OperateFile::ui_homepage->init();
    }
    else
    {
@@ -215,7 +215,7 @@ void ChoiceUser::on_pushButton_back_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_readcard,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_readcard->init();
+    //OperateFile::ui_readcard->init();
 }
 
 void ChoiceUser::on_pushButton_clicked()
@@ -264,7 +264,7 @@ void ChoiceUser::on_pushButton_clicked()
              OperateFile::ui_msgconfirm->hideTzje();
         }
         socket->effect->begin(this, OperateFile::ui_msgconfirm,LEFTTORIGHT,NONE,CLOSE);
-        OperateFile::ui_msgconfirm->init();
+        //OperateFile::ui_msgconfirm->init();
     }
     else if(socket->IsPurchase==false)
     {
@@ -274,7 +274,7 @@ void ChoiceUser::on_pushButton_clicked()
         }
        disconnectSlots();
        socket->effect->begin(this,OperateFile::ui_lookup,LEFTTORIGHT,NONE,CLOSE);
-       OperateFile::ui_lookup->init();
+       //OperateFile::ui_lookup->init();
     }
 }
 
@@ -283,7 +283,7 @@ void ChoiceUser::on_pushButton_home_clicked()
     ui->pushButton_home->setEnabled(false);
     disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void ChoiceUser::on_pushButton_search_clicked()
@@ -294,5 +294,5 @@ void ChoiceUser::on_pushButton_2_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }

@@ -7,7 +7,7 @@
 #include"first.h"
 #include"khxx.h"
 Lookup::Lookup(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::Lookup)
 {
     ui->setupUi(this);
@@ -22,7 +22,7 @@ Lookup::Lookup(QWidget *parent) :
     ui->pushButton_backhomepage->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
                                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
     ui->pushButton_10->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase.png);}");
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
     ui->pushButton_11->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search+.png);}"
                                     "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}"
                                      "QPushButton:disabled{border-image: url(:/image/picture/qietu/search+.png);}");
@@ -190,11 +190,6 @@ void Lookup::on_pushButton_11_clicked()
     }
     socket->effect->begin(this,OperateFile::ui_readcard,LEFTTORIGHT,NONE,HIDE);
     OperateFile::ui_readcard->init();
-}
-
-void Lookup::on_pushButton_back_MsgConfirm_clicked()
-{
-    on_pushButton_backhomepage_clicked();
 }
 
 void Lookup::on_pushButton_12_clicked()

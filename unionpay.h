@@ -1,6 +1,7 @@
 #ifndef UNIONPAY_H
 #define UNIONPAY_H
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QTimer>
 #include"operatefile.h"
 #include"clientsocket.h"
@@ -12,7 +13,7 @@ namespace Ui {
 class UnionPay;
 }
 
-class UnionPay : public QWidget
+class UnionPay : public CommonWidget
 {
     Q_OBJECT
 public:

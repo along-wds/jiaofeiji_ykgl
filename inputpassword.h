@@ -3,6 +3,7 @@
 #include"homepage.h"
 #include"usermsg.h"
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QTimer>
 #include<QDate>
 extern ClientSocket *socket;
@@ -10,7 +11,7 @@ namespace Ui {
 class inputpassword;
 }
 
-class inputpassword : public QWidget
+class inputpassword : public CommonWidget
 {
     Q_OBJECT
 public:

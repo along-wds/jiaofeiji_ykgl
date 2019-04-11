@@ -2,7 +2,7 @@
 #include "ui_acceptcash.h"
 
 acceptcash::acceptcash(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::acceptcash)
 {
     ui->setupUi(this);

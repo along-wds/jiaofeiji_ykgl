@@ -1,6 +1,7 @@
 #ifndef MSGCONFIRM_H
 #define MSGCONFIRM_H
 #include <QWidget>
+#include "common/commonwidget.h"
 #include"clientsocket.h"
 #include<QtNetwork>
 #include"usermsg.h"
@@ -12,7 +13,7 @@ namespace Ui {
 class MsgConfirm;
 }
 
-class MsgConfirm : public QWidget
+class MsgConfirm : public CommonWidget
 {
     Q_OBJECT
 

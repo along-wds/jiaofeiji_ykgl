@@ -2,12 +2,13 @@
 #define HEATERLOOKUP_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 
 namespace Ui {
 class Heaterlookup;
 }
 
-class Heaterlookup : public QWidget
+class Heaterlookup : public CommonWidget
 {
     Q_OBJECT
 

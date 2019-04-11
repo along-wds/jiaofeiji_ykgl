@@ -2,7 +2,7 @@
 #include "ui_webpage.h"
 #include "homepage.h"
 WebPage::WebPage(QUrl m_url, QWidget *parent) :
-    QWidget(parent),sUrl(m_url),
+    CommonWidget(0,0,parent),sUrl(m_url),
     ui(new Ui::WebPage)
 {
     ui->setupUi(this);
@@ -40,7 +40,7 @@ void WebPage::on_pushButton_back_homepage_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void WebPage::mousePressEvent(QMouseEvent *event)
 {
@@ -72,7 +72,7 @@ void WebPage::setLcdnum()
 
        disconnectSlots();
        socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-       OperateFile::ui_homepage->init();
+       //OperateFile::ui_homepage->init();
    }
    else
    {

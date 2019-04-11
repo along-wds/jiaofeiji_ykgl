@@ -5,7 +5,7 @@
 extern ClientSocket *socket;
 extern Manager *ui_manager;
 Heaterhomepage::Heaterhomepage(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::Heaterhomepage)
 {
     ui->setupUi(this);

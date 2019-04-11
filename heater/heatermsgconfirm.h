@@ -1,12 +1,13 @@
 #ifndef HEATERMSGCONFIRM_H
 #define HEATERMSGCONFIRM_H
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 namespace Ui {
 class Heatermsgconfirm;
 }
 
-class Heatermsgconfirm : public QWidget
+class Heatermsgconfirm : public CommonWidget
 {
     Q_OBJECT
 public:

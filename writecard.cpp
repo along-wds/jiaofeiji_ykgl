@@ -7,10 +7,9 @@
 #include"manager.h"
 #include"readcard.h"
 extern Manager *ui_manager;
-extern First ui_first;
 extern HomePage *homepage;
 Writecard::Writecard(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::Writecard)
 {
     times=0;
@@ -594,7 +593,7 @@ void Writecard::on_pushButton_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_purchase,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_purchase->init();
+    //OperateFile::ui_purchase->init();
 }
 //底部-信息查询
 void Writecard::on_pushButton_2_clicked()
@@ -606,7 +605,7 @@ void Writecard::on_pushButton_2_clicked()
         OperateFile::ui_readcard=new readcard();
     }
     socket->effect->begin(this, OperateFile::ui_readcard,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_readcard->init();
+    //OperateFile::ui_readcard->init();
 }
 //公共服务
 void Writecard::on_pushButton_3_clicked()
@@ -636,7 +635,7 @@ void Writecard::on_pushButton_back_2_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_purchase,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_purchase->init();
+    //OperateFile::ui_purchase->init();
 }
 void Writecard::connectError(QAbstractSocket::SocketError socketError)
 {

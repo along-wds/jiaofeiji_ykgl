@@ -10,7 +10,7 @@
 #include"webpage.h"
 #include "identifycode.h"
 readcard::readcard(QWidget *parent) :
-     QWidget(parent),
+     CommonWidget(0,0,parent),
     ui(new Ui::readcard),m_currentImageindex(0),opacityinterval(0.05)
 {
    ui->setupUi(this);
@@ -87,14 +87,14 @@ void readcard::init()
     CardType=2;
     connect(tm_start,SIGNAL(timeout()),this,SLOT(startSwitch()),Qt::UniqueConnection);
     connect(socket,SIGNAL(readyRead()),this,SLOT(readCard_GetData()),Qt::UniqueConnection);//?写在这里才生效，有待修改
-    connect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)),Qt::QueuedConnection);
-    connect(ui_manager,SIGNAL(timeout()),this,SLOT(waitTimeout()),Qt::QueuedConnection);
-    connect(this, SIGNAL(stop()), ui_manager, SLOT(stoptimer()),Qt::QueuedConnection);
-    connect(this,SIGNAL(updateDispaly()),ui_manager,SLOT(starttimer2()),Qt::QueuedConnection);
-    connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::QueuedConnection);
+    connect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)),Qt::UniqueConnection);
+    connect(ui_manager,SIGNAL(timeout()),this,SLOT(waitTimeout()),Qt::UniqueConnection);
+    connect(this, SIGNAL(stop()), ui_manager, SLOT(stoptimer()),Qt::UniqueConnection);
+    connect(this,SIGNAL(updateDispaly()),ui_manager,SLOT(starttimer2()),Qt::UniqueConnection);
+    connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::UniqueConnection);
     connect(socket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(connectError(QAbstractSocket::SocketError)),Qt::DirectConnection);
     connect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)),Qt::UniqueConnection);
-    connect(Check_Readcard_timer,SIGNAL(timeout()),this,SLOT(dealReadCardTimeout()));
+    connect(Check_Readcard_timer,SIGNAL(timeout()),this,SLOT(dealReadCardTimeout()),Qt::UniqueConnection);
     socket->CardType=2;
     startTimer();
 }
@@ -153,9 +153,9 @@ void readcard::setPictureOpacity()
 }
 void readcard::on_pushButton_clicked()
 {
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void readcard::on_pushButton_readCard_clicked()
 {
@@ -278,7 +278,7 @@ void readcard::readCard_DealData()
 }
 void readcard::readCard_reshow()
 {
-    init();
+    //init();
 }
 /*量控卡参数验证*/
 int readcard::checkCard(QString &ickarr)
@@ -454,7 +454,7 @@ void readcard::replyFinished(QNetworkReply *reply)
                            {
                               OperateFile::ui_msgconfirm =new MsgConfirm();
                            }
-                           disconnectslots();
+                           disconnectSlots();
                            /*********************待调整**********************************/
                            if(socket->message.fffs!="01" && socket->message.fffs!="03" )
                            {
@@ -475,7 +475,7 @@ void readcard::replyFinished(QNetworkReply *reply)
                            }
                            ui->lineEdit->setText(socket->FK_msg.yhdabh);
                            socket->effect->begin(this, OperateFile::ui_msgconfirm,LEFTTORIGHT,NONE,HIDE);
-                           OperateFile::ui_msgconfirm->init();
+                           //OperateFile::ui_msgconfirm->init();
                     }
                      else if(socket->IsPurchase==false)
                      {
@@ -484,9 +484,9 @@ void readcard::replyFinished(QNetworkReply *reply)
                          {
                              OperateFile::ui_lookup=new Lookup();
                          }
-                        disconnectslots();
+                        disconnectSlots();
                         socket->effect->begin(this,OperateFile::ui_lookup,LEFTTORIGHT,NONE,HIDE);
-                        OperateFile::ui_lookup->init();
+                        //OperateFile::ui_lookup->init();
                      }
                 }
                 else if(QString(base_arg.at(1)).toInt()==INTERFACETYPE::GETSXFKSTR)
@@ -584,11 +584,11 @@ void readcard::replyFinished(QNetworkReply *reply)
                     if(m_HttpData.at(1)=="1")
                     {
                         messagebox->closeDialog();
-                        disconnectslots();
+                        disconnectSlots();
                         OperateFile::ui_identifycode=new IdentifyCode(ui->lineEdit->text(),CurrentCode);
                         OperateFile::ui_identifycode->setAttribute(Qt::WA_DeleteOnClose);
                         socket->effect->begin(this,OperateFile::ui_identifycode,LEFTTORIGHT,NONE,HIDE);
-                        OperateFile::ui_identifycode->init();
+                        //OperateFile::ui_identifycode->init();
                     }
                     else
                     {
@@ -617,11 +617,11 @@ void readcard::replyFinished(QNetworkReply *reply)
          else  //多表用户
          {
 
-             disconnectslots();
+             disconnectSlots();
              ChoiceUser *choiceuser=new ChoiceUser(m_HttpData);
              choiceuser->setAttribute(Qt::WA_DeleteOnClose);
              socket->effect->begin(this,choiceuser,LEFTTORIGHT,NONE,HIDE);
-             choiceuser->init();
+             //choiceuser->init();
          }
     }
     else
@@ -770,11 +770,11 @@ void readcard::connectError(QAbstractSocket::SocketError socketError)
     if(socketError==QAbstractSocket::ConnectionRefusedError)
     {
         messagebox->closeDialog();
-        disconnectslots();
+        disconnectSlots();
         QTimer::singleShot(INFOTIME, messagebox, SLOT(closeDialog()));
         messagebox->displayWithoutButton(this,"UMP未启动！");
         socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,HIDE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
     }
 }
 void readcard::getCardtype()
@@ -820,9 +820,9 @@ void readcard::setLcdnum()
            messagebox->displayWithoutButton(this,"请求超时，请到柜台办理业务");
 
        }
-       disconnectslots();
+       disconnectSlots();
        socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,HIDE,NEIYE);
-       OperateFile::ui_homepage->init();
+       //OperateFile::ui_homepage->init();
     }
     else
     {
@@ -830,7 +830,7 @@ void readcard::setLcdnum()
         ui->lcdNumber->display(m_currenttime);
     }
 }
-void readcard::disconnectslots()
+void readcard::disconnectSlots()
 {
     emit stop();
     tm_start->stop();
@@ -861,9 +861,9 @@ void readcard::on_lineEdit_textChanged(const QString &arg1)
 void readcard::on_pushButton_home_clicked()
 {
     ui->pushButton_home->setEnabled(false);
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void readcard::on_pushButton_purchase_clicked()
@@ -883,8 +883,8 @@ void readcard::on_pushButton_search_clicked()
 
 void readcard::on_pushButton_public_clicked()
 {
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_webpage,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_webpage->init();
+    //OperateFile::ui_webpage->init();
 
 }

@@ -1,12 +1,13 @@
 #ifndef HEATERKHMX_H
 #define HEATERKHMX_H
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 namespace Ui {
 class Heaterkhmx;
 }
 
-class Heaterkhmx : public QWidget
+class Heaterkhmx : public CommonWidget
 {
     Q_OBJECT
 signals:

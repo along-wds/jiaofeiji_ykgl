@@ -20,14 +20,16 @@ public slots:
     void setLcdnum();
     void connect2Timer();
     void startTimer();
-    void disconnectSlots();
+    virtual void disconnectSlots();
     //void replyFinished(QNetworkReply* reply);
 public:
     QLCDNumber * Timer_LcdNumber;
     QLabel *Timer_Label;
     int Currenttime;
+public:
+    virtual void init()=0;
 protected:
-   void mousePressEvent(QMouseEvent *event);
+ virtual void mousePressEvent(QMouseEvent *event);
 };
 
 #endif // COMMONWIDGET_H

@@ -7,7 +7,7 @@
 #include "readcard.h"
 #include"lookup.h"
 Writecardlist::Writecardlist(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::Writecardlist)
 {
     ui->setupUi(this);
@@ -294,7 +294,7 @@ void Writecardlist::replyFinished(QNetworkReply *reply)
             messagebox->displayWithoutButton(this,"未查询到历史充值记录");
             disconnectSlots();
             socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE,NEIYE);
-            OperateFile::ui_homepage->init();
+            //OperateFile::ui_homepage->init();
 
         }
 
@@ -308,7 +308,7 @@ void Writecardlist::replyFinished(QNetworkReply *reply)
         messagebox->displayWithoutButton(this,"服务暂不可用，请到柜台办理业务");
         disconnectSlots();
         socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE,NEIYE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
     }
     reply->deleteLater();
 }
@@ -452,7 +452,7 @@ void Writecardlist::replyFinished_carddatasearch(QNetworkReply *reply)
         messagebox->displayWithoutButton(this,"服务暂不可用，请到柜台办理业务");
         disconnectSlots();
         socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE,NEIYE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
     }
 
     reply->deleteLater();
@@ -553,7 +553,7 @@ void Writecardlist::setLcdnum()
     {
        disconnectSlots();
        socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE,NEIYE);
-       OperateFile::ui_homepage->init();
+       //OperateFile::ui_homepage->init();
     }
     else
     {
@@ -579,7 +579,7 @@ void Writecardlist::on_pushButton_3_clicked()
     ui->pushButton_3->setEnabled(false);
     disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE,NEIYE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void Writecardlist::setRows()
 {
@@ -591,7 +591,7 @@ void Writecardlist::on_pushButton_clicked()
 {
      disconnectSlots();
      socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE,NEIYE);
-     OperateFile::ui_homepage->init();
+     //OperateFile::ui_homepage->init();
 
 }
 
@@ -599,7 +599,7 @@ void Writecardlist::on_pushButton_home_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE,NEIYE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void Writecardlist::on_pushButton_purchase_clicked()
@@ -612,7 +612,7 @@ void Writecardlist::on_pushButton_purchase_clicked()
         OperateFile::ui_readcard=new readcard();
     }
     socket->effect->begin(this,OperateFile::ui_readcard,LEFTTORIGHT,NONE,CLOSE);
-    OperateFile::ui_readcard->init();
+    //OperateFile::ui_readcard->init();
 }
 
 void Writecardlist::on_pushButton_search_clicked()
@@ -624,10 +624,14 @@ void Writecardlist::on_pushButton_search_clicked()
         OperateFile::ui_lookup=new Lookup();
     }
     socket->effect->begin(this, OperateFile::ui_lookup,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_lookup->init();
+    //OperateFile::ui_lookup->init();
 }
 
 void Writecardlist::on_pushButton_public_clicked()
+{
+
+}
+void Writecardlist::init()
 {
 
 }

@@ -2,12 +2,13 @@
 #define WRITECARDFINISHED_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 
 namespace Ui {
 class WritecardFinished;
 }
 
-class WritecardFinished : public QWidget
+class WritecardFinished : public CommonWidget
 {
     Q_OBJECT
 

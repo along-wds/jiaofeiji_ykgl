@@ -2,13 +2,14 @@
 #define WEBPAGE_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 #include <ActiveQt/QAxWidget>
 #include"qurl.h"
 namespace Ui {
 class WebPage;
 }
 
-class WebPage : public QWidget
+class WebPage : public CommonWidget
 {
     Q_OBJECT
 

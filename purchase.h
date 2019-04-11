@@ -2,11 +2,12 @@
 #define PURCHASE_H
 #include"clientsocket.h"
 #include <QWidget>
+#include "common/commonwidget.h"
 //extern ClientSocket *socket;
 namespace Ui {
 class PurChase;
 }
-class PurChase : public QWidget
+class PurChase : public CommonWidget
 {
     Q_OBJECT
 
@@ -15,7 +16,7 @@ public:
     ~PurChase();
     void startTimer();
     void init();
-    void disconnectslots();
+    void disconnectSlots();
 signals:
     void back_HomePage();
     void start(long msec);

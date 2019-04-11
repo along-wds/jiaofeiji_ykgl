@@ -19,7 +19,7 @@ extern CLOSEKEYBOARD closekeyboard;
 extern DEAL deal;
 extern CANCEL cancelpay;
 HomePage::HomePage(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::HomePage)
 {
     ui->setupUi(this);
@@ -71,14 +71,12 @@ HomePage::HomePage(QWidget *parent) :
     }
     ui->widget->initChangeImageButton();
 }
-void HomePage::init(int flag)
+void HomePage::init()
 {
     step1=false;
     step2=false;
     step3=false;
     Couldpurchase=true;
-    if(flag==1){
-        emit reCheck();}
     QString string;
     OperateFile::readiniFile(SERVERICEINFO,"SERVICE/AutoReadCard",string);
     if(string=="1")
@@ -175,14 +173,14 @@ void HomePage::on_pushButton_purchase_clicked()
         {
             OperateFile::ui_readcard=new readcard();
         }
-        OperateFile::ui_readcard->init();
+        //OperateFile::ui_readcard->init();
         socket->effect->begin(this,OperateFile::ui_readcard,LEFTTORIGHT,NONE,HIDE);
     }
     //直接跳转到信息展示页
     else
     {
         socket->effect->begin(this, OperateFile::ui_msgconfirm,LEFTTORIGHT,NONE,HIDE);
-        OperateFile::ui_msgconfirm->init();
+        //OperateFile::ui_msgconfirm->init();
     }
 }
 /*信息查询跳转*/
@@ -197,7 +195,7 @@ void HomePage::on_pushButton_search_clicked()
         {
             OperateFile::ui_readcard=new readcard();
         }
-        OperateFile::ui_readcard->init();
+        //OperateFile::ui_readcard->init();
         socket->effect->begin(this,OperateFile::ui_readcard,LEFTTORIGHT,NONE,HIDE);
     }
     else
@@ -207,7 +205,7 @@ void HomePage::on_pushButton_search_clicked()
             OperateFile::ui_lookup=new Lookup();
         }
        socket->effect->begin(this,OperateFile::ui_lookup,LEFTTORIGHT,NONE,HIDE);
-       OperateFile::ui_lookup->init();
+       //OperateFile::ui_lookup->init();
     }
 
 }
@@ -322,7 +320,7 @@ void HomePage::dealDeviceBroken(DeviceError ErrorType)
     default:
         break;
     }
-    this->init();
+    //this->init();
 
 }
 void HomePage::ejectCard()
@@ -348,14 +346,10 @@ void HomePage::on_pushButton_writecard_clicked()
 void HomePage::on_pushButton_zdbd_clicked()
 {
     messagebox->closeDialog();
-    QTimer::singleShot(3000, messagebox, SLOT(closeDialog()));
-    messagebox->displayWithoutButton(this,"功能建设中……");
-    /*if(!OperateFile::ui_zdbdhomepage)
+    if(!OperateFile::ui_zdbdhomepage)
     {
        OperateFile::ui_zdbdhomepage=new Zdbdhomepage();
-       qDebug()<<"1111111111111111";
-       //OperateFile::ui_jmsh1->setAttribute(Qt::WA_DeleteOnClose);
     }
     socket->effect->begin(this,OperateFile::ui_zdbdhomepage,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_zdbdhomepage->init();*/
+    OperateFile::ui_zdbdhomepage->init();
 }

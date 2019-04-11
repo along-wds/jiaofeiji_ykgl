@@ -5,7 +5,7 @@
 #include"qdebug.h"
 #include "homepage.h"
 Devlist::Devlist(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::Devlist)
 {
     ui->setupUi(this);
@@ -44,7 +44,10 @@ void Devlist::closeEvent(QCloseEvent *event)
     OperateFile::ui_homepage->init();
     this->deleteLater();
 }
+void Devlist::init()
+{
 
+}
 void Devlist::on_pushButton_clicked()
 {
    qApp->quit();

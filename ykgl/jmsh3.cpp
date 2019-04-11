@@ -55,7 +55,6 @@ void Jmsh3::on_pushButton_pre_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_jmsh2,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_jmsh2->init();
 }
 
 void Jmsh3::on_pushButton_next_clicked()
@@ -64,7 +63,7 @@ void Jmsh3::on_pushButton_next_clicked()
     OperateFile::ui_jmsh4=new Jmsh4();
     OperateFile::ui_jmsh4->setAttribute(Qt::WA_DeleteOnClose);
     socket->effect->begin(this, OperateFile::ui_jmsh4,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_jmsh4->init();
+
 }
 
 void Jmsh3::on_pushButton_end_clicked()
@@ -73,12 +72,11 @@ void Jmsh3::on_pushButton_end_clicked()
     socket->effect->begin(this, OperateFile::ui_zdbdhomepage,RIGHTTOLEFT,NONE,CLOSE);
     OperateFile::ui_jmsh1->deleteLater();
     OperateFile::ui_jmsh2->deleteLater();
-    OperateFile::ui_zdbdhomepage->init();
 }
 
 void Jmsh3::on_pushButton_back_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_jmsh2,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_jmsh2->init();
+
 }

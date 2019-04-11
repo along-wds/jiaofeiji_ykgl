@@ -6,7 +6,7 @@
 #include"lookup.h"
 #include"readcard.h"
 KHxx::KHxx(QWidget *parent):
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::KHxx)
 {
     ui->setupUi(this);
@@ -17,7 +17,7 @@ KHxx::KHxx(QWidget *parent):
     ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
                                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
     ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
-                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase.png);}");
+                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
     ui->pushButton_search->setEnabled(false);
     ui->pushButton_search->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/search+.png);}"
                                     "QPushButton:pressed{border-image: url(:/image/picture/qietu/search+.png);}"
@@ -215,6 +215,10 @@ void KHxx::on_pushButton_search_clicked()
 }
 
 void KHxx::on_pushButton_public_clicked()
+{
+
+}
+void KHxx::init()
 {
 
 }

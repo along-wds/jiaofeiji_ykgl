@@ -4,13 +4,14 @@
 #include"usermsg.h"
 #include"dealfinish.h"
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 extern ClientSocket *socket;
 namespace Ui {
 class inputamount;
 }
 
-class inputamount : public QWidget
+class inputamount : public CommonWidget
 {
     Q_OBJECT
 

@@ -15,12 +15,15 @@ void CommonWidget::waitTimeout()
 void CommonWidget::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
-    Currenttime=60;
-    OperateFile::hidePanle();
-    Timer_LcdNumber->display(Currenttime);
-    Timer_LcdNumber->hide();
-    Timer_Label->hide();
-    emit start(LSEC);
+    if(Timer_LcdNumber!=0&&Timer_Label!=0)
+    {
+        Currenttime=60;
+        OperateFile::hidePanle();
+        Timer_LcdNumber->display(Currenttime);
+        Timer_LcdNumber->hide();
+        Timer_Label->hide();
+        emit start(LSEC);
+    }
 }
 void CommonWidget::startTimer()
 {
@@ -37,7 +40,7 @@ void CommonWidget::setLcdnum()
     {
         disconnectSlots();
         socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,CLOSE,NEIYE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
     }
     else
     {
@@ -58,11 +61,11 @@ void CommonWidget::disconnectSlots()
 }
 void CommonWidget::connect2Timer()
 {
-    connect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)),Qt::QueuedConnection);
-    connect(ui_manager,SIGNAL(timeout()),this,SLOT(waitTimeout()),Qt::QueuedConnection);
-    connect(this, SIGNAL(stop()), ui_manager, SLOT(stoptimer()),Qt::QueuedConnection);
-    connect(this,SIGNAL(updateDispaly()),ui_manager,SLOT(starttimer2()),Qt::QueuedConnection);
-    connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::QueuedConnection);
+    connect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)),Qt::UniqueConnection);
+    connect(ui_manager,SIGNAL(timeout()),this,SLOT(waitTimeout()),Qt::UniqueConnection);
+    connect(this, SIGNAL(stop()), ui_manager, SLOT(stoptimer()),Qt::UniqueConnection);
+    connect(this,SIGNAL(updateDispaly()),ui_manager,SLOT(starttimer2()),Qt::UniqueConnection);
+    connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::UniqueConnection);
     //connect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)),Qt::UniqueConnection);
 }
 

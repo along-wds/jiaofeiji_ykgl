@@ -9,7 +9,7 @@
 extern HomePage *homepage;
 //First ui_first;
 PurChase::PurChase(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::PurChase)
 {
     ui->setupUi(this);
@@ -77,7 +77,7 @@ void PurChase::on_pushButton_cashPay_clicked()
 
 /*void PurChase::on_pushButton_backHomePage_clicked()
 {
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
     OperateFile::ui_homepage->init();
 }*/
@@ -96,8 +96,8 @@ void PurChase::on_pushButton_unionPay_clicked()
         connect(OperateFile::ui_readcard,SIGNAL(purchase_back()),this,SLOT(Purchase_reshow()),Qt::UniqueConnection);
 
     }
-    disconnectslots();
-    OperateFile::ui_readcard->init();
+    disconnectSlots();
+    //OperateFile::ui_readcard->init();
     socket->effect->begin(this,OperateFile::ui_readcard,LEFTTORIGHT,NONE,HIDE);
 }
 /*购电写卡跳转*/
@@ -109,15 +109,15 @@ void PurChase::on_pushButton_writeCard_clicked()
         connect( OperateFile::ui_writecard,SIGNAL(purchase_back()),this,SLOT(Purchase_reshow()),Qt::UniqueConnection);
 
     }
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_writecard,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_writecard->init();
+    //OperateFile::ui_writecard->init();
 }
 //返回首页
 void PurChase::on_pushButton_backHomePage_2_clicked()
 {
     ui->pushButton_backHomePage_2->setEnabled(false);
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE,WAIYE);
 }
 
@@ -125,14 +125,14 @@ void PurChase::on_pushButton_backHomePage_2_clicked()
 void PurChase::on_pushButton_2_clicked()
 {
     ui->pushButton->setEnabled(false);
-    disconnectslots();
+    disconnectSlots();
     socket->IsPurchase=false;
     if(OperateFile::ui_readcard==0)
     {
         OperateFile::ui_readcard=new readcard();
     }
     socket->effect->begin(this,OperateFile::ui_readcard,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_readcard->init();
+    //OperateFile::ui_readcard->init();
 }
 //公共服务
 void PurChase::on_pushButton_3_clicked()
@@ -141,9 +141,9 @@ void PurChase::on_pushButton_3_clicked()
 }
 void PurChase::on_pushButton_backHomePage_3_clicked()
 {
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void PurChase::waitTimeout()
 {
@@ -168,7 +168,7 @@ void PurChase::setLcdnum()
 {
     if(ui->lcdNumber->value()==0)
     {
-       disconnectslots();
+       disconnectSlots();
        socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,HIDE,WAIYE);
     }
     else
@@ -178,7 +178,7 @@ void PurChase::setLcdnum()
         ui->lcdNumber->display(m_currenttime);
     }
 }
-void PurChase::disconnectslots()
+void PurChase::disconnectSlots()
 {
     emit stop();
     disconnect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)));

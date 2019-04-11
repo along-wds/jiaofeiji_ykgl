@@ -2,13 +2,14 @@
 #define DEALFINISH_H
 #include<QtNetwork>
 #include <QWidget>
+#include "common/commonwidget.h"
 #include"clientsocket.h"
 #include"homepage.h"
 extern ClientSocket *socket;
 namespace Ui {
 class dealfinish;
 }
-class dealfinish : public QWidget
+class dealfinish : public CommonWidget
 {
     Q_OBJECT
 
@@ -56,6 +57,7 @@ private slots:
 public:
      void display();
      void init(int initType);
+     void init();
      void display_with_WriteCard();
      void display_without_writecard();
 protected:

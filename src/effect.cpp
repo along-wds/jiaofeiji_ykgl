@@ -37,16 +37,17 @@ void Effect::display()
       setPictureOpacity();
         if (opacity == 1)
         {
-
+            m_ui1->disconnectSlots();
             tm_switch->stop();
             switchcase = 0;
             if(m_closeway==HIDE)
-             {
+            {
                 m_ui1->hide();
                 m_ui1->setGeometry(rect);
-             }
+            }
             else
              m_ui1->close();
+           m_ui2->init();
            flag=0;
         }
     }
@@ -108,6 +109,7 @@ void Effect::setPictureOpacity()
         case LEFTTORIGHT:
             if(flag==0)
             {
+
                if(m_style==WAIYE)
                {
                 m_ui2->setAutoFillBackground(true);
@@ -137,7 +139,7 @@ void Effect::setPictureOpacity()
                    flag=1;
                }
             }
-            m_ui2->setGeometry(QRect(m_ui2->width() * (opacity - 1.0), 0, m_ui2->width(), m_ui2->height()));
+            m_ui2->setGeometry(QRect(m_ui1->width() * (opacity - 1.0), 0, m_ui1->width(), m_ui1->height()));
 
             break;
         case RIGHTTOLEFT:
@@ -184,7 +186,7 @@ void Effect::setMoveWay(MOVEWAY movein, MOVEWAY moveout)//设置移入移出的�
     this->movein = movein;
     this->moveout = moveout;
 }
-void Effect::begin(QWidget *widget1, QWidget *widget2, MOVEWAY movein, MOVEWAY moveout, CLOSEWAY closeway, BACKGROUNDSTYLE backgroundstyle)
+void Effect::begin(CommonWidget *widget1, CommonWidget *widget2, MOVEWAY movein, MOVEWAY moveout, CLOSEWAY closeway, BACKGROUNDSTYLE backgroundstyle)
 {
     m_ui1=widget1;
     m_ui2=widget2;

@@ -2,6 +2,7 @@
 #define READNUM_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 #include"clientsocket.h"
 #include"heatermsgconfirm.h"
 #include"heaterkhmx.h"
@@ -10,7 +11,7 @@
 namespace Ui {
 class Readnum;
 }
-class Readnum : public QWidget
+class Readnum : public CommonWidget
 {
     Q_OBJECT
 public:
@@ -82,7 +83,7 @@ public slots:
     void readCard_reshow();
     bool eventFilter(QObject *,QEvent *);    //注意这里
 };
-class ComboboxItem :public QWidget{
+class ComboboxItem :public CommonWidget{
 
     explicit ComboboxItem(QWidget *parent = 0);
     ~ComboboxItem();

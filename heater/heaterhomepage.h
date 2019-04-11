@@ -2,6 +2,7 @@
 #define HEATERHOMEPAGE_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 #include"readnum.h"
 #include"clientsocket.h"
 #include"manager.h"
@@ -11,7 +12,7 @@ namespace Ui {
 class Heaterhomepage;
 }
 
-class Heaterhomepage : public QWidget
+class Heaterhomepage : public CommonWidget
 {
     Q_OBJECT
 public:

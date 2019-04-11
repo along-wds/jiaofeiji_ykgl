@@ -17,7 +17,7 @@ extern DEAL deal;
 extern CANCEL cancelpay;
 
 First::First(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::First)
 {
     ui->setupUi(this);
@@ -214,5 +214,9 @@ void First::mousePressEvent(QMouseEvent *event)
        step2=false;
        step3=false;
    }
+
+}
+void First::init()
+{
 
 }

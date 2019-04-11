@@ -3,6 +3,7 @@
 
 #include"clientsocket.h"
 #include <QWidget>
+#include "common/commonwidget.h"
 #include"operatefile.h"
 #include<QtNetwork>
 extern ClientSocket *socket;
@@ -10,7 +11,7 @@ namespace Ui {
 class Writecard;
 }
 
-class Writecard : public QWidget
+class Writecard : public CommonWidget
 {
     Q_OBJECT
 

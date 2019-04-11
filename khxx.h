@@ -2,12 +2,13 @@
 #define KHXX_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 namespace Ui {
 class KHxx;
 }
 
-class KHxx : public QWidget
+class KHxx : public CommonWidget
 {
     Q_OBJECT
 
@@ -16,6 +17,7 @@ public:
     ~KHxx();
     void display();
     void startTimer();
+    void init();
 signals:
     void back_Lookup();
     void start(long msec);

@@ -11,6 +11,7 @@
 #include<QGridLayout>
 #include<QtMultimedia/qmultimedia.h>
 #include<QLineEdit>
+#include<common/commonwidget.h>
 enum MOVEWAY//平移类型
 {
     NONE,
@@ -39,8 +40,8 @@ private:
     QPoint offset;
     qint16 blockSize;
     QString path;
-    QWidget *m_ui1;
-    QWidget *m_ui2;
+    CommonWidget *m_ui1;
+    CommonWidget *m_ui2;
     void mouseDoubleClickEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
 public:
@@ -66,7 +67,7 @@ public:
     void setSwitchMsec(long switchmsec = 30);
     void playPicttureinLabel(QStringList &m_picturePathlist, QLabel *m_label);
     void
-    begin(QWidget *widget1, QWidget *widget2, MOVEWAY movein, MOVEWAY moveout, CLOSEWAY closeway, BACKGROUNDSTYLE backgroundstyle=NEIYE);
+    begin(CommonWidget *widget1, CommonWidget *widget2, MOVEWAY movein, MOVEWAY moveout, CLOSEWAY closeway, BACKGROUNDSTYLE backgroundstyle=NEIYE);
  public slots:
     //void receiveMesg();
     void display();

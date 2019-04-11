@@ -8,7 +8,7 @@ namespace Ui {
 class First;
 }
 
-class First : public QWidget
+class First : public CommonWidget
 {
     Q_OBJECT
 public:
@@ -17,6 +17,7 @@ public:
     void checkCard();
     void dealDeviceBroken(DeviceError ErrorType);
     void ejectCard();
+    void init();
     bool Couldpurchase;
 private slots:
     void on_pushButton_2_clicked();

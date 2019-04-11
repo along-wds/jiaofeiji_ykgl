@@ -7,7 +7,7 @@
 #include"dealfinish.h"
 #include"cashpay.h"
 dealfinish::dealfinish(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::dealfinish)
 {
     ui->setupUi(this);
@@ -626,10 +626,9 @@ void dealfinish::on_pushButton_2_clicked()
         OperateFile::ui_inputamount->close();
         OperateFile::ui_homepage->ejectCard();
     }
-    OperateFile::tracelog("33333333333333333333");
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
-    OperateFile::tracelog("444444444444444444444");
+    //OperateFile::ui_homepage->init();
+
 }
 void dealfinish::startTimer()
 {
@@ -655,7 +654,7 @@ void dealfinish::setLcdnum()
     {
         disconnectSlots();
         socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
         if(socket->PurchaseType==1)
         {
             OperateFile::ui_inputpassword->close();
@@ -685,7 +684,7 @@ void dealfinish::on_pushButton_backHomePage_2_clicked()
         OperateFile::ui_cashpay->close();
 
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void dealfinish::on_pushButton_back_2_clicked()
@@ -702,7 +701,7 @@ void dealfinish::on_pushButton_back_2_clicked()
         OperateFile::ui_cashpay->close();
 
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void dealfinish::disconnectSlots()
 {
@@ -734,7 +733,7 @@ void dealfinish::on_pushButton_3_clicked()
         OperateFile::ui_cashpay->close();
     socket->IsPurchase=false;
     socket->effect->begin(this, OperateFile::ui_readcard,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_readcard->init();
+    //OperateFile::ui_readcard->init();
 }
 void dealfinish::on_pushButton_4_clicked()
 {
@@ -751,7 +750,7 @@ void dealfinish::on_pushButton_4_clicked()
         OperateFile::ui_cashpay->close();
 
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 /*****************打印凭条*******************/
 void dealfinish::on_pushButton_6_clicked()
@@ -779,5 +778,9 @@ void dealfinish::on_pushButton_5_clicked()
     OperateFile::readiniFile("INTERFACE.DATA","interface/PRINT",string);
     socket->HttpSend(QUrl(QString(string).arg(socket->LoginMessage.rybh).arg(socket->YL_msg.pdbh).arg(socket->message.yhdabh).arg(socket->LoginMessage.gsbh)));
     OperateFile::tracelog("http send:\t"+QString(string).arg(socket->LoginMessage.rybh).arg(socket->YL_msg.pdbh).arg(socket->message.yhdabh).arg(socket->LoginMessage.gsbh));
+
+}
+void dealfinish::init()
+{
 
 }

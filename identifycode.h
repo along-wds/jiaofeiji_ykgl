@@ -2,12 +2,13 @@
 #define IDENTIFYCODE_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 namespace Ui {
 class IdentifyCode;
 }
 
-class IdentifyCode : public QWidget
+class IdentifyCode : public CommonWidget
 {
     Q_OBJECT
 
@@ -16,7 +17,7 @@ public:
     ~IdentifyCode();
     void startTimer();
     void init();
-    void disconnectslots();
+    void disconnectSlots();
     inline QStringList& getUserInfo()
     {
         return m_HttpData;

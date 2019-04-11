@@ -21,7 +21,7 @@ extern DEAL deal;
 extern CANCEL cancelpay;
 
 inputpassword::inputpassword(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::inputpassword)
 {
     ui->setupUi(this);
@@ -160,7 +160,7 @@ void inputpassword::CheckPwd()
                     OperateFile::ui_inputamount=new inputamount;
                     OperateFile::ui_inputamount->setAttribute(Qt::WA_DeleteOnClose);
                     socket->effect->begin(this, OperateFile::ui_inputamount,LEFTTORIGHT,NONE,HIDE);
-                    OperateFile::ui_inputamount->init();
+                    //OperateFile::ui_inputamount->init();
 
                 }
                 else if(socket->Unionpaychannel==false)
@@ -169,7 +169,7 @@ void inputpassword::CheckPwd()
                   OperateFile::ui_heaterinputamount->setAttribute(Qt::WA_DeleteOnClose);
 
                   socket->effect->begin(this, OperateFile::ui_heaterinputamount,LEFTTORIGHT,NONE,HIDE);
-                  OperateFile::ui_heaterinputamount->init();
+                  //OperateFile::ui_heaterinputamount->init();
                 }
             }
             // 撤销交易时输入密码
@@ -203,7 +203,7 @@ void inputpassword::backFirstPage()
         OperateFile::tracelog("close pin error");
     OperateFile::ui_homepage->ejectCard();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 
 }
 void inputpassword::startTimer()
@@ -315,7 +315,7 @@ void inputpassword::on_pushButton_home_clicked()
         OperateFile::tracelog("close pin error");
     OperateFile::ui_homepage->ejectCard();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void inputpassword::on_pushButton_purchase_clicked()
@@ -324,7 +324,7 @@ void inputpassword::on_pushButton_purchase_clicked()
     disconnectSlots();
     socket->IsPurchase=true;
     socket->effect->begin(this, OperateFile::ui_readcard,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_readcard->init();
+    //OperateFile::ui_readcard->init();
 }
 
 void inputpassword::on_pushButton_search_clicked()
@@ -340,7 +340,7 @@ void inputpassword::on_pushButton_search_clicked()
         OperateFile::ui_lookup=new Lookup();
     }
     socket->effect->begin(this, OperateFile::ui_lookup,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_lookup->init();
+    //OperateFile::ui_lookup->init();
 
 }
 

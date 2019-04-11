@@ -2,12 +2,13 @@
 #define CHOICEUSER_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 #include "qbuttongroup.h"
 namespace Ui {
 class ChoiceUser;
 }
 
-class ChoiceUser : public QWidget
+class ChoiceUser : public CommonWidget
 {
     Q_OBJECT
 

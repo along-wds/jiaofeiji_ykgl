@@ -1,13 +1,14 @@
 #ifndef HEATERINPUTMAOUNT_H
 #define HEATERINPUTMAOUNT_H
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 #include"heater/heaterdealfinished.h"
 namespace Ui {
 class Heaterinputmaount;
 }
 
-class Heaterinputmaount : public QWidget
+class Heaterinputmaount : public CommonWidget
 {
     Q_OBJECT
 

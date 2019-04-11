@@ -2,12 +2,13 @@
 #define YDMX_H
 
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 namespace Ui {
 class Ydmx;
 }
 
-class Ydmx : public QWidget
+class Ydmx : public CommonWidget
 {
     Q_OBJECT
 
@@ -15,6 +16,7 @@ public:
     explicit Ydmx(QWidget *parent = 0);
     ~Ydmx();
      void setList();
+     void init();
 signals:
      void back_Lookup();
      void start(long msec);

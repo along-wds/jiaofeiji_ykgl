@@ -59,28 +59,21 @@ Zdbdhomepage *OperateFile::ui_zdbdhomepage=0;
  extern CANCEL cancelpay;
 
 login::login(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::login)
 {
+    qDebug()<<"666666666666666666";
    /******************************
     * UI 处理
     * ****************************/
    ui->setupUi(this);
    ui->frame->setObjectName("myframe");
    ui->frame->setStyleSheet("QFrame#myframe{border-image: url(:/image/picture/qietu/01.png);}");
-   /*QPalette palette1;
-   this->showFullScreen();
-   palette1.setBrush(this->backgroundRole(),QBrush(QPixmap(":/image/picture/qietu/底纹.jpg").scaled(this->size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
-   this->setPalette(palette1);*/
    QPalette lcdpat;
    lcdpat.setColor(QPalette::ButtonText,Qt::white);
-    //ui->pushButton->setPalette(lcdpat);
     ui->lineEdit->setPlaceholderText("请输入用户名");
     ui->lineEdit_2->setPlaceholderText("请输入密码");
     ui->lineEdit_2->setEchoMode(QLineEdit::PasswordEchoOnEdit);
-    //ui->lineEdit->setFocus();
-    //ui->lineEdit->installEventFilter(this);  //在窗体上为lineEdit1安装过滤器
-    //ui->lineEdit_2->installEventFilter(this);  //在窗体上为lineEdit2安装过滤
     ui->pushButton->setShortcut(Qt::Key_Return);
     /**********************
      * new
@@ -140,7 +133,6 @@ login::login(QWidget *parent) :
     QString inistring;
     OperateFile::readiniFile("INTERFACE.DATA","interface/PUBLIC",inistring);
     OperateFile::ui_webpage=new WebPage(QUrl(inistring));
-
 }
 void login::startWithoutPwd()
 {
@@ -153,7 +145,7 @@ void login::startWithoutPwd()
     messagebox->closeDisplay();
     OperateFile::ui_homepage=new HomePage;
     socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void login::showKeyBoard()
 {
@@ -246,6 +238,10 @@ void login::InitDevice()
     socket->sendMsg("Network&9019&1&EC_ReadCard");
 }
 /*http处理消息*/
+void login::init()
+{
+
+}
 void login::replyFinished(QNetworkReply* reply)
 {
   if(reply->error() == QNetworkReply::NoError)

@@ -18,7 +18,7 @@ extern CLOSEKEYBOARD closekeyboard;
 extern DEAL deal;
 extern CANCEL cancelpay;
 inputamount::inputamount(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::inputamount)
 {
     ui->setupUi(this);
@@ -388,7 +388,7 @@ void inputamount::getRespcode(QString amount)
             form_dealfinish->deleteLater();
             socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
             OperateFile::ui_homepage->ejectCard();
-            OperateFile::ui_homepage->init();
+            //OperateFile::ui_homepage->init();
        }
        else if((socket->OutData.rescode=="51"))
        {
@@ -401,7 +401,7 @@ void inputamount::getRespcode(QString amount)
            form_dealfinish->deleteLater();
            socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
            OperateFile::ui_homepage->ejectCard();
-           OperateFile::ui_homepage->init();
+           //OperateFile::ui_homepage->init();
        }
        else if((socket->OutData.rescode=="55"))
        {
@@ -411,7 +411,7 @@ void inputamount::getRespcode(QString amount)
            messagebox->displayWithoutButton(this,"密码输入有误，请重新输入");
            form_dealfinish->deleteLater();
            socket->effect->begin(this, OperateFile::ui_inputpassword,LEFTTORIGHT,NONE,CLOSE);
-           OperateFile::ui_inputpassword->init();
+           //OperateFile::ui_inputpassword->init();
            QElapsedTimer t;
            t.start();
            while(t.elapsed()<800)
@@ -428,7 +428,7 @@ void inputamount::getRespcode(QString amount)
            form_dealfinish->deleteLater();
            socket->effect->begin(this, OperateFile::ui_unionpay,RIGHTTOLEFT,NONE,CLOSE);
            OperateFile::ui_homepage->ejectCard();
-           OperateFile::ui_unionpay->init();
+           //OperateFile::ui_unionpay->init();
            OperateFile::ui_unionpay->registtoUnion();
        }
        else
@@ -450,7 +450,7 @@ void inputamount::getRespcode(QString amount)
             form_dealfinish->deleteLater();
             socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
             OperateFile::ui_homepage->ejectCard();
-            OperateFile::ui_homepage->init();
+            //OperateFile::ui_homepage->init();
        }
  }
  }
@@ -650,7 +650,7 @@ void inputamount::on_pushButton_back_homepage_clicked()
     form_dealfinish->deleteLater();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
     OperateFile::ui_homepage->ejectCard();
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void inputamount::writecard()
 {
@@ -715,7 +715,7 @@ void inputamount::setLcdnum()
             form_dealfinish->deleteLater();
             OperateFile::ui_homepage->ejectCard();
             socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-            OperateFile::ui_homepage->init();
+            //OperateFile::ui_homepage->init();
         }
        else
        {
@@ -917,7 +917,7 @@ void inputamount::on_pushButton_home_clicked()
     form_dealfinish->deleteLater();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
     OperateFile::ui_homepage->ejectCard();
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void inputamount::on_pushButton_purchase_clicked()
@@ -929,7 +929,7 @@ void inputamount::on_pushButton_purchase_clicked()
     socket->IsPurchase=true;
     OperateFile::ui_homepage->ejectCard();
     socket->effect->begin(this, OperateFile::ui_readcard,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_readcard->init();
+    //OperateFile::ui_readcard->init();
 }
 
 void inputamount::on_pushButton_search_clicked()
@@ -943,7 +943,7 @@ void inputamount::on_pushButton_search_clicked()
         OperateFile::ui_lookup=new Lookup();
     }
     socket->effect->begin(this, OperateFile::ui_lookup,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_lookup->init();
+    //OperateFile::ui_lookup->init();
 
 }
 void inputamount::on_pushButton_public_clicked()

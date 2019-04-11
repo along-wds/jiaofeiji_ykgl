@@ -13,7 +13,7 @@ extern Manager *ui_manager;
 extern ClientSocket *socket;
 extern HomePage *homepage;
 Ydmx::Ydmx(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::Ydmx)
 {
     ui->setupUi(this);
@@ -34,7 +34,7 @@ Ydmx::Ydmx(QWidget *parent) :
     ui->pushButton_home->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/home.png);}"
                                                  "QPushButton:pressed{border-image: url(:/image/picture/qietu/home+.png);}");
     ui->pushButton_purchase->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/purchase.png);}"
-                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase.png);}");
+                                 "QPushButton:pressed{border-image: url(:/image/picture/qietu/purchase+.png);}");
     ui->pushButton_2->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/anniu2.png);}"
                                     "QPushButton:disabled{border-image: url(:/image/picture/qietu/disable_button.png);}");
     ui->pushButton_3->setStyleSheet("QPushButton{border-image: url(:/image/picture/qietu/anniu2.png);}"
@@ -443,6 +443,10 @@ void Ydmx::on_pushButton_search_clicked()
 }
 
 void Ydmx::on_pushButton_public_clicked()
+{
+
+}
+void Ydmx::init()
 {
 
 }

@@ -65,7 +65,6 @@ void Zdbdhomepage::on_pushButton_back_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_homepage->init();
 }
 
 void Zdbdhomepage::on_pushButton_jmsh_clicked()
@@ -75,5 +74,4 @@ void Zdbdhomepage::on_pushButton_jmsh_clicked()
     OperateFile::ui_jmsh1=new Jmsh1();
     OperateFile::ui_jmsh1->setAttribute(Qt::WA_DeleteOnClose);
     socket->effect->begin(this,OperateFile::ui_jmsh1,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_jmsh1->init();
 }

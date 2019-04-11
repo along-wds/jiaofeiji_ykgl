@@ -5,6 +5,7 @@
 #include"common/commondialog.h"
 #include"chiocedialog.h"
 #include <QWidget>
+#include "common/commonwidget.h"
 #include"purchase.h"
 #include "src/timertask.h"
 #include"manager.h"
@@ -19,14 +20,14 @@ namespace Ui {
 class HomePage;
 }
 
-class HomePage : public QWidget
+class HomePage : public CommonWidget
 {
     Q_OBJECT
 
 public:
     explicit HomePage(QWidget *parent = 0);
     ~HomePage();
-     void init(int flag=0);
+     void init();
      void dealDeviceBroken(DeviceError ErrorType);
      void ejectCard();
      QString warnMsg;
@@ -59,8 +60,7 @@ private:
     bool step3;
     bool isjump;
     QTimer *timer;
-    void startTimer();
-    void disconnectSlots();
+    //void startTimer();
 public slots:
     void readyReadCard();
     void getCardMsg(QString s_msg);

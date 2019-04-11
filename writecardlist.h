@@ -4,6 +4,7 @@
 #include"homepage.h"
 #include"usermsg.h"
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QTableWidget>
 #include<QtNetwork>
 #include"qbuttongroup.h"
@@ -12,7 +13,7 @@ extern HomePage *homepage;
 namespace Ui {
 class Writecardlist;
 }
-class Writecardlist : public QWidget
+class Writecardlist : public CommonWidget
 {
     Q_OBJECT
 public:
@@ -20,6 +21,7 @@ public:
     ~Writecardlist();
     void setList();
     void setRows();
+    void init();
 signals:
     void homepage_back();
      void start(long msec);

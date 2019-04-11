@@ -23,7 +23,7 @@ extern DEAL deal;
 extern CANCEL cancelpay;
 /*打开读卡器→检测读卡器是否有卡→读卡→关闭读卡器*/
 UnionPay::UnionPay(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::UnionPay)
 {
     ui->setupUi(this);
@@ -74,11 +74,11 @@ void UnionPay::init()
         ui->label_2->setStyleSheet("color:#0e357f;font-size:25px;font-family: \"Microsoft YaHei UI\";");
         ui->label_2->setAlignment(Qt::AlignCenter);
     }*/
-    connect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)),Qt::QueuedConnection);
-    connect(ui_manager,SIGNAL(timeout()),this,SLOT(waitTimeout()),Qt::QueuedConnection);
-    connect(this, SIGNAL(stop()), ui_manager, SLOT(stoptimer()),Qt::QueuedConnection);
-    connect(this,SIGNAL(updateDispaly()),ui_manager,SLOT(starttimer2()),Qt::QueuedConnection);
-    connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::QueuedConnection);
+    connect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)),Qt::UniqueConnection);
+    connect(ui_manager,SIGNAL(timeout()),this,SLOT(waitTimeout()),Qt::UniqueConnection);
+    connect(this, SIGNAL(stop()), ui_manager, SLOT(stoptimer()),Qt::UniqueConnection);
+    connect(this,SIGNAL(updateDispaly()),ui_manager,SLOT(starttimer2()),Qt::UniqueConnection);
+    connect(ui_manager,SIGNAL(timeout2()),this,SLOT(setLcdnum()),Qt::UniqueConnection);
     startTimer();
     messagebox->displayWithoutBlock(this,"初始化中……");
 }
@@ -97,7 +97,7 @@ void UnionPay::getResp(int ret)
         QTimer::singleShot(6000, messagebox, SLOT(closeDialog()));
         messagebox->displayWithoutButton(this,"银联缴费服务暂不可用，请稍后办理");
         socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
     }
     else
     ReadCard();
@@ -120,7 +120,7 @@ void UnionPay::on_pushButton_back_clicked()
     if(socket->Unionpaychannel==true)
     {
         socket->effect->begin(this, OperateFile::ui_msgconfirm,RIGHTTOLEFT,NONE,HIDE);
-        OperateFile::ui_msgconfirm->init();
+        //OperateFile::ui_msgconfirm->init();
     }
     else
     {
@@ -190,7 +190,7 @@ void UnionPay::getCardNum()
         form_inputpassword->setAttribute(Qt::WA_DeleteOnClose);
         connect(OperateFile::ui_inputpassword,SIGNAL(back_unionpay()),this,SLOT(unionPay_reshow()),Qt::UniqueConnection);
         socket->effect->begin(this, OperateFile::ui_inputpassword,LEFTTORIGHT,NONE,HIDE);
-        OperateFile::ui_inputpassword->init();
+        //OperateFile::ui_inputpassword->init();
         QElapsedTimer t;
         t.start();
         while(t.elapsed()<500)
@@ -231,7 +231,7 @@ void UnionPay::setLcdnum()
         OperateFile::ui_homepage->ejectCard();
         disconnectSlots();
         socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
     }
     else
     {
@@ -290,7 +290,7 @@ void UnionPay::on_pushButton_home_clicked()
     ui->pushButton_home->setEnabled(false);
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void UnionPay::on_pushButton_purchase_clicked()
@@ -299,7 +299,7 @@ void UnionPay::on_pushButton_purchase_clicked()
     disconnectSlots();
     socket->IsPurchase=true;
     socket->effect->begin(this, OperateFile::ui_readcard,RIGHTTOLEFT,NONE,HIDE);
-    OperateFile::ui_readcard->init();
+    //OperateFile::ui_readcard->init();
 }
 
 void UnionPay::on_pushButton_search_clicked()
@@ -311,7 +311,7 @@ void UnionPay::on_pushButton_search_clicked()
         OperateFile::ui_lookup=new Lookup();
     }
     socket->effect->begin(this, OperateFile::ui_lookup,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_lookup->init();
+    //OperateFile::ui_lookup->init();
 
 }
 

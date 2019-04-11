@@ -1,6 +1,7 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 #include <QWidget>
+#include "common/commonwidget.h"
 #include<QtNetwork>
 #include"operatefile.h"
 #include"manager.h"
@@ -13,7 +14,7 @@
 namespace Ui {
 class login;
 }
-class login : public QWidget
+class login : public CommonWidget
 {
     Q_OBJECT
 
@@ -23,6 +24,7 @@ public:
     void InitDevice();
     void startWithoutPwd();
     void showKeyBoard();
+    void init();
 signals:
     void login_HasData(KIND reply);
 private slots:

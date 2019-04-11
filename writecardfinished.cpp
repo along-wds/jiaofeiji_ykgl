@@ -5,7 +5,7 @@
 #include "readcard.h"
 #include"lookup.h"
 WritecardFinished::WritecardFinished(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::WritecardFinished)
 {
     ui->setupUi(this);
@@ -135,7 +135,7 @@ void WritecardFinished::setLcdnum()
     {
         disconnectSlots();
         socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-        OperateFile::ui_homepage->init();
+        //OperateFile::ui_homepage->init();
     }
     else
     {
@@ -157,13 +157,13 @@ void WritecardFinished::on_pushButton_2_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void WritecardFinished::on_pushButton_back_2_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void WritecardFinished::on_pushButton_backHomePage_2_clicked()
@@ -171,7 +171,7 @@ void WritecardFinished::on_pushButton_backHomePage_2_clicked()
     ui->pushButton_backHomePage_2->setEnabled(false);
     disconnectSlots();
     socket->effect->begin(this,OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void WritecardFinished::on_pushButton_clicked()
@@ -189,7 +189,7 @@ void WritecardFinished::on_pushButton_3_clicked()
         OperateFile::ui_lookup=new Lookup();
     }
     socket->effect->begin(this, OperateFile::ui_lookup,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_lookup->init();
+    //OperateFile::ui_lookup->init();
 }
 
 void WritecardFinished::on_pushButton_4_clicked()

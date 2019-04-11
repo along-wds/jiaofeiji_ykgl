@@ -6,7 +6,7 @@
 #include "msgconfirm.h"
 #include "choiceuser.h"
 IdentifyCode::IdentifyCode(QString telnumber, QString code, QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::IdentifyCode),TelNumber(telnumber),CurrentCode(code)
 {
     ui->setupUi(this);
@@ -164,9 +164,9 @@ void IdentifyCode::setLcdnum()
         if(ui->lcdNumber->value()==0)
         {
            messagebox->closeDialog();
-           disconnectslots();
+           disconnectSlots();
            socket->effect->begin(this,OperateFile::ui_homepage,LEFTTORIGHT,NONE,CLOSE,NEIYE);
-           OperateFile::ui_homepage->init();
+           //OperateFile::ui_homepage->init();
         }
         else
         {
@@ -189,7 +189,7 @@ void IdentifyCode::setLcdnum()
         }
     }
 }
-void IdentifyCode::disconnectslots()
+void IdentifyCode::disconnectSlots()
 {
     emit stop();
     disconnect(this, SIGNAL(start(long)), ui_manager, SLOT(starttimer(long)));
@@ -203,9 +203,9 @@ void IdentifyCode::disconnectslots()
 void IdentifyCode::on_pushButton_home_clicked()
 {
     ui->pushButton_home->setEnabled(false);
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 
 void IdentifyCode::on_pushButton_purchase_clicked()
@@ -223,18 +223,18 @@ void IdentifyCode::on_pushButton_search_clicked()
 
 void IdentifyCode::on_pushButton_public_clicked()
 {
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_webpage,LEFTTORIGHT,NONE,CLOSE);
-    OperateFile::ui_webpage->init();
+    //OperateFile::ui_webpage->init();
 
 }
 //返回
 void IdentifyCode::on_pushButton_clicked()
 {
     ui->pushButton_home->setEnabled(false);
-    disconnectslots();
+    disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
+    //OperateFile::ui_homepage->init();
 }
 void IdentifyCode::replyFinished(QNetworkReply *reply)
 {
@@ -275,7 +275,7 @@ void IdentifyCode::replyFinished(QNetworkReply *reply)
                            {
                               OperateFile::ui_msgconfirm =new MsgConfirm();
                            }
-                           disconnectslots();
+                           disconnectSlots();
                            /*********************待调整**********************************/
                            if(socket->message.fffs!="01" && socket->message.fffs!="03" )
                            {
@@ -296,7 +296,7 @@ void IdentifyCode::replyFinished(QNetworkReply *reply)
                            }
                            ui->lineEdit->setText(socket->message.yhdabh);
                            socket->effect->begin(this, OperateFile::ui_msgconfirm,LEFTTORIGHT,NONE,CLOSE);
-                           OperateFile::ui_msgconfirm->init();
+                           //OperateFile::ui_msgconfirm->init();
                     }
                      else if(socket->IsPurchase==false)
                      {
@@ -305,9 +305,9 @@ void IdentifyCode::replyFinished(QNetworkReply *reply)
                          {
                              OperateFile::ui_lookup=new Lookup();
                          }
-                        disconnectslots();
+                        disconnectSlots();
                         socket->effect->begin(this,OperateFile::ui_lookup,LEFTTORIGHT,NONE,CLOSE);
-                        OperateFile::ui_lookup->init();
+                        //OperateFile::ui_lookup->init();
                      }
                 }
 
@@ -321,11 +321,11 @@ void IdentifyCode::replyFinished(QNetworkReply *reply)
          }
          else //多表用户
          {
-             disconnectslots();
+             disconnectSlots();
              ChoiceUser *choiceuser=new ChoiceUser(this->getUserInfo());
              choiceuser->setAttribute(Qt::WA_DeleteOnClose);
              socket->effect->begin(this,choiceuser,LEFTTORIGHT,NONE,HIDE);
-             choiceuser->init();
+             //choiceuser->init();
          }
     }
     else

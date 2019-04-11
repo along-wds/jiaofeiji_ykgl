@@ -9,7 +9,7 @@
 extern ClientSocket *socket;
 extern Manager *ui_manager;
 Heaterinputmaount::Heaterinputmaount(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::Heaterinputmaount)
 {
     ui->setupUi(this);

@@ -55,7 +55,6 @@ void Jmsh1::on_pushButton_back_HomePage_clicked()
     disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_zdbdhomepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_zdbdhomepage->init();
 }
 
 void Jmsh1::on_pushButton_func1_clicked()
@@ -235,7 +234,6 @@ void Jmsh1::on_pushButton_next_clicked()
     OperateFile::ui_jmsh2=new Jmsh2();
     OperateFile::ui_jmsh2->setAttribute(Qt::WA_DeleteOnClose);
     socket->effect->begin(this,OperateFile::ui_jmsh2,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_jmsh2->init();
 }
 
 void Jmsh1::on_pushButton_end_clicked()
@@ -250,7 +248,6 @@ void Jmsh1::on_pushButton_home_clicked()
 {
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_homepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_homepage->init();
 }
 
 void Jmsh1::on_pushButton_purchase_clicked()
@@ -262,7 +259,6 @@ void Jmsh1::on_pushButton_purchase_clicked()
     {
         OperateFile::ui_readcard=new readcard();
     }
-    OperateFile::ui_readcard->init();
 }
 
 void Jmsh1::on_pushButton_zdbd_clicked()
@@ -270,7 +266,6 @@ void Jmsh1::on_pushButton_zdbd_clicked()
     disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_zdbdhomepage,RIGHTTOLEFT,NONE,CLOSE);
-    OperateFile::ui_zdbdhomepage->init();
 }
 
 void Jmsh1::on_pushButton_public_clicked()
@@ -278,7 +273,6 @@ void Jmsh1::on_pushButton_public_clicked()
     disconnect(socket->accessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
     disconnectSlots();
     socket->effect->begin(this, OperateFile::ui_webpage,LEFTTORIGHT,NONE,HIDE);
-    OperateFile::ui_webpage->init();
 }
 
 void Jmsh1::on_pushButton_search_clicked()
@@ -290,5 +284,4 @@ void Jmsh1::on_pushButton_search_clicked()
     {
         OperateFile::ui_readcard=new readcard();
     }
-    OperateFile::ui_readcard->init();
 }

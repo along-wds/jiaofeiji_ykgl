@@ -4,7 +4,7 @@
 extern Manager *ui_manager;
 extern ClientSocket *socket;
 Heaterkhmx::Heaterkhmx(QWidget *parent) :
-    QWidget(parent),
+    CommonWidget(0,0,parent),
     ui(new Ui::Heaterkhmx)
 {
     ui->setupUi(this);
